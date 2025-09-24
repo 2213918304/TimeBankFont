@@ -1,0 +1,1107 @@
+/* 首页样式 - TDesign 重构版本 */
+.page-container {
+  width: 100vw;
+  min-height: 100vh;
+  max-width: 100vw;
+  background: #f5f5f5;
+  position: relative;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+/* TDesign 组件自定义样式 */
+.t-card {
+  margin: 16rpx;
+  border-radius: 16rpx;
+  box-shadow: 0 2rpx 16rpx rgba(0, 0, 0, 0.06);
+}
+
+/* 志愿者端样式 */
+.welcome-card .card-header {
+  display: flex;
+  align-items: center;
+  gap: 24rpx;
+  padding: 24rpx;
+}
+
+.header-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+.welcome-text {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #262626;
+}
+
+.subtitle-text {
+  font-size: 28rpx;
+  color: #8b8b8b;
+}
+
+/* 统计网格样式 */
+.stats-grid {
+  margin: 16rpx;
+}
+
+.stat-item {
+  padding: 24rpx;
+}
+
+.stat-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12rpx;
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 48rpx;
+  font-weight: 600;
+  color: #262626;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 24rpx;
+  color: #8b8b8b;
+  line-height: 1;
+}
+
+/* 快捷操作样式 */
+.quick-actions-card {
+  margin: 16rpx;
+}
+
+.action-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16rpx;
+  padding: 24rpx;
+}
+
+.action-icon {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-icon.primary {
+  background: linear-gradient(135deg, #0052d9, #4dabf7);
+}
+
+.action-icon.success {
+  background: linear-gradient(135deg, #00a870, #51cf66);
+}
+
+.action-icon.warning {
+  background: linear-gradient(135deg, #ed7b2f, #ffa940);
+}
+
+.action-text {
+  font-size: 26rpx;
+  color: #262626;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* 内容区域 */
+.content {
+  flex: 1;
+  padding: 16rpx 16rpx 120rpx 16rpx;
+  max-width: 100vw;
+  box-sizing: border-box;
+}
+
+.elderly-ui .content {
+  padding: 16rpx 16rpx 140rpx 16rpx;
+}
+
+/* 家属端UI */
+.family-ui {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 老人端UI */
+.elderly-ui {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #FFF5F0 0%, #f5f5f5 100%);
+}
+
+/* 家属端欢迎区域 */
+.family-header {
+  background: linear-gradient(135deg, #165DFF 0%, #722ED1 50%, #EB2F96 100%);
+  color: white;
+  border-radius: 32rpx;
+  padding: 48rpx;
+  margin-bottom: 48rpx;
+  text-align: center;
+  box-shadow: 
+    0 48rpx 128rpx rgba(22, 93, 255, 0.3),
+    0 24rpx 64rpx rgba(114, 46, 209, 0.2),
+    0 8rpx 32rpx rgba(0, 0, 0, 0.1),
+    inset 0 4rpx 0 rgba(255, 255, 255, 0.2);
+}
+
+.family-welcome {
+  font-size: 44rpx;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 16rpx;
+}
+
+.family-subtitle {
+  font-size: 32rpx;
+  opacity: 0.9;
+  display: block;
+}
+
+/* 老人端欢迎区域 */
+.elderly-header {
+  background: linear-gradient(135deg, #FF8A65 0%, #FF7043 50%, #FF5722 100%);
+  color: white;
+  border-radius: 32rpx;
+  padding: 48rpx;
+  margin-bottom: 48rpx;
+  text-align: center;
+  box-shadow: 
+    0 48rpx 128rpx rgba(255, 138, 101, 0.3),
+    0 24rpx 64rpx rgba(255, 112, 67, 0.2),
+    0 8rpx 32rpx rgba(0, 0, 0, 0.1),
+    inset 0 4rpx 0 rgba(255, 255, 255, 0.2);
+}
+
+.elderly-welcome {
+  font-size: 52rpx;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 16rpx;
+  text-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.2);
+}
+
+.elderly-subtitle {
+  font-size: 36rpx;
+  opacity: 0.9;
+  display: block;
+  line-height: 1.4;
+}
+
+/* 老人状态卡片 */
+.elder-status-card {
+  background: #ffffff;
+  border-radius: 32rpx;
+  padding: 40rpx;
+  margin-bottom: 40rpx;
+  border: 2rpx solid rgba(22, 93, 255, 0.1);
+  box-shadow: 
+    0 16rpx 48rpx rgba(22, 93, 255, 0.08),
+    0 8rpx 24rpx rgba(114, 46, 209, 0.06),
+    0 4rpx 12rpx rgba(0, 0, 0, 0.04);
+}
+
+.elder-info {
+  display: flex;
+  align-items: center;
+  gap: 32rpx;
+}
+
+.elder-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #165DFF, #722ED1);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48rpx;
+  font-weight: 600;
+  box-shadow: 0 8rpx 24rpx rgba(22, 93, 255, 0.3);
+}
+
+.elder-details {
+  flex: 1;
+}
+
+.elder-name {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 8rpx;
+}
+
+.elder-status {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  margin-bottom: 8rpx;
+}
+
+.status-indicator {
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+  background: #10b981;
+  animation: pulse 2s infinite;
+}
+
+.status-text {
+  font-size: 28rpx;
+  color: #10b981;
+  font-weight: 500;
+}
+
+.last-active {
+  font-size: 24rpx;
+  color: #6b7280;
+}
+
+.call-btn {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  border: none;
+  border-radius: 20rpx;
+  padding: 16rpx 32rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+  box-shadow: 0 8rpx 16rpx rgba(16, 185, 129, 0.3);
+}
+
+.call-btn:active {
+  transform: scale(0.95);
+}
+
+/* 数据概览 */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24rpx;
+  margin-bottom: 40rpx;
+}
+
+.stat-card {
+  background: #ffffff;
+  border-radius: 24rpx;
+  padding: 32rpx;
+  text-align: center;
+  border: 2rpx solid rgba(22, 93, 255, 0.1);
+  box-shadow: 
+    0 8rpx 24rpx rgba(22, 93, 255, 0.06),
+    0 4rpx 12rpx rgba(0, 0, 0, 0.04);
+}
+
+.stat-number {
+  font-size: 48rpx;
+  font-weight: 800;
+  background: linear-gradient(135deg, #165DFF, #722ED1);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 8rpx;
+  display: block;
+}
+
+.stat-label {
+  font-size: 24rpx;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+/* 快捷操作 */
+.quick-actions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24rpx;
+  margin-bottom: 40rpx;
+}
+
+.elderly-actions {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32rpx;
+}
+
+.quick-action {
+  background: #ffffff;
+  border-radius: 24rpx;
+  padding: 32rpx 24rpx;
+  text-align: center;
+  border: 2rpx solid rgba(22, 93, 255, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 
+    0 8rpx 24rpx rgba(22, 93, 255, 0.06),
+    0 4rpx 12rpx rgba(0, 0, 0, 0.04);
+}
+
+.quick-action:active {
+  transform: translateY(-4rpx);
+  box-shadow: 
+    0 16rpx 32rpx rgba(22, 93, 255, 0.12),
+    0 8rpx 16rpx rgba(0, 0, 0, 0.08);
+}
+
+.quick-action-icon {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40rpx;
+  margin: 0 auto 16rpx;
+  box-shadow: 0 8rpx 16rpx rgba(0, 0, 0, 0.1);
+}
+
+.family-gradient1 {
+  background: linear-gradient(135deg, #165DFF, #722ED1);
+}
+
+.family-gradient2 {
+  background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.family-gradient3 {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+.quick-action-title {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #1f2937;
+}
+
+/* 实时活动监控 */
+.monitor-section {
+  background: #ffffff;
+  border-radius: 32rpx;
+  padding: 40rpx;
+  margin-bottom: 40rpx;
+  border: 2rpx solid rgba(22, 93, 255, 0.1);
+  box-shadow: 
+    0 16rpx 48rpx rgba(22, 93, 255, 0.08),
+    0 8rpx 24rpx rgba(114, 46, 209, 0.06),
+    0 4rpx 12rpx rgba(0, 0, 0, 0.04);
+}
+
+.monitor-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.auto-refresh {
+  font-size: 24rpx;
+  color: #165DFF;
+  cursor: pointer;
+}
+
+.activity-item {
+  display: flex;
+  align-items: center;
+  gap: 24rpx;
+  padding: 24rpx 0;
+  border-bottom: 2rpx solid #f0f0f0;
+}
+
+.activity-item:last-child {
+  border-bottom: none;
+}
+
+.activity-icon {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  color: white;
+  flex-shrink: 0;
+}
+
+.chat-icon {
+  background: linear-gradient(135deg, #165DFF, #722ED1);
+}
+
+.success-icon {
+  background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.money-icon {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+.activity-content {
+  flex: 1;
+}
+
+.activity-text {
+  font-size: 28rpx;
+  color: #1f2937;
+  margin-bottom: 4rpx;
+  line-height: 1.4;
+}
+
+.activity-time {
+  font-size: 24rpx;
+  color: #6b7280;
+}
+
+/* 最近服务 */
+.recent-services {
+  margin-bottom: 40rpx;
+}
+
+.section-title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 32rpx;
+}
+
+.service-card {
+  background: #ffffff;
+  border-radius: 24rpx;
+  padding: 32rpx;
+  margin-bottom: 24rpx;
+  border: 2rpx solid rgba(255, 138, 101, 0.1);
+  box-shadow: 
+    0 8rpx 24rpx rgba(255, 138, 101, 0.08),
+    0 4rpx 12rpx rgba(0, 0, 0, 0.04);
+}
+
+.service-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16rpx;
+}
+
+.service-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.service-status {
+  padding: 8rpx 16rpx;
+  border-radius: 12rpx;
+  font-size: 24rpx;
+  font-weight: 500;
+}
+
+.status-ongoing {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status-completed {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.service-info {
+  font-size: 26rpx;
+  color: #6b7280;
+  margin-bottom: 8rpx;
+}
+
+.service-price {
+  font-size: 28rpx;
+  color: #f59e0b;
+  font-weight: 600;
+}
+
+/* 动画效果 */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.shine-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine-effect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.shine-effect:hover::before {
+  left: 100%;
+}
+
+/* ========== 老人端专用样式 ========== */
+
+/* 老人端主题色变量 */
+.elderly-theme {
+  --elderly-primary: #FF6B35;
+  --elderly-primary-light: #FF8A65;
+  --elderly-primary-dark: #E64A19;
+  --elderly-secondary: #FFB74D;
+  --elderly-bg: #FFF5F0;
+  --elderly-card-bg: #FFFFFF;
+  --elderly-text-primary: #2C2C2C;
+  --elderly-text-secondary: #757575;
+  --elderly-border: #FFE0CC;
+}
+
+/* 老人端欢迎卡片 */
+.elderly-welcome-card {
+  background: linear-gradient(135deg, #FF6B35 0%, #FF8A65 100%);
+  color: white;
+  margin: 16rpx;
+  border-radius: 24rpx;
+  overflow: hidden;
+  box-shadow: 0 8rpx 32rpx rgba(255, 107, 53, 0.3);
+}
+
+.elderly-header {
+  display: flex;
+  align-items: center;
+  gap: 24rpx;
+  padding: 32rpx;
+  background: transparent;
+}
+
+.elderly-avatar {
+  width: 100rpx;
+  height: 100rpx;
+  background: rgba(255, 255, 255, 0.2);
+  border: 3rpx solid rgba(255, 255, 255, 0.3);
+}
+
+.elderly-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+.elderly-welcome {
+  font-size: 44rpx;
+  font-weight: 600;
+  color: white;
+  line-height: 1.2;
+}
+
+.elderly-subtitle {
+  font-size: 32rpx;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.3;
+}
+
+.weather-tag {
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1rpx solid rgba(255, 255, 255, 0.3);
+}
+
+/* 老人端功能卡片 */
+.elderly-actions-card {
+  margin: 16rpx;
+  border-radius: 24rpx;
+  overflow: hidden;
+}
+
+.elderly-grid {
+  padding: 16rpx;
+}
+
+/* 老人端大按钮设计 */
+.elderly-action-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16rpx;
+  padding: 32rpx 24rpx;
+  text-align: center;
+  min-height: 200rpx;
+  justify-content: center;
+}
+
+.elderly-action-icon {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.15);
+  margin-bottom: 8rpx;
+}
+
+.elderly-action-icon.orange {
+  background: linear-gradient(135deg, #FF6B35, #FF8A65);
+}
+
+.elderly-action-icon.blue {
+  background: linear-gradient(135deg, #42A5F5, #64B5F6);
+}
+
+.elderly-action-icon.green {
+  background: linear-gradient(135deg, #66BB6A, #81C784);
+}
+
+.elderly-action-icon.red {
+  background: linear-gradient(135deg, #EF5350, #F44336);
+  animation: pulse-emergency 2s infinite;
+}
+
+.elderly-action-text {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #2C2C2C;
+  line-height: 1.2;
+  margin-bottom: 4rpx;
+}
+
+.elderly-action-desc {
+  font-size: 28rpx;
+  color: #757575;
+  line-height: 1.2;
+}
+
+/* 紧急求助按钮特殊样式 */
+.elderly-action-item.emergency {
+  position: relative;
+}
+
+.elderly-action-item.emergency::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 87, 51, 0.1);
+  border-radius: 16rpx;
+  border: 2rpx solid #FF5733;
+  pointer-events: none;
+}
+
+/* 老人端最近服务卡片 */
+.recent-services-card {
+  margin: 16rpx;
+  border-radius: 24rpx;
+}
+
+.service-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8rpx;
+}
+
+.service-price {
+  font-size: 28rpx;
+  color: #FF6B35;
+  font-weight: 600;
+}
+
+.view-more-container {
+  padding: 24rpx 0 8rpx;
+}
+
+/* 老人端专用动画 */
+@keyframes pulse-emergency {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 8rpx 24rpx rgba(239, 83, 80, 0.3);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 12rpx 32rpx rgba(239, 83, 80, 0.5);
+  }
+}
+
+/* 老人端响应式设计 */
+@media (max-width: 750rpx) {
+  .elderly-action-text {
+    font-size: 32rpx;
+  }
+  
+  .elderly-action-desc {
+    font-size: 26rpx;
+  }
+  
+  .elderly-action-icon {
+    width: 100rpx;
+    height: 100rpx;
+  }
+}
+
+/* 老人端无障碍优化 */
+.elderly-ui .t-button {
+  min-height: 88rpx;
+  font-size: 32rpx;
+}
+
+.elderly-ui .t-cell {
+  min-height: 120rpx;
+}
+
+.elderly-ui .t-cell .t-cell__title {
+  font-size: 32rpx;
+  font-weight: 500;
+}
+
+.elderly-ui .t-cell .t-cell__description {
+  font-size: 28rpx;
+  margin-top: 8rpx;
+}
+
+/* ========== 新的紧凑布局样式 ========== */
+
+/* 欢迎区域 */
+.welcome-section {
+  background: white;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin: 16rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.06);
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.user-avatar {
+  background: linear-gradient(135deg, #0052D9, #4dabf7);
+}
+
+.user-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+.welcome-text {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #1d1d1f;
+}
+
+.subtitle-text {
+  font-size: 26rpx;
+  color: #666;
+}
+
+.elder-card {
+  background: #f8f9ff;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1rpx solid rgba(0, 82, 217, 0.1);
+}
+
+.elder-info {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  flex: 1;
+}
+
+.elder-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4rpx;
+}
+
+.elder-name {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #1d1d1f;
+}
+
+.elder-status {
+  font-size: 24rpx;
+  color: #666;
+}
+
+/* 统计区域 */
+.stats-section {
+  margin: 16rpx;
+  background: white;
+  border-radius: 16rpx;
+  padding: 20rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.06);
+}
+
+.stats-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.section-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #1d1d1f;
+}
+
+.update-time {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16rpx;
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8rpx;
+  padding: 16rpx 8rpx;
+  background: #f8f9ff;
+  border-radius: 12rpx;
+}
+
+.stat-card .stat-number {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #1d1d1f;
+}
+
+.stat-card .stat-label {
+  font-size: 22rpx;
+  color: #666;
+}
+
+/* 操作区域 */
+.actions-section {
+  margin: 16rpx;
+  background: white;
+  border-radius: 16rpx;
+  padding: 20rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.06);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.actions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16rpx;
+}
+
+.action-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12rpx;
+  padding: 20rpx;
+  background: #f8f9ff;
+  border-radius: 12rpx;
+  transition: all 0.3s ease;
+}
+
+.action-button:active {
+  transform: scale(0.95);
+  background: #f0f1ff;
+}
+
+.action-icon {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 12rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-icon.primary {
+  background: linear-gradient(135deg, #0052D9, #4dabf7);
+}
+
+.action-icon.success {
+  background: linear-gradient(135deg, #00a870, #51cf66);
+}
+
+.action-icon.warning {
+  background: linear-gradient(135deg, #ed7b2f, #ffa940);
+}
+
+.action-icon.info {
+  background: linear-gradient(135deg, #1890ff, #69c0ff);
+}
+
+.action-text {
+  font-size: 24rpx;
+  color: #1d1d1f;
+  font-weight: 500;
+}
+
+/* 活动区域 */
+.activity-section {
+  margin: 16rpx;
+  background: white;
+  border-radius: 16rpx;
+  padding: 20rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.06);
+}
+
+.refresh-btn {
+  font-size: 24rpx;
+  color: #0052D9;
+  padding: 8rpx 16rpx;
+  background: rgba(0, 82, 217, 0.1);
+  border-radius: 20rpx;
+}
+
+.activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.activity-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16rpx;
+  padding: 12rpx 0;
+}
+
+.activity-dot {
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 50%;
+  margin-top: 6rpx;
+  flex-shrink: 0;
+}
+
+.activity-dot.chat {
+  background: #0052D9;
+}
+
+.activity-dot.success {
+  background: #00a870;
+}
+
+.activity-dot.money {
+  background: #ed7b2f;
+}
+
+.activity-dot.service {
+  background: #1890ff;
+}
+
+.activity-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4rpx;
+}
+
+.activity-text {
+  font-size: 26rpx;
+  color: #1d1d1f;
+  line-height: 1.4;
+}
+
+.activity-time {
+  font-size: 22rpx;
+  color: #999;
+}
+
+/* 老人端欢迎区域 */
+.elderly-welcome-section {
+  background: linear-gradient(135deg, #FF6B35, #FF8A65);
+  border-radius: 16rpx;
+  margin: 16rpx;
+  overflow: hidden;
+  box-shadow: 0 4rpx 16rpx rgba(255, 107, 53, 0.3);
+}
+
+.elderly-user-info {
+  display: flex;
+  align-items: center;
+  padding: 24rpx;
+  gap: 20rpx;
+}
+
+.elderly-avatar {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2rpx solid rgba(255, 255, 255, 0.3);
+}
+
+.elderly-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+.elderly-welcome {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: white;
+}
+
+.elderly-subtitle {
+  font-size: 28rpx;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.weather-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rpx;
+}
+
+.weather-text {
+  font-size: 22rpx;
+  color: white;
+  font-weight: 500;
+}

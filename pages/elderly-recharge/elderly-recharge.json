@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "我要充值",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "TopNavBar": "../../components/TopNavBar/TopNavBar"
+  }
+}

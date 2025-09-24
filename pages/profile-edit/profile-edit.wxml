@@ -1,0 +1,238 @@
+<!-- 个人信息编辑页面 -->
+<view class="page-container">
+  
+  <!-- 统一导航栏 -->
+  <TopNavBar 
+    title="编辑个人信息" 
+    isElderly="{{isElderly}}"
+    showBack="{{true}}"
+    bind:back="onBackClick"
+  />
+  
+  <!-- 内容区域 -->
+  <scroll-view class="content" scroll-y="true">
+    
+    <!-- 头像编辑 -->
+    <view class="avatar-section">
+      <view class="section-title">头像</view>
+      <view class="avatar-container">
+        <view class="avatar {{isElderly ? 'elderly' : 'family'}}" bindtap="changeAvatar">
+          {{getAvatarText()}}
+        </view>
+        <button class="change-avatar-btn" bindtap="changeAvatar">更换头像</button>
+      </view>
+    </view>
+
+    <!-- 基本信息表单 -->
+    <view class="form-section">
+      <view class="section-title">基本信息</view>
+      
+      <view class="form-item">
+        <view class="form-label">真实姓名</view>
+        <input 
+          class="form-input" 
+          placeholder="请输入真实姓名" 
+          value="{{formData.name}}"
+          bindinput="onInputChange"
+          data-field="name"
+          maxlength="10"
+        />
+      </view>
+
+      <view class="form-item">
+        <view class="form-label">性别</view>
+        <view class="gender-selector">
+          <view 
+            class="gender-option {{formData.gender === 'male' ? 'selected' : ''}}"
+            bindtap="selectGender"
+            data-gender="male"
+          >
+            👨 男
+          </view>
+          <view 
+            class="gender-option {{formData.gender === 'female' ? 'selected' : ''}}"
+            bindtap="selectGender"
+            data-gender="female"
+          >
+            👩 女
+          </view>
+        </view>
+      </view>
+
+      <view class="form-item">
+        <view class="form-label">年龄</view>
+        <input 
+          class="form-input" 
+          placeholder="请输入年龄" 
+          value="{{formData.age}}"
+          bindinput="onInputChange"
+          data-field="age"
+          type="number"
+          maxlength="3"
+        />
+      </view>
+
+      <view class="form-item">
+        <view class="form-label">手机号</view>
+        <input 
+          class="form-input" 
+          placeholder="请输入手机号" 
+          value="{{formData.phone}}"
+          bindinput="onInputChange"
+          data-field="phone"
+          type="number"
+          maxlength="11"
+        />
+      </view>
+
+      <view class="form-item">
+        <view class="form-label">身份证号</view>
+        <input 
+          class="form-input" 
+          placeholder="请输入身份证号" 
+          value="{{formData.idCard}}"
+          bindinput="onInputChange"
+          data-field="idCard"
+          maxlength="18"
+        />
+      </view>
+    </view>
+
+    <!-- 地址信息 -->
+    <view class="form-section">
+      <view class="section-title">地址信息</view>
+      
+      <view class="form-item">
+        <view class="form-label">所在地区</view>
+        <view class="region-selector" bindtap="selectRegion">
+          <text class="region-text {{formData.region ? '' : 'placeholder'}}">
+            {{formData.region || '请选择所在地区'}}
+          </text>
+          <text class="arrow">→</text>
+        </view>
+      </view>
+
+      <view class="form-item">
+        <view class="form-label">详细地址</view>
+        <textarea 
+          class="form-textarea" 
+          placeholder="请输入详细地址" 
+          value="{{formData.address}}"
+          bindinput="onInputChange"
+          data-field="address"
+          maxlength="100"
+          auto-height
+        />
+      </view>
+    </view>
+
+    <!-- 老人端特有信息 -->
+    <view wx:if="{{isElderly}}" class="form-section">
+      <view class="section-title">健康信息</view>
+      
+      <view class="form-item">
+        <view class="form-label">慢性疾病</view>
+        <textarea 
+          class="form-textarea" 
+          placeholder="请输入慢性疾病信息，如无请填写无" 
+          value="{{formData.chronicDiseases}}"
+          bindinput="onInputChange"
+          data-field="chronicDiseases"
+          maxlength="200"
+          auto-height
+        />
+      </view>
+
+      <view class="form-item">
+        <view class="form-label">过敏史</view>
+        <textarea 
+          class="form-textarea" 
+          placeholder="请输入过敏史信息，如无请填写无" 
+          value="{{formData.allergies}}"
+          bindinput="onInputChange"
+          data-field="allergies"
+          maxlength="200"
+          auto-height
+        />
+      </view>
+
+      <view class="form-item">
+        <view class="form-label">紧急联系人</view>
+        <input 
+          class="form-input" 
+          placeholder="请输入紧急联系人姓名和电话" 
+          value="{{formData.emergencyContact}}"
+          bindinput="onInputChange"
+          data-field="emergencyContact"
+          maxlength="50"
+        />
+      </view>
+    </view>
+
+    <!-- 志愿者端特有信息 -->
+    <view wx:else class="form-section">
+      <view class="section-title">志愿服务信息</view>
+      
+      <view class="form-item">
+        <view class="form-label">服务专长</view>
+        <view class="specialty-selector">
+          <view 
+            wx:for="{{specialtyOptions}}" 
+            wx:key="value"
+            class="specialty-option {{formData.specialties.includes(item.value) ? 'selected' : ''}}"
+            bindtap="toggleSpecialty"
+            data-value="{{item.value}}"
+          >
+            {{item.label}}
+          </view>
+        </view>
+      </view>
+
+      <view class="form-item">
+        <view class="form-label">服务时间</view>
+        <view class="time-selector">
+          <view 
+            wx:for="{{timeSlots}}" 
+            wx:key="value"
+            class="time-option {{formData.availableTime.includes(item.value) ? 'selected' : ''}}"
+            bindtap="toggleTimeSlot"
+            data-value="{{item.value}}"
+          >
+            {{item.label}}
+          </view>
+        </view>
+      </view>
+
+      <view class="form-item">
+        <view class="form-label">个人简介</view>
+        <textarea 
+          class="form-textarea" 
+          placeholder="请简单介绍一下自己，让老人更了解您" 
+          value="{{formData.introduction}}"
+          bindinput="onInputChange"
+          data-field="introduction"
+          maxlength="300"
+          auto-height
+        />
+      </view>
+    </view>
+
+    <!-- 提交按钮 -->
+    <view class="submit-section">
+      <button 
+        class="submit-btn {{isElderly ? 'elderly' : 'family'}}" 
+        bindtap="submitProfile"
+        disabled="{{isSubmitting}}"
+      >
+        {{isSubmitting ? '保存中...' : '保存信息'}}
+      </button>
+    </view>
+
+    <!-- 底部安全区域 -->
+    <view class="safe-area-bottom"></view>
+  </scroll-view>
+</view>
+
+
+
+

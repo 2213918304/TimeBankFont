@@ -1,0 +1,108 @@
+<view class="container">
+  <view class="demo-section">
+    <view class="section-title">TDesign 组件演示</view>
+    
+    <!-- 按钮组件 -->
+    <view class="demo-block">
+      <text class="block-title">按钮 Button</text>
+      <view class="button-group">
+        <t-button theme="primary" size="large">主要按钮</t-button>
+        <t-button theme="light" size="medium">次要按钮</t-button>
+        <t-button theme="ghost" size="small">幽灵按钮</t-button>
+        <t-button theme="danger" disabled>禁用按钮</t-button>
+      </view>
+    </view>
+
+    <!-- 输入框组件 -->
+    <view class="demo-block">
+      <text class="block-title">输入框 Input</text>
+      <t-input placeholder="请输入您的姓名" label="姓名" />
+      <t-input placeholder="请输入手机号" label="手机号" type="number" maxlength="11" />
+      <t-input placeholder="请输入密码" label="密码" type="password" />
+    </view>
+
+    <!-- 标签组件 -->
+    <view class="demo-block">
+      <text class="block-title">标签 Tag</text>
+      <view class="tag-group">
+        <t-tag theme="primary">主要标签</t-tag>
+        <t-tag theme="success">成功标签</t-tag>
+        <t-tag theme="warning">警告标签</t-tag>
+        <t-tag theme="danger">危险标签</t-tag>
+      </view>
+    </view>
+
+    <!-- 头像组件 -->
+    <view class="demo-block">
+      <text class="block-title">头像 Avatar</text>
+      <view class="avatar-group">
+        <t-avatar size="large">大</t-avatar>
+        <t-avatar size="medium">中</t-avatar>
+        <t-avatar size="small">小</t-avatar>
+      </view>
+    </view>
+
+    <!-- 图标组件 -->
+    <view class="demo-block">
+      <text class="block-title">图标 Icon</text>
+      <view class="icon-group">
+        <t-icon name="user" size="48rpx" />
+        <t-icon name="heart" size="48rpx" color="#ff6b6b" />
+        <t-icon name="location" size="48rpx" color="#4dabf7" />
+        <t-icon name="home" size="48rpx" color="#51cf66" />
+      </view>
+    </view>
+
+    <!-- 单元格组件 -->
+    <view class="demo-block">
+      <text class="block-title">单元格 Cell</text>
+      <t-cell-group>
+        <t-cell title="单元格标题" note="单元格描述信息" arrow />
+        <t-cell title="设置" leftIcon="setting" arrow />
+        <t-cell title="消息通知" rightIcon="notification" />
+      </t-cell-group>
+    </view>
+
+    <!-- 加载组件 -->
+    <view class="demo-block">
+      <text class="block-title">加载 Loading</text>
+      <view class="loading-group">
+        <t-loading theme="circular" size="40rpx" />
+        <t-loading theme="spinner" size="40rpx" />
+        <t-loading theme="dots" size="40rpx" />
+      </view>
+    </view>
+
+    <!-- 开关组件 -->
+    <view class="demo-block">
+      <text class="block-title">开关 Switch</text>
+      <view class="switch-group">
+        <view class="switch-item">
+          <text>消息推送</text>
+          <t-switch defaultValue="{{true}}" />
+        </view>
+        <view class="switch-item">
+          <text>自动更新</text>
+          <t-switch defaultValue="{{false}}" />
+        </view>
+      </view>
+    </view>
+
+    <!-- 评分组件 -->
+    <view class="demo-block">
+      <text class="block-title">评分 Rate</text>
+      <t-rate defaultValue="{{4}}" />
+    </view>
+
+    <!-- 步骤条组件 -->
+    <view class="demo-block">
+      <text class="block-title">步骤条 Steps</text>
+      <t-steps current="{{1}}" direction="horizontal">
+        <t-step-item title="步骤一" content="完成注册" />
+        <t-step-item title="步骤二" content="验证身份" />
+        <t-step-item title="步骤三" content="开始使用" />
+      </t-steps>
+    </view>
+  </view>
+</view>
+

@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "编辑个人信息",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "TopNavBar": "../../components/TopNavBar/TopNavBar"
+  }
+}
+
+
+
+

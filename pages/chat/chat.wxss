@@ -1,0 +1,278 @@
+/* 聊天页面 - 纯TDesign风格 */
+
+.page {
+  width: 100%;
+  height: 100vh;
+  background: #f8f8f8;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 聊天容器 */
+.chat-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #f8f8f8;
+  position: relative;
+  height: calc(100vh - calc(120rpx + env(safe-area-inset-top)) - 120rpx);
+}
+
+/* 聊天消息区域 */
+.chat-messages {
+  flex: 1;
+  padding: 24rpx 16rpx 200rpx 16rpx;
+  overflow-y: auto;
+  background: #f8f8f8;
+}
+
+/* 消息项 */
+.message-item {
+  margin-bottom: 32rpx;
+}
+
+/* 聊天消息容器 */
+.chat-message {
+  display: flex;
+  align-items: flex-start;
+  gap: 12rpx;
+  max-width: 100%;
+  padding: 0 8rpx;
+}
+
+.chat-message.user {
+  flex-direction: row-reverse;
+}
+
+/* TDesign头像 */
+.chat-avatar {
+  width: 64rpx !important;
+  height: 64rpx !important;
+  flex-shrink: 0;
+  margin-top: 4rpx;
+}
+
+/* 聊天气泡 */
+.chat-bubble {
+  max-width: 480rpx;
+  padding: 16rpx 20rpx;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  line-height: 1.5;
+  word-wrap: break-word;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.06);
+  position: relative;
+  margin: 0 4rpx;
+}
+
+/* AI消息气泡 */
+.chat-bubble.ai {
+  background: #ffffff;
+  color: #1f2329;
+  border: 1rpx solid #e7e7e7;
+  border-radius: 12rpx 12rpx 12rpx 4rpx;
+}
+
+/* 用户消息气泡 */
+.chat-bubble.user {
+  background: #0052d9;
+  color: white;
+  border-radius: 12rpx 12rpx 4rpx 12rpx;
+  border: none;
+}
+
+/* 输入中气泡 */
+.chat-bubble.typing {
+  background: #ffffff;
+  border: 1rpx solid #e7e7e7;
+  padding: 28rpx;
+}
+
+/* 输入中动画点 */
+.typing-dots {
+  display: flex;
+  gap: 12rpx;
+  align-items: center;
+  justify-content: center;
+}
+
+.dot {
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 50%;
+  background: #bbbfc4;
+  animation: typing 1.4s infinite ease-in-out;
+}
+
+.dot:nth-child(1) { animation-delay: 0s; }
+.dot:nth-child(2) { animation-delay: 0.2s; }
+.dot:nth-child(3) { animation-delay: 0.4s; }
+
+/* 输入区域 */
+.chat-input-area {
+  position: fixed;
+  bottom: 120rpx;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background: #ffffff;
+  border-top: 1rpx solid #e7e7e7;
+  padding: 16rpx;
+  box-shadow: 0 -2rpx 8rpx rgba(0, 0, 0, 0.08);
+}
+
+/* 输入容器 */
+.input-container {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+/* TDesign输入框样式覆盖 */
+.chat-input {
+  flex: 1;
+}
+
+/* 强制输入框样式 */
+.chat-input .t-input,
+.chat-input .t-input .t-input__wrap,
+.chat-input .t-input .t-input__inner {
+  border-radius: 32rpx !important;
+  border: 2rpx solid #0052d9 !important;
+  background: #ffffff !important;
+  height: 72rpx !important;
+  box-sizing: border-box !important;
+}
+
+.chat-input .t-input__control {
+  padding: 16rpx 20rpx !important;
+  font-size: 32rpx !important;
+  color: #1f2329 !important;
+  line-height: 1.4 !important;
+}
+
+/* 修复占位符文字颜色 */
+.chat-input .t-input__control::placeholder {
+  color: #999999 !important;
+  font-size: 32rpx !important;
+}
+
+.chat-input .t-input__control::-webkit-input-placeholder {
+  color: #999999 !important;
+  font-size: 32rpx !important;
+}
+
+.chat-input .t-input__control::-moz-placeholder {
+  color: #999999 !important;
+  font-size: 32rpx !important;
+}
+
+.chat-input .t-input__control:-ms-input-placeholder {
+  color: #999999 !important;
+  font-size: 32rpx !important;
+}
+
+.chat-input .t-input:focus-within {
+  border-color: #0052d9 !important;
+  background: #ffffff !important;
+  box-shadow: 0 0 0 2rpx rgba(0, 82, 217, 0.2) !important;
+}
+
+/* 确保输入框内文字显示清晰 */
+.chat-input .t-input input {
+  color: #1f2329 !important;
+  font-size: 32rpx !important;
+  font-weight: 400 !important;
+}
+
+.chat-input .t-input .t-input__wrap {
+  background: transparent !important;
+}
+
+.chat-input .t-input .t-input__inner {
+  background: transparent !important;
+  color: #1f2329 !important;
+}
+
+/* TDesign按钮样式覆盖 */
+.voice-button,
+.send-btn {
+  width: 72rpx !important;
+  height: 72rpx !important;
+  border-radius: 50% !important;
+  margin: 0 !important;
+  flex-shrink: 0;
+  min-width: 72rpx !important;
+}
+
+.voice-button {
+  background: #f8f8f8 !important;
+  color: #5e6266 !important;
+  border: 1rpx solid #e7e7e7 !important;
+}
+
+.voice-button:active {
+  background: #e7e7e7 !important;
+}
+
+.send-btn {
+  background: #0052d9 !important;
+  color: white !important;
+  border: none !important;
+}
+
+.send-btn:active {
+  background: #003ba8 !important;
+}
+
+.send-btn:disabled {
+  background: #bbbfc4 !important;
+  color: white !important;
+}
+
+/* 按钮图标居中 */
+.t-button .t-button__content {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.t-button .t-icon {
+  margin: 0 !important;
+  font-size: 32rpx !important;
+}
+
+/* 动画 */
+@keyframes typing {
+  0%, 60%, 100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  30% {
+    transform: translateY(-12rpx);
+    opacity: 1;
+  }
+}
+
+/* 响应式设计 */
+@media (max-width: 750rpx) {
+  .chat-bubble {
+    max-width: 480rpx;
+    font-size: 26rpx;
+  }
+  
+  .voice-button,
+  .send-btn {
+    width: 72rpx !important;
+    height: 72rpx !important;
+  }
+  
+  .t-button .t-icon {
+    font-size: 28rpx !important;
+  }
+}
+
+/* 安全区域适配 */
+.chat-input-area {
+  padding-bottom: calc(24rpx + env(safe-area-inset-bottom));
+}

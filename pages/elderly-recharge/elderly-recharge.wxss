@@ -1,0 +1,321 @@
+/* 老人端充值页面样式 */
+
+.elderly-page {
+  width: 100%;
+  max-width: 100vw;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #FFF8E1 0%, #FFFFFF 100%);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  box-sizing: border-box;
+}
+
+/* 内容区域 */
+.elderly-content {
+  flex: 1;
+  width: 100%;
+  max-width: 100vw;
+  padding: 40rpx;
+  padding-bottom: 120rpx;
+  box-sizing: border-box;
+}
+
+/* 余额卡片 */
+.elderly-balance-card {
+  background: linear-gradient(135deg, #FFE0B2 0%, #FFCC02 100%);
+  border-radius: 32rpx;
+  padding: 60rpx 40rpx;
+  margin-bottom: 40rpx;
+  display: flex;
+  align-items: center;
+  box-shadow: 
+    0 16rpx 48rpx rgba(255, 204, 2, 0.3),
+    0 8rpx 24rpx rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+.balance-icon {
+  font-size: 80rpx;
+  margin-right: 32rpx;
+}
+
+.balance-info {
+  flex: 1;
+}
+
+.balance-title {
+  font-size: 32rpx;
+  color: #E65100;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 8rpx;
+}
+
+.balance-number {
+  font-size: 56rpx;
+  color: #BF360C;
+  font-weight: 800;
+  display: block;
+  margin-bottom: 8rpx;
+}
+
+.balance-desc {
+  font-size: 28rpx;
+  color: #FF6F00;
+  display: block;
+}
+
+/* 信息卡片 */
+.info-card {
+  background: #FFFFFF;
+  border-radius: 24rpx;
+  padding: 40rpx;
+  margin-bottom: 40rpx;
+  border: 3rpx solid #FFE0B2;
+  box-shadow: 0 8rpx 24rpx rgba(255, 138, 101, 0.1);
+  box-sizing: border-box;
+}
+
+.info-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24rpx;
+}
+
+.info-icon {
+  font-size: 40rpx;
+  margin-right: 16rpx;
+}
+
+.info-title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #FF7043;
+}
+
+.info-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+}
+
+.info-text {
+  font-size: 32rpx;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* 金额选择 */
+.amount-section {
+  margin-bottom: 40rpx;
+}
+
+.section-title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #FF7043;
+  margin-bottom: 24rpx;
+  display: block;
+}
+
+.amount-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20rpx;
+}
+
+.amount-card {
+  background: #FFFFFF;
+  border: 4rpx solid #FFE0B2;
+  border-radius: 24rpx;
+  padding: 40rpx 24rpx;
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8rpx 16rpx rgba(255, 138, 101, 0.1);
+  box-sizing: border-box;
+}
+
+.amount-card.selected {
+  background: linear-gradient(135deg, #FF8A65 0%, #FF7043 100%);
+  border-color: #FF5722;
+  color: white;
+  transform: translateY(-8rpx);
+  box-shadow: 
+    0 20rpx 40rpx rgba(255, 138, 101, 0.4),
+    0 8rpx 16rpx rgba(0, 0, 0, 0.1);
+}
+
+.amount-number {
+  font-size: 48rpx;
+  font-weight: 800;
+  display: block;
+  margin-bottom: 8rpx;
+  color: #333;
+}
+
+.amount-card.selected .amount-number {
+  color: white;
+}
+
+.amount-unit {
+  font-size: 28rpx;
+  color: #666;
+  display: block;
+}
+
+.amount-card.selected .amount-unit {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.popular-badge {
+  position: absolute;
+  top: -8rpx;
+  right: -8rpx;
+  background: #FF4444;
+  color: white;
+  font-size: 20rpx;
+  padding: 6rpx 12rpx;
+  border-radius: 12rpx;
+  font-weight: 600;
+}
+
+/* 支付方式 */
+.payment-section {
+  margin-bottom: 40rpx;
+}
+
+.payment-card {
+  background: #FFFFFF;
+  border: 3rpx solid #FFE0B2;
+  border-radius: 24rpx;
+  padding: 32rpx;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8rpx 16rpx rgba(255, 138, 101, 0.1);
+  box-sizing: border-box;
+}
+
+.payment-card:active {
+  transform: scale(0.98);
+  background: #FFF8E1;
+}
+
+.payment-icon {
+  font-size: 56rpx;
+  margin-right: 24rpx;
+}
+
+.payment-info {
+  flex: 1;
+}
+
+.payment-name {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #FF7043;
+  display: block;
+  margin-bottom: 8rpx;
+}
+
+.payment-desc {
+  font-size: 28rpx;
+  color: #999;
+  display: block;
+}
+
+.payment-arrow {
+  font-size: 32rpx;
+  color: #FF7043;
+  font-weight: bold;
+}
+
+/* 操作按钮 */
+.action-section {
+  margin-bottom: 40rpx;
+}
+
+.recharge-btn {
+  width: 100%;
+  height: 120rpx;
+  background: linear-gradient(135deg, #FF8A65 0%, #FF7043 100%);
+  color: white;
+  border: none;
+  border-radius: 24rpx;
+  font-size: 40rpx;
+  font-weight: 700;
+  margin-bottom: 24rpx;
+  box-shadow: 
+    0 16rpx 32rpx rgba(255, 138, 101, 0.4),
+    0 8rpx 16rpx rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.recharge-btn:active {
+  transform: scale(0.98);
+}
+
+.help-section {
+  display: flex;
+  gap: 16rpx;
+}
+
+.help-btn {
+  flex: 1;
+  height: 80rpx;
+  background: transparent;
+  color: #FF7043;
+  border: 2rpx solid #FFB74D;
+  border-radius: 20rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.help-btn:active {
+  background: #FFF8E1;
+}
+
+/* 温馨提示 */
+.tip-card {
+  background: linear-gradient(135deg, #E8F5E8 0%, #C8E6C9 100%);
+  border: 3rpx solid #81C784;
+  border-radius: 24rpx;
+  padding: 32rpx;
+  box-shadow: 0 8rpx 16rpx rgba(129, 199, 132, 0.2);
+  box-sizing: border-box;
+}
+
+.tip-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.tip-icon {
+  font-size: 36rpx;
+  margin-right: 12rpx;
+}
+
+.tip-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #2E7D32;
+}
+
+.tip-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+.tip-text {
+  font-size: 28rpx;
+  color: #388E3C;
+  line-height: 1.5;
+}

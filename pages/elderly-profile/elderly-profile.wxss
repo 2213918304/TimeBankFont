@@ -1,0 +1,440 @@
+/* 老人端个人中心样式 */
+.elderly-profile {
+  background: linear-gradient(135deg, #FFF8E1 0%, #FFECB3 50%, #FFE0B2 100%);
+  min-height: 100vh;
+}
+
+.content {
+  height: calc(100vh - 160rpx - 80rpx);
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+/* 个人信息卡片 */
+.profile-card.elderly {
+  background: linear-gradient(135deg, #FF8A65 0%, #FF7043 50%, #FF5722 100%);
+  border-radius: 24rpx;
+  padding: 40rpx;
+  margin-bottom: 30rpx;
+  color: white;
+  box-shadow: 0 8rpx 32rpx rgba(255, 87, 34, 0.3);
+}
+
+.profile-header {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 30rpx;
+}
+
+.avatar-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 30rpx;
+}
+
+.avatar.elderly {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48rpx;
+  font-weight: 700;
+  color: white;
+  border: 4rpx solid rgba(255, 255, 255, 0.3);
+  margin-bottom: 16rpx;
+}
+
+.health-status {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 8rpx 16rpx;
+  border-radius: 20rpx;
+}
+
+.health-indicator {
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 50%;
+  margin-right: 8rpx;
+}
+
+.health-indicator.good {
+  background: #4CAF50;
+}
+
+.health-text {
+  font-size: 24rpx;
+  color: white;
+}
+
+.user-info {
+  flex: 1;
+}
+
+.username {
+  font-size: 40rpx;
+  font-weight: 700;
+  margin-bottom: 16rpx;
+  color: white;
+}
+
+.user-tags {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  margin-bottom: 16rpx;
+}
+
+.user-tag.elderly {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 8rpx 16rpx;
+  border-radius: 16rpx;
+  font-size: 24rpx;
+  border: 2rpx solid rgba(255, 255, 255, 0.3);
+}
+
+.verification-status.verified {
+  color: #4CAF50;
+  font-size: 24rpx;
+  font-weight: 600;
+}
+
+.verification-status.unverified {
+  color: #FFC107;
+  font-size: 24rpx;
+}
+
+.user-contact {
+  font-size: 28rpx;
+  opacity: 0.9;
+  color: white;
+}
+
+/* 时间币余额 */
+.balance-section {
+  margin-top: 20rpx;
+}
+
+.balance-card {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 20rpx;
+  padding: 24rpx;
+  display: flex;
+  align-items: center;
+  border: 2rpx solid rgba(255, 255, 255, 0.2);
+}
+
+.balance-icon {
+  font-size: 48rpx;
+  margin-right: 20rpx;
+}
+
+.balance-info {
+  flex: 1;
+}
+
+.balance-label {
+  font-size: 26rpx;
+  opacity: 0.8;
+  margin-bottom: 8rpx;
+  color: white;
+}
+
+.balance-value {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: white;
+}
+
+.recharge-btn {
+  background: rgba(255, 255, 255, 0.9);
+  color: #FF5722;
+  border: none;
+  border-radius: 24rpx;
+  padding: 16rpx 32rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+}
+
+.recharge-btn:active {
+  transform: scale(0.95);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+/* 关联卡片 */
+.relation-card.elderly {
+  background: white;
+  border-radius: 24rpx;
+  margin-bottom: 30rpx;
+  overflow: hidden;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.08);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx 30rpx 20rpx;
+  border-bottom: 2rpx solid #f5f5f5;
+}
+
+.card-title {
+  display: flex;
+  align-items: center;
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.title-icon {
+  font-size: 36rpx;
+  margin-right: 12rpx;
+}
+
+.relation-count {
+  font-size: 26rpx;
+  color: #7f8c8d;
+  background: #f8f9fa;
+  padding: 8rpx 16rpx;
+  border-radius: 16rpx;
+}
+
+.bind-btn {
+  background: linear-gradient(135deg, #FF8A65, #FF7043);
+  color: white;
+  border: none;
+  border-radius: 20rpx;
+  padding: 12rpx 24rpx;
+  font-size: 26rpx;
+  font-weight: 600;
+}
+
+/* 家属列表 */
+.family-list, .volunteer-list {
+  padding: 0 30rpx;
+}
+
+.family-item, .volunteer-item {
+  display: flex;
+  align-items: center;
+  padding: 24rpx 0;
+  border-bottom: 2rpx solid #f5f5f5;
+}
+
+.family-item:last-child, .volunteer-item:last-child {
+  border-bottom: none;
+}
+
+.family-avatar, .volunteer-avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FF8A65, #FF7043);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+  font-weight: 700;
+  color: white;
+  margin-right: 24rpx;
+}
+
+.family-info, .volunteer-info {
+  flex: 1;
+}
+
+.family-name, .volunteer-name {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 8rpx;
+}
+
+.family-relation, .volunteer-desc {
+  font-size: 26rpx;
+  color: #7f8c8d;
+}
+
+.contact-btn {
+  background: #e3f2fd;
+  color: #1976d2;
+  border: none;
+  border-radius: 20rpx;
+  padding: 12rpx 24rpx;
+  font-size: 26rpx;
+  font-weight: 600;
+}
+
+.contact-btn:active {
+  background: #bbdefb;
+}
+
+/* 空状态 */
+.empty-family, .empty-volunteer {
+  padding: 60rpx 30rpx;
+  text-align: center;
+}
+
+.empty-icon {
+  font-size: 80rpx;
+  margin-bottom: 20rpx;
+  opacity: 0.5;
+}
+
+.empty-text {
+  font-size: 32rpx;
+  color: #95a5a6;
+  margin-bottom: 12rpx;
+}
+
+.empty-desc {
+  font-size: 26rpx;
+  color: #bdc3c7;
+}
+
+/* 绑定码区域 */
+.binding-section {
+  padding: 30rpx;
+  border-top: 2rpx solid #f5f5f5;
+  text-align: center;
+}
+
+.binding-code-btn {
+  background: linear-gradient(135deg, #42a5f5, #1976d2);
+  color: white;
+  border: none;
+  border-radius: 24rpx;
+  padding: 20rpx 40rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16rpx;
+  width: 400rpx;
+}
+
+.binding-code-btn:active {
+  transform: scale(0.95);
+}
+
+.btn-icon {
+  font-size: 32rpx;
+  margin-right: 12rpx;
+}
+
+.binding-tip {
+  font-size: 24rpx;
+  color: #95a5a6;
+  line-height: 1.5;
+}
+
+/* 健康档案卡片 */
+.health-card.elderly {
+  background: white;
+  border-radius: 24rpx;
+  margin-bottom: 30rpx;
+  overflow: hidden;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.08);
+}
+
+.health-summary {
+  padding: 0 30rpx 30rpx;
+}
+
+.health-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 2rpx solid #f5f5f5;
+}
+
+.health-item:last-child {
+  border-bottom: none;
+}
+
+.health-label {
+  font-size: 28rpx;
+  color: #7f8c8d;
+  font-weight: 500;
+}
+
+.health-value {
+  font-size: 28rpx;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.edit-btn {
+  background: #f8f9fa;
+  color: #6c757d;
+  border: none;
+  border-radius: 16rpx;
+  padding: 8rpx 20rpx;
+  font-size: 24rpx;
+}
+
+/* 功能菜单 */
+.menu-card.elderly {
+  background: white;
+  border-radius: 24rpx;
+  margin-bottom: 30rpx;
+  overflow: hidden;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.08);
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32rpx 30rpx;
+  border-bottom: 2rpx solid #f5f5f5;
+  transition: background-color 0.2s ease;
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+.menu-item:active {
+  background-color: #f8f9fa;
+}
+
+.menu-left {
+  display: flex;
+  align-items: center;
+}
+
+.menu-icon {
+  font-size: 36rpx;
+  margin-right: 20rpx;
+  width: 36rpx;
+  text-align: center;
+}
+
+.menu-text {
+  font-size: 30rpx;
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+.menu-arrow {
+  font-size: 28rpx;
+  color: #bdc3c7;
+}
+
+/* 安全区域 */
+.safe-area-bottom {
+  height: 40rpx;
+}
+
+
+
+

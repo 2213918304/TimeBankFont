@@ -1,0 +1,20 @@
+{
+  "navigationBarTitleText": "个人中心",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "TopNavBar": "../../components/TopNavBar/TopNavBar",
+    "BottomNav": "../../components/BottomNav",
+    "t-button": "tdesign-miniprogram/button/button",
+    "t-icon": "tdesign-miniprogram/icon/icon",
+    "t-tag": "tdesign-miniprogram/tag/tag",
+    "t-avatar": "tdesign-miniprogram/avatar/avatar",
+    "t-cell": "tdesign-miniprogram/cell/cell",
+    "t-cell-group": "tdesign-miniprogram/cell-group/cell-group",
+    "t-divider": "tdesign-miniprogram/divider/divider",
+    "t-badge": "tdesign-miniprogram/badge/badge"
+  }
+}
+
+
+
+

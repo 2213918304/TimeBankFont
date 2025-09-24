@@ -1,0 +1,218 @@
+/**app.wxss**/
+/* 全局重置和基础样式 */
+page {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: #f8f9fa;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #1d1d1f;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+/* 全局盒模型 */
+view, text, image, button {
+  box-sizing: border-box;
+}
+
+
+/* 页面容器样式 */
+.page {
+  width: 100vw;
+  height: 100vh;
+  max-width: 100vw;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+/* 内容区域 */
+.content {
+  flex: 1;
+  width: 100%;
+  max-width: 100vw;
+  padding: 20rpx;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* 通用容器 */
+.container {
+  width: 100%;
+  max-width: 750rpx;
+  margin: 0 auto;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+}
+
+/* 按钮样式 */
+.btn {
+  border: none;
+  border-radius: 12rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+  padding: 24rpx 48rpx;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #165DFF 0%, #722ED1 100%);
+  color: white;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2rpx solid #165DFF;
+  color: #165DFF;
+}
+
+.btn-elderly {
+  background: linear-gradient(135deg, #FF8A65 0%, #FF7043 100%);
+  color: white;
+}
+
+/* 输入框样式 */
+.form-input {
+  width: 100%;
+  height: 96rpx;
+  padding: 0 32rpx;
+  border: 2rpx solid #e5e5e5;
+  border-radius: 12rpx;
+  font-size: 32rpx;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.form-input:focus {
+  border-color: #165DFF;
+}
+
+.form-input.error {
+  border-color: #ff4d4f;
+  background: #fff2f0;
+}
+
+/* 错误提示 */
+.error-tip {
+  color: #ff4d4f;
+  font-size: 24rpx;
+  margin-top: 8rpx;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 卡片样式 */
+.card {
+  background: white;
+  border-radius: 16rpx;
+  padding: 32rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0,0,0,.08);
+  margin-bottom: 32rpx;
+}
+
+/* 导航栏样式 */
+.navbar {
+  width: 100%;
+  max-width: 100vw;
+  height: 120rpx;
+  padding: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  border-bottom: 2rpx solid #f0f0f0;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.navbar.family {
+  background: #ffffff;
+  color: #1d1d1f;
+}
+
+.navbar.elderly {
+  background: linear-gradient(135deg, #FF8A65 0%, #FF7043 50%, #FF5722 100%);
+  color: white;
+  border-bottom: none;
+}
+
+.nav-title-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4rpx;
+}
+
+.nav-title {
+  font-size: 32rpx;
+  font-weight: 700;
+  letter-spacing: -1rpx;
+  text-align: center;
+}
+
+.nav-subtitle {
+  font-size: 24rpx;
+  opacity: 0.8;
+  text-align: center;
+}
+
+.nav-action {
+  padding: 8rpx 16rpx;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 64rpx;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* 工具类 */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: 16rpx; }
+.mb-2 { margin-bottom: 32rpx; }
+.mb-3 { margin-bottom: 48rpx; }
+
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: 16rpx; }
+.mt-2 { margin-top: 32rpx; }
+.mt-3 { margin-top: 48rpx; }
+
+.p-0 { padding: 0; }
+.p-1 { padding: 16rpx; }
+.p-2 { padding: 32rpx; }
+.p-3 { padding: 48rpx; }
+
+.flex { display: flex; }
+.flex-column { flex-direction: column; }
+.align-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+
+/* 响应式 */
+@media (max-width: 750rpx) {
+  .container {
+    padding: 24rpx;
+  }
+}

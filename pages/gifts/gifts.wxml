@@ -1,0 +1,84 @@
+<!-- 礼品兑换页面 -->
+<view class="page-container">
+  
+  <!-- 统一导航栏 -->
+  <TopNavBar 
+    title="{{getPageTitle()}}" 
+    isElderly="{{isElderly}}"
+    showBack="{{true}}"
+    bind:back="onBackClick"
+    showAction="{{true}}"
+    actionText="退出"
+    bind:action="logout"
+  />
+  
+  <!-- 内容区域 -->
+  <scroll-view class="content" scroll-y="true">
+    <!-- 老人端限制提示 -->
+    <block wx:if="{{isElderly}}">
+      <view class="restriction-notice">
+        <view class="notice-icon">🚫</view>
+        <view class="notice-title">功能暂未开放</view>
+        <view class="notice-content">
+          为了您的安全考虑，礼品兑换功能目前仅对家属端开放。\n如需兑换礼品，请联系您的家人代为操作。
+        </view>
+        <view class="notice-contact">
+          <button class="contact-btn" bindtap="callFamily">联系家人</button>
+        </view>
+      </view>
+    </block>
+    
+    <!-- 家属端正常显示 -->
+    <block wx:else>
+      <!-- 余额显示 -->
+      <view class="balance-card {{isElderly ? 'elderly' : 'family'}}">
+        <view class="balance-content">
+          <view class="balance-number">{{accountInfo.balance}}</view>
+          <view class="balance-label">{{getUserDisplayName()}}的时间币余额</view>
+        </view>
+      </view>
+
+      <!-- 礼品分类 -->
+      <view class="filter-tabs">
+        <view 
+          wx:for="{{categories}}" 
+          wx:key="index"
+          class="filter-tab {{activeCategoryIndex === index ? 'active' : ''}} {{isElderly ? 'elderly' : 'family'}}" 
+          data-index="{{index}}"
+          bindtap="filterByCategory"
+        >
+          {{item.label}}
+        </view>
+      </view>
+
+      <!-- 礼品列表 -->
+      <view class="gifts-list">
+        <view 
+          wx:for="{{filteredGifts}}" 
+          wx:key="id"
+          class="gift-card"
+        >
+          <view class="gift-icon">{{item.icon}}</view>
+          <view class="gift-info">
+            <view class="gift-name">{{item.name}}</view>
+            <view class="gift-description">{{item.description}}</view>
+            <view class="gift-footer">
+              <view class="gift-price">{{item.price}} 时间币</view>
+              <button 
+                class="exchange-btn {{item.price > accountInfo.balance ? 'disabled' : ''}}" 
+                data-id="{{item.id}}"
+                bindtap="exchangeGift"
+                disabled="{{item.price > accountInfo.balance}}"
+              >
+                {{item.price > accountInfo.balance ? '余额不足' : '立即兑换'}}
+              </button>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </scroll-view>
+
+  <!-- 底部导航 -->
+  <BottomNav isElderly="{{isElderly}}" activeIndex="{{3}}" bind:nav-change="onNavChange" />
+</view>

@@ -1,0 +1,228 @@
+<view class="page">
+  <!-- 统一导航栏 -->
+  <TopNavBar 
+    title="{{isElderly ? '我的时间币' : '时间币管理'}}"
+    isElderly="{{isElderly}}"
+    showBack="{{true}}"
+    showAction="{{!isElderly}}"
+    actionIcon="add"
+    bind:back="goBack"
+    bind:action="goToRecharge"
+  />
+  
+  <!-- 内容区域 -->
+  <scroll-view class="content" scroll-y="true" enhanced="true" show-scrollbar="false">
+    <!-- 余额卡片 -->
+    <view class="balance-card {{isElderly ? 'elderly' : 'family'}}">
+      <view class="balance-content">
+        <view class="balance-number">{{accountInfo.balance || 0}}</view>
+        <view class="balance-label">{{isElderly ? '我的时间币余额' : '时间币余额'}}</view>
+        <view class="balance-subtitle">{{isElderly ? '可用于接受服务' : '可兑换服务和礼品'}}</view>
+        <view wx:if="{{accountInfo.frozenAmount > 0}}" class="frozen-amount">
+          冻结中：{{accountInfo.frozenAmount}} 时间币
+        </view>
+      </view>
+      
+      <!-- 统计信息 -->
+      <view class="stats-row">
+        <view class="stat-item">
+          <view class="stat-value">{{accountInfo.totalIncome || 0}}</view>
+          <view class="stat-label">累计收入</view>
+        </view>
+        <view class="stat-divider"></view>
+        <view class="stat-item">
+          <view class="stat-value">{{accountInfo.totalExpense || 0}}</view>
+          <view class="stat-label">累计支出</view>
+        </view>
+        <view class="stat-divider"></view>
+        <view class="stat-item">
+          <view class="stat-value">{{stats.totalTransactions || 0}}</view>
+          <view class="stat-label">交易笔数</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 家属端操作按钮 -->
+    <block wx:if="{{!isElderly}}">
+      <view class="action-buttons three-buttons">
+        <t-button 
+          theme="primary" 
+          size="large" 
+          class="action-btn primary equal-width"
+          bind:tap="goToRecharge"
+        >
+          <t-icon name="money-circle" size="24rpx" />
+          充值时间币
+        </t-button>
+        <t-button 
+          theme="default" 
+          variant="outline" 
+          size="large" 
+          class="action-btn outline equal-width"
+          bind:tap="goToGifts"
+        >
+          <t-icon name="gift" size="24rpx" />
+          兑换礼品
+        </t-button>
+        <t-button 
+          theme="default" 
+          variant="outline" 
+          size="large" 
+          class="action-btn outline equal-width"
+          bind:tap="showTransactionHistory"
+        >
+          <t-icon name="chart-bar" size="24rpx" />
+          交易记录
+        </t-button>
+      </view>
+    </block>
+
+    <!-- 老人端操作按钮 -->
+    <block wx:if="{{isElderly}}">
+      <view class="action-buttons elderly">
+        <t-button 
+          theme="primary" 
+          size="large" 
+          class="action-btn primary elderly"
+          bind:tap="goToRecharge"
+        >
+          <t-icon name="money-circle" size="28rpx" />
+          自助充值
+        </t-button>
+        <t-button 
+          theme="default" 
+          variant="outline" 
+          size="large" 
+          class="action-btn outline elderly"
+          bind:tap="showTransactionHistory"
+        >
+          <t-icon name="chart-bar" size="28rpx" />
+          使用记录
+        </t-button>
+      </view>
+      
+      <view class="action-buttons elderly secondary">
+        <t-button 
+          theme="default" 
+          size="large" 
+          class="action-btn secondary elderly"
+          bind:tap="requestRecharge"
+        >
+          <t-icon name="user-group" size="28rpx" />
+          请家人帮助
+        </t-button>
+        <t-button 
+          theme="default" 
+          size="large" 
+          class="action-btn secondary elderly"
+          bind:tap="showEarnTips"
+        >
+          <t-icon name="thumb-up" size="28rpx" />
+          获得时间币
+        </t-button>
+      </view>
+      
+      <!-- 老人端充值提示 -->
+      <view class="recharge-tip-card">
+        <view class="tip-content">
+          <t-icon name="lightbulb" size="32rpx" color="#FF6B35" class="tip-icon" />
+          <view class="tip-text">
+            <text class="tip-title">时间币充值方式</text>
+            <text class="tip-subtitle">您可以通过微信支付自助充值，也可以通过完成任务获得时间币</text>
+          </view>
+        </view>
+        <view class="tip-actions">
+          <t-button size="small" theme="primary" bind:tap="goToRecharge">
+            <t-icon name="money-circle" size="24rpx" />
+            立即充值
+          </t-button>
+          <t-button size="small" theme="default" variant="outline" bind:tap="showPaymentGuide">
+            <t-icon name="creditcard" size="24rpx" />
+            支付教程
+          </t-button>
+        </view>
+      </view>
+    </block>
+
+    <!-- 统计网格 -->
+    <view class="stats-grid {{isElderly ? 'elderly' : ''}}">
+      <block wx:if="{{!isElderly}}">
+        <view class="stat-card">
+          <view class="stat-number">5</view>
+          <view class="stat-label">本月使用</view>
+        </view>
+        <view class="stat-card">
+          <view class="stat-number">23</view>
+          <view class="stat-label">累计充值</view>
+        </view>
+        <view class="stat-card">
+          <view class="stat-number">8</view>
+          <view class="stat-label">兑换礼品次数</view>
+        </view>
+        <view class="stat-card">
+          <view class="stat-number">12</view>
+          <view class="stat-label">服务次数</view>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="stat-card elderly">
+          <view class="stat-number">23</view>
+          <view class="stat-label">累计获得</view>
+          <view class="stat-subtitle">总获得时间币</view>
+        </view>
+        <view class="stat-card elderly">
+          <view class="stat-number">5</view>
+          <view class="stat-label">本月使用</view>
+          <view class="stat-subtitle">本月消费时间币</view>
+        </view>
+        <view class="stat-card elderly">
+          <view class="stat-number">12</view>
+          <view class="stat-label">服务次数</view>
+          <view class="stat-subtitle">累计服务次数</view>
+        </view>
+        <view class="stat-card elderly">
+          <view class="stat-number">8</view>
+          <view class="stat-label">获得帮助</view>
+          <view class="stat-subtitle">累计获得帮助次数</view>
+        </view>
+      </block>
+    </view>
+
+    <!-- 最近交易记录 -->
+    <view class="transaction-section">
+      <view class="section-title">
+        <t-icon name="swap" size="32rpx" color="#0052D9" />
+        最近交易
+      </view>
+      
+      <view wx:if="{{transactions.length === 0}}" class="empty-transactions">
+        <t-icon name="file-text" size="64rpx" color="#ccc" class="empty-icon" />
+        <view class="empty-text">暂无交易记录</view>
+        <view class="empty-desc">{{isElderly ? '完成任务或充值后会显示记录' : '充值或消费后会显示记录'}}</view>
+      </view>
+      
+      <view wx:else>
+        <view wx:for="{{transactions}}" wx:key="id" class="transaction-item">
+          <view class="transaction-icon {{item.transactionType === 'INCOME' ? 'income' : 'expense'}}">
+            {{getTransactionIcon(item.businessType)}}
+          </view>
+          <view class="transaction-content">
+            <view class="transaction-text">{{item.description || getBusinessTypeDesc(item.businessType)}}</view>
+            <view class="transaction-time">{{formatTime(item.createdAt)}}</view>
+          </view>
+          <view class="transaction-amount {{item.transactionType === 'INCOME' ? 'income' : 'expense'}}">
+            {{item.transactionType === 'INCOME' ? '+' : ''}}{{item.amount}}
+          </view>
+        </view>
+        
+        <view wx:if="{{hasMoreTransactions}}" class="load-more" bindtap="loadMoreTransactions">
+          <view wx:if="{{loadingTransactions}}" class="loading">加载中...</view>
+          <view wx:else class="load-more-text">点击加载更多</view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 底部导航 -->
+  <BottomNav isElderly="{{isElderly}}" activeIndex="{{3}}" bind:nav-change="onNavChange" />
+</view>

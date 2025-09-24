@@ -1,0 +1,633 @@
+.page {
+  width: 100vw;
+  height: 100vh;
+  max-width: 100vw;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 导航栏 */
+.navbar {
+  width: 100%;
+  max-width: 100vw;
+  height: 140rpx;
+  padding: 30rpx 20rpx 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2rpx solid #f0f0f0;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 100;
+}
+
+.navbar.family {
+  background: #ffffff;
+  color: #1d1d1f;
+}
+
+.navbar.elderly {
+  background: linear-gradient(135deg, #FF8A65 0%, #FF7043 50%, #FF5722 100%);
+  color: white;
+  border-bottom: none;
+}
+
+.nav-title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nav-title {
+  font-size: 32rpx;
+  font-weight: 700;
+  letter-spacing: -1rpx;
+  text-align: center;
+}
+
+.nav-action {
+  padding: 8rpx 16rpx;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 64rpx;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.nav-action.family {
+  background: #f0f0f0;
+  color: #007AFF;
+}
+
+.nav-action.elderly {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+/* 内容区域 */
+.content {
+  flex: 1;
+  width: 100%;
+  max-width: 100vw;
+  padding: 20rpx;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* 余额卡片 */
+.balance-card {
+  border-radius: 48rpx;
+  padding: 64rpx 56rpx;
+  margin-bottom: 48rpx;
+  text-align: center;
+}
+
+.balance-card.family {
+  background: linear-gradient(135deg, #165DFF 0%, #722ED1 50%, #EB2F96 100%);
+  color: white;
+  box-shadow: 
+    0 48rpx 128rpx rgba(22, 93, 255, 0.3),
+    0 24rpx 64rpx rgba(114, 46, 209, 0.2),
+    0 8rpx 32rpx rgba(0, 0, 0, 0.1),
+    inset 0 4rpx 0 rgba(255, 255, 255, 0.2);
+}
+
+.balance-card.elderly {
+  background: linear-gradient(135deg, #FF8A65 0%, #FF7043 50%, #FF5722 100%);
+  color: white;
+  box-shadow: 
+    0 48rpx 128rpx rgba(255, 138, 101, 0.3),
+    0 24rpx 64rpx rgba(255, 112, 67, 0.2),
+    0 8rpx 32rpx rgba(0, 0, 0, 0.1),
+    inset 0 4rpx 0 rgba(255, 255, 255, 0.2);
+}
+
+.balance-number {
+  font-size: 96rpx;
+  font-weight: 800;
+  margin-bottom: 16rpx;
+  text-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.2);
+}
+
+.balance-label {
+  font-size: 36rpx;
+  opacity: 0.9;
+  margin-bottom: 16rpx;
+}
+
+.balance-subtitle {
+  font-size: 28rpx;
+  opacity: 0.7;
+}
+
+/* 操作按钮 */
+.action-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32rpx;
+  margin-bottom: 48rpx;
+}
+
+.action-buttons.single {
+  grid-template-columns: 1fr;
+}
+
+/* 三个按钮同一行布局 */
+.action-buttons.three-buttons {
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16rpx;
+  margin-bottom: 32rpx;
+}
+
+.action-btn.equal-width {
+  min-height: 100rpx;
+  font-size: 22rpx;
+  padding: 16rpx 8rpx;
+  box-sizing: border-box;
+}
+
+/* 修复TDesign按钮内部布局 - 图标在左侧 */
+.action-btn.equal-width .t-button__content {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6rpx !important;
+}
+
+.action-btn.equal-width .t-icon {
+  margin: 0 !important;
+}
+
+.action-btn.equal-width .t-icon {
+  flex-shrink: 0;
+}
+
+/* 确保按钮文字换行显示 */
+.action-btn.equal-width {
+  word-break: keep-all;
+  hyphens: auto;
+}
+
+/* 小屏幕响应式布局 */
+@media (max-width: 375px) {
+  .action-buttons.three-buttons {
+    gap: 12rpx;
+  }
+  
+  .action-btn.equal-width {
+    min-height: 90rpx;
+    font-size: 20rpx;
+    padding: 12rpx 6rpx;
+    gap: 6rpx;
+  }
+  
+  .action-btn.equal-width .t-icon {
+    transform: scale(0.9);
+  }
+}
+
+.action-btn {
+  padding: 32rpx;
+  border-radius: 16rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.action-btn.primary {
+  background: #165DFF;
+  color: white;
+}
+
+.action-btn.outline {
+  background: transparent;
+  border: 2rpx solid #165DFF;
+  color: #165DFF;
+}
+
+.action-btn.full {
+  width: 100%;
+}
+
+.action-btn:active {
+  transform: scale(0.98);
+}
+
+/* 统计网格 */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24rpx;
+  margin-bottom: 48rpx;
+}
+
+.stats-grid.elderly {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32rpx;
+}
+
+.stat-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f8faff 50%, #f0f8ff 100%);
+  border-radius: 24rpx;
+  padding: 40rpx 32rpx;
+  text-align: center;
+  border: 2rpx solid rgba(22, 93, 255, 0.1);
+  box-shadow: 
+    0 8rpx 32rpx rgba(22, 93, 255, 0.08),
+    0 4rpx 16rpx rgba(114, 46, 209, 0.06),
+    0 2rpx 8rpx rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease;
+}
+
+.stat-card.elderly {
+  background: linear-gradient(135deg, #ffffff 0%, #fff8f5 50%, #fff5f0 100%);
+  border: 2rpx solid rgba(255, 138, 101, 0.1);
+  box-shadow: 
+    0 8rpx 32rpx rgba(255, 138, 101, 0.08),
+    0 4rpx 16rpx rgba(255, 112, 67, 0.06),
+    0 2rpx 8rpx rgba(0, 0, 0, 0.04);
+  padding: 64rpx 48rpx;
+}
+
+.stat-card:active {
+  transform: translateY(-4rpx) scale(1.02);
+}
+
+.stat-number {
+  font-size: 64rpx;
+  font-weight: 800;
+  background: linear-gradient(135deg, #165DFF 0%, #722ED1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 4rpx 8rpx rgba(22, 93, 255, 0.2);
+  letter-spacing: -1rpx;
+  margin-bottom: 8rpx;
+}
+
+.stat-card.elderly .stat-number {
+  font-size: 72rpx;
+  background: linear-gradient(135deg, #FF8A65 0%, #FF5722 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stat-label {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #666;
+  letter-spacing: 0.5rpx;
+  text-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.1);
+  margin-bottom: 8rpx;
+}
+
+.stat-card.elderly .stat-label {
+  font-size: 32rpx;
+  font-weight: 500;
+}
+
+.stat-subtitle {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 交易记录部分 */
+.transaction-section {
+  background: linear-gradient(135deg, #ffffff 0%, #f8faff 50%, #f0f8ff 100%);
+  border-radius: 24rpx;
+  padding: 32rpx 28rpx;
+  border: 2rpx solid rgba(22, 93, 255, 0.1);
+  box-shadow: 
+    0 8rpx 32rpx rgba(22, 93, 255, 0.08),
+    0 4rpx 16rpx rgba(114, 46, 209, 0.06),
+    0 2rpx 8rpx rgba(0, 0, 0, 0.04);
+}
+
+.section-title {
+  font-size: 36rpx;
+  font-weight: 600;
+  margin-bottom: 32rpx;
+  color: #1f2937;
+}
+
+.transaction-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 32rpx;
+  position: relative;
+}
+
+.transaction-item:last-child {
+  margin-bottom: 0;
+}
+
+.transaction-item::after {
+  content: '';
+  position: absolute;
+  left: 40rpx;
+  top: 80rpx;
+  bottom: -32rpx;
+  width: 4rpx;
+  background: linear-gradient(to bottom, #165DFF, rgba(22, 93, 255, 0.3));
+  border-radius: 2rpx;
+}
+
+.transaction-item:last-child::after {
+  display: none;
+}
+
+.transaction-icon {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+  margin-right: 24rpx;
+  flex-shrink: 0;
+  z-index: 2;
+  position: relative;
+}
+
+.transaction-icon.income {
+  background: #E6F7FF;
+  color: #165DFF;
+}
+
+.transaction-icon.expense {
+  background: #FFF1F0;
+  color: #F5222D;
+}
+
+.transaction-content {
+  flex: 1;
+  padding-top: 8rpx;
+}
+
+.transaction-text {
+  font-size: 28rpx;
+  color: #1f2937;
+  margin-bottom: 8rpx;
+  line-height: 1.5;
+}
+
+.transaction-time {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.transaction-amount {
+  font-size: 28rpx;
+  font-weight: 600;
+  padding-top: 8rpx;
+}
+
+.transaction-amount.income {
+  color: #52C41A;
+}
+
+.transaction-amount.expense {
+  color: #F5222D;
+}
+
+/* 老人端操作按钮样式 */
+.action-buttons.elderly {
+  display: flex;
+  gap: 24rpx;
+  margin: 40rpx 0;
+}
+
+.action-btn.elderly {
+  flex: 1;
+  padding: 32rpx 0;
+  font-size: 32rpx;
+  border-radius: 20rpx;
+  border: none;
+  font-weight: 600;
+}
+
+.action-btn.primary.elderly {
+  background: linear-gradient(135deg, #FF8A65 0%, #FF7043 100%);
+  color: white;
+  box-shadow: 
+    0 16rpx 32rpx rgba(255, 138, 101, 0.3),
+    0 8rpx 16rpx rgba(0, 0, 0, 0.1);
+}
+
+.action-btn.outline.elderly {
+  background: transparent;
+  color: #FF7043;
+  border: 3rpx solid #FF8A65;
+}
+
+/* 老人端充值提示卡片 */
+.recharge-tip-card {
+  background: linear-gradient(135deg, #FFF8E1 0%, #FFECB3 100%);
+  border-radius: 24rpx;
+  padding: 32rpx;
+  margin: 32rpx 0;
+  border: 2rpx solid #FFD54F;
+  box-shadow: 
+    0 16rpx 32rpx rgba(255, 193, 7, 0.2),
+    0 8rpx 16rpx rgba(0, 0, 0, 0.05);
+}
+
+.tip-content {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 24rpx;
+}
+
+.tip-icon {
+  font-size: 48rpx;
+  margin-right: 16rpx;
+  flex-shrink: 0;
+}
+
+.tip-text {
+  flex: 1;
+}
+
+.tip-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #F57C00;
+  margin-bottom: 8rpx;
+  display: block;
+}
+
+.tip-subtitle {
+  font-size: 28rpx;
+  color: #BF360C;
+  line-height: 1.6;
+  display: block;
+}
+
+.tip-actions {
+  display: flex;
+  gap: 16rpx;
+}
+
+.tip-btn {
+  flex: 1;
+  padding: 20rpx 0;
+  font-size: 28rpx;
+  background: #FF8A65;
+  color: white;
+  border: none;
+  border-radius: 16rpx;
+  font-weight: 500;
+  box-shadow: 0 8rpx 16rpx rgba(255, 138, 101, 0.3);
+}
+
+/* 老人端次要操作按钮 */
+.action-buttons.elderly.secondary {
+  margin-top: 24rpx;
+}
+
+.action-btn.secondary.elderly {
+  background: transparent;
+  color: #FF7043;
+  border: 2rpx solid #FFB74D;
+  font-size: 28rpx;
+  padding: 28rpx 0;
+}
+
+/* 统计信息行 */
+.stats-row {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 30rpx;
+  padding-top: 30rpx;
+  border-top: 2rpx solid rgba(255, 255, 255, 0.2);
+}
+
+.stat-item {
+  text-align: center;
+  flex: 1;
+}
+
+.stat-value {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: inherit;
+  margin-bottom: 8rpx;
+}
+
+.stat-label {
+  font-size: 24rpx;
+  opacity: 0.8;
+  color: inherit;
+}
+
+.stat-divider {
+  width: 2rpx;
+  height: 60rpx;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* 冻结金额提示 */
+.frozen-amount {
+  margin-top: 16rpx;
+  padding: 8rpx 16rpx;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 12rpx;
+  font-size: 24rpx;
+  text-align: center;
+  border: 2rpx solid rgba(255, 255, 255, 0.2);
+}
+
+/* 空状态 */
+.empty-transactions {
+  text-align: center;
+  padding: 80rpx 40rpx;
+}
+
+.empty-icon {
+  font-size: 80rpx;
+  margin-bottom: 20rpx;
+  opacity: 0.5;
+}
+
+.empty-text {
+  font-size: 32rpx;
+  color: #666;
+  margin-bottom: 12rpx;
+}
+
+.empty-desc {
+  font-size: 26rpx;
+  color: #999;
+  line-height: 1.5;
+}
+
+/* 加载更多 */
+.load-more {
+  text-align: center;
+  padding: 30rpx;
+  border-top: 2rpx solid #f0f0f0;
+  margin-top: 20rpx;
+}
+
+.load-more-text {
+  color: #007AFF;
+  font-size: 28rpx;
+}
+
+.loading {
+  color: #999;
+  font-size: 28rpx;
+}
+
+/* ========== TDesign图标样式适配 ========== */
+
+/* 标题图标 */
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 24rpx;
+}
+
+/* 空状态图标 */
+.empty-icon {
+  margin-bottom: 16rpx;
+}
+
+/* 提示图标 */
+.tip-icon {
+  margin-right: 12rpx;
+}
+
+/* 全局TDesign按钮图标修复 */
+.t-button .t-button__content {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8rpx !important;
+}
+
+.t-button .t-icon {
+  margin: 0 !important;
+  flex-shrink: 0 !important;
+}

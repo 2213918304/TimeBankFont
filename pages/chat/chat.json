@@ -1,0 +1,14 @@
+{
+  "navigationBarTitleText": "AI助手",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "TopNavBar": "../../components/TopNavBar/TopNavBar",
+    "BottomNav": "../../components/BottomNav",
+    "t-button": "tdesign-miniprogram/button/button",
+    "t-icon": "tdesign-miniprogram/icon/icon",
+    "t-avatar": "tdesign-miniprogram/avatar/avatar",
+    "t-input": "tdesign-miniprogram/input/input",
+    "t-message": "tdesign-miniprogram/message/message",
+    "t-fab": "tdesign-miniprogram/fab/fab"
+  }
+}

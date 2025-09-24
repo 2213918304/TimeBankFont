@@ -1,0 +1,260 @@
+<!-- 首页：根据用户角色自动显示对应界面，无角色切换按钮 -->
+<view class="page-container">
+  
+  
+  <!-- 统一导航栏 -->
+  <TopNavBar 
+    title="时间银行" 
+    subtitle="{{isElderly ? '温暖陪伴，智慧生活' : '守护家人的美好时光'}}"
+    isElderly="{{isElderly}}"
+    showLogout="{{false}}"
+  />
+  
+  <!-- 志愿者端UI -->
+  <view wx:if="{{currentRole === 'family'}}" class="family-ui">
+    
+    <scroll-view class="content" scroll-y="true">
+      <!-- 简化的志愿者欢迎区域 -->
+      <view class="welcome-section">
+        <view class="user-info">
+          <t-avatar size="large" class="user-avatar">{{getUserDisplayName().charAt(0)}}</t-avatar>
+          <view class="user-details">
+            <text class="welcome-text">您好，{{getUserDisplayName()}}</text>
+            <text class="subtitle-text">守护家人的美好时光</text>
+            <t-tag theme="success" variant="light" size="small">在线服务中</t-tag>
+          </view>
+        </view>
+        
+        <!-- 关联老人卡片 -->
+        <view class="elder-card" bindtap="viewElderProfile">
+          <view class="elder-info">
+            <t-icon name="user" size="40rpx" color="#0052D9" />
+            <view class="elder-details">
+              <text class="elder-name">{{userInfo.realName || '关联老人'}}爷爷</text>
+              <text class="elder-status">身体状况良好 • 2分钟前活跃</text>
+            </view>
+          </view>
+          <t-button theme="primary" size="small" bind:click="callElder">
+            <t-icon name="phone" size="28rpx" />
+            通话
+          </t-button>
+        </view>
+      </view>
+
+      <!-- 紧凑的数据统计 -->
+      <view class="stats-section">
+        <view class="stats-header">
+          <text class="section-title">今日数据</text>
+          <text class="update-time">刚刚更新</text>
+        </view>
+        <view class="stats-grid">
+          <view class="stat-card">
+            <t-icon name="check-circle" size="40rpx" color="#00a870" />
+            <text class="stat-number">12</text>
+            <text class="stat-label">已完成</text>
+          </view>
+          <view class="stat-card">
+            <t-icon name="wallet" size="40rpx" color="#0052d9" />
+            <text class="stat-number">{{userInfo ? userInfo.timeCoins : 0}}</text>
+            <text class="stat-label">时间币</text>
+          </view>
+          <view class="stat-card">
+            <t-icon name="star" size="40rpx" color="#ed7b2f" />
+            <text class="stat-number">{{userInfo ? userInfo.creditScore : 0}}</text>
+            <text class="stat-label">信用分</text>
+          </view>
+          <view class="stat-card">
+            <t-icon name="time" size="40rpx" color="#e34d59" />
+            <text class="stat-number">2</text>
+            <text class="stat-label">进行中</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 快捷操作区域 -->
+      <view class="actions-section">
+        <view class="section-header">
+          <text class="section-title">快捷操作</text>
+        </view>
+        <view class="actions-grid">
+          <view class="action-button" bindtap="goToPublish">
+            <view class="action-icon primary">
+              <t-icon name="add" size="44rpx" color="white" />
+            </view>
+            <text class="action-text">代为发布</text>
+          </view>
+          <view class="action-button" bindtap="goToRecharge">
+            <view class="action-icon success">
+              <t-icon name="wallet" size="44rpx" color="white" />
+            </view>
+            <text class="action-text">充值时间币</text>
+          </view>
+          <view class="action-button" bindtap="goToMonitor">
+            <view class="action-icon warning">
+              <t-icon name="chart-bar" size="44rpx" color="white" />
+            </view>
+            <text class="action-text">实时监控</text>
+          </view>
+          <view class="action-button" bindtap="goToServices">
+            <view class="action-icon info">
+              <t-icon name="list" size="44rpx" color="white" />
+            </view>
+            <text class="action-text">服务管理</text>
+          </view>
+        </view>
+      </view>
+
+
+      <!-- 实时活动 -->
+      <view class="activity-section">
+        <view class="section-header">
+          <text class="section-title">实时动态</text>
+          <text class="refresh-btn" bindtap="refreshData">刷新</text>
+        </view>
+        
+        <view class="activity-list">
+          <view class="activity-item">
+            <view class="activity-dot chat"></view>
+            <view class="activity-content">
+              <text class="activity-text">{{getUserDisplayName()}}与AI助手聊天中</text>
+              <text class="activity-time">2分钟前</text>
+            </view>
+          </view>
+
+          <view class="activity-item">
+            <view class="activity-dot success"></view>
+            <view class="activity-content">
+              <text class="activity-text">买菜服务完成，获得5星好评</text>
+              <text class="activity-time">1小时前</text>
+            </view>
+          </view>
+
+          <view class="activity-item">
+            <view class="activity-dot money"></view>
+            <view class="activity-content">
+              <text class="activity-text">时间币充值成功，余额+10</text>
+              <text class="activity-time">今天上午</text>
+            </view>
+          </view>
+
+          <view class="activity-item">
+            <view class="activity-dot service"></view>
+            <view class="activity-content">
+              <text class="activity-text">新服务申请：陪同就医</text>
+              <text class="activity-time">昨天</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 老人端UI - 暖橙色主题 -->
+  <view wx:else class="elderly-ui">
+    
+    <scroll-view class="content" scroll-y="true">
+      <!-- 老人端欢迎区域 -->
+      <view class="elderly-welcome-section">
+        <view class="elderly-user-info">
+          <t-avatar size="large" class="elderly-avatar">{{getUserDisplayName().charAt(0)}}</t-avatar>
+          <view class="elderly-details">
+            <text class="elderly-welcome">{{getUserDisplayName()}}，您好</text>
+            <text class="elderly-subtitle">今天天气真不错，适合出门走走</text>
+          </view>
+          <view class="weather-info">
+            <t-icon name="sunny" size="36rpx" color="white" />
+            <text class="weather-text">晴天 22°C</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- TDesign 老人快捷操作 - 大按钮设计 -->
+      <t-card title="常用功能" class="elderly-actions-card">
+        <t-grid column="{{2}}" border="{{false}}" class="elderly-grid">
+          <t-grid-item bind:click="goToServices">
+            <view class="elderly-action-item">
+              <view class="elderly-action-icon orange">
+                <t-icon name="shop" size="64rpx" color="white" />
+              </view>
+              <text class="elderly-action-text">找人帮忙</text>
+              <text class="elderly-action-desc">生活服务</text>
+            </view>
+          </t-grid-item>
+          
+          <t-grid-item bind:click="goToChat">
+            <view class="elderly-action-item">
+              <view class="elderly-action-icon blue">
+                <t-icon name="chat" size="64rpx" color="white" />
+              </view>
+              <text class="elderly-action-text">AI助手</text>
+              <text class="elderly-action-desc">智能聊天</text>
+            </view>
+          </t-grid-item>
+          
+          <t-grid-item bind:click="goToWallet">
+            <view class="elderly-action-item">
+              <view class="elderly-action-icon green">
+                <t-icon name="wallet" size="64rpx" color="white" />
+              </view>
+              <text class="elderly-action-text">我的时间币</text>
+              <text class="elderly-action-desc">余额查看</text>
+            </view>
+          </t-grid-item>
+          
+          <t-grid-item bind:click="emergencyCall">
+            <view class="elderly-action-item emergency">
+              <view class="elderly-action-icon red">
+                <t-icon name="call" size="64rpx" color="white" />
+              </view>
+              <text class="elderly-action-text">紧急求助</text>
+              <text class="elderly-action-desc">一键呼救</text>
+            </view>
+          </t-grid-item>
+        </t-grid>
+      </t-card>
+
+      <!-- TDesign 最近服务列表 -->
+      <t-card title="最近的服务" class="recent-services-card">
+        <t-cell-group>
+          <t-cell
+            title="买菜代购"
+            description="今天下午 • 志愿者服务"
+            left-icon="shop"
+            arrow
+            bind:click="viewServiceDetail"
+            data-id="1"
+          >
+            <view slot="note" class="service-meta">
+              <t-tag theme="warning" variant="light" size="small">进行中</t-tag>
+              <text class="service-price">2个时间币</text>
+            </view>
+          </t-cell>
+          
+          <t-cell
+            title="陪同就医"
+            description="昨天上午 • 志愿者服务"
+            left-icon="heart"
+            arrow
+            bind:click="viewServiceDetail"
+            data-id="2"
+          >
+            <view slot="note" class="service-meta">
+              <t-tag theme="success" variant="light" size="small">已完成</t-tag>
+              <text class="service-price">4个时间币</text>
+            </view>
+          </t-cell>
+        </t-cell-group>
+        
+        <!-- 查看更多按钮 -->
+        <view class="view-more-container">
+          <t-button theme="light" size="large" block bind:click="goToServices">
+            查看全部服务
+          </t-button>
+        </view>
+      </t-card>
+    </scroll-view>
+  </view>
+  
+  <!-- 底部导航栏 -->
+  <BottomNav isElderly="{{isElderly}}" activeIndex="{{0}}" bind:nav-change="onNavChange" />
+</view>

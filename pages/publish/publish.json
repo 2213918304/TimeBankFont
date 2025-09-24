@@ -1,0 +1,15 @@
+{
+  "navigationBarTitleText": "发布需求",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "TopNavBar": "../../components/TopNavBar/TopNavBar",
+    "BottomNav": "../../components/BottomNav",
+    "t-button": "tdesign-miniprogram/button/button",
+    "t-icon": "tdesign-miniprogram/icon/icon",
+    "t-input": "tdesign-miniprogram/input/input",
+    "t-textarea": "tdesign-miniprogram/textarea/textarea",
+    "t-picker": "tdesign-miniprogram/picker/picker",
+    "t-grid": "tdesign-miniprogram/grid/grid",
+    "t-grid-item": "tdesign-miniprogram/grid-item/grid-item"
+  }
+}

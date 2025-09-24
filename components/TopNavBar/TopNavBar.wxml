@@ -1,0 +1,42 @@
+<!-- 简化版顶部导航栏 -->
+<view class="top-navbar {{isElderly ? 'elderly-navbar' : 'volunteer-navbar'}}">
+  <!-- 左侧返回按钮 -->
+  <view class="nav-left">
+    <view 
+      wx:if="{{showBack}}" 
+      class="nav-back-btn" 
+      bindtap="onBackClick"
+    >
+      <t-icon name="chevron-left" size="40rpx" color="{{isElderly ? '#ffffff' : '#1d1d1f'}}" />
+    </view>
+  </view>
+  
+  <!-- 中间标题区域 -->
+  <view class="nav-center">
+    <view class="nav-title-container {{isElderly ? 'elderly-title' : 'volunteer-title'}}">
+      <text class="nav-title">{{title}}</text>
+      <text wx:if="{{subtitle}}" class="nav-subtitle">{{subtitle}}</text>
+    </view>
+  </view>
+  
+  <!-- 右侧操作按钮 -->
+  <view class="nav-right">
+    <view 
+      wx:if="{{showLogout}}" 
+      class="nav-action-btn logout-btn {{isElderly ? 'elderly-logout' : 'volunteer-logout'}}" 
+      bindtap="onLogoutClick"
+    >
+      <t-icon name="logout" size="28rpx" />
+      <text class="btn-text">退出</text>
+    </view>
+    
+    <view 
+      wx:elif="{{showAction}}" 
+      class="nav-action-btn action-btn {{isElderly ? 'elderly-action' : 'volunteer-action'}}" 
+      bindtap="onActionClick"
+    >
+      <t-icon wx:if="{{actionIcon}}" name="{{actionIcon}}" size="28rpx" />
+      <text class="btn-text">{{actionText}}</text>
+    </view>
+  </view>
+</view>

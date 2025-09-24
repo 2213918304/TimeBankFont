@@ -1,0 +1,311 @@
+<!-- 接单大厅页面 -->
+<view class="page-container">
+  
+  <!-- 统一导航栏 -->
+  <TopNavBar 
+    title="接单大厅" 
+    isElderly="{{false}}"
+    showBack="{{true}}"
+    bind:back="onBackClick"
+    showAction="{{true}}"
+    actionIcon="refresh"
+    bind:action="refreshOrders"
+  />
+  
+  <!-- 内容区域 -->
+  <scroll-view class="content" scroll-y="true">
+    <!-- 筛选条件 -->
+    <view class="filter-card">
+      <view class="filter-title">筛选条件</view>
+      
+      <view class="filter-tags">
+        <t-tag 
+          wx:for="{{serviceTypes}}" 
+          wx:key="index"
+          theme="{{activeTypeIndex === index ? 'primary' : 'default'}}"
+          variant="{{activeTypeIndex === index ? 'dark' : 'outline'}}"
+          size="medium"
+          class="filter-tag"
+          data-index="{{index}}"
+          bind:click="filterByType"
+        >
+          {{item.label}}
+        </t-tag>
+      </view>
+      
+      <view class="filter-selects">
+        <t-picker 
+          value="{{distanceIndex}}" 
+          options="{{distanceOptions}}" 
+          bind:change="onDistanceChange"
+          class="filter-picker"
+        >
+          <view class="filter-select">
+            <t-icon name="location" size="24rpx" />
+            {{distanceOptions[distanceIndex]}}
+            <t-icon name="chevron-down" size="24rpx" />
+          </view>
+        </t-picker>
+        <t-picker 
+          value="{{rewardIndex}}" 
+          options="{{rewardOptions}}" 
+          bind:change="onRewardChange"
+          class="filter-picker"
+        >
+          <view class="filter-select">
+            <t-icon name="money-circle" size="24rpx" />
+            {{rewardOptions[rewardIndex]}}
+            <t-icon name="chevron-down" size="24rpx" />
+          </view>
+        </t-picker>
+      </view>
+    </view>
+
+    <!-- 可接订单列表 -->
+    <view class="orders-list">
+      <view 
+        wx:for="{{filteredOrders}}" 
+        wx:key="id"
+        class="order-card"
+      >
+        <view class="order-header">
+          <view class="order-info">
+            <view class="order-title">{{item.title}}</view>
+            <view class="order-meta">{{item.elder}} • {{item.distance}}km</view>
+            <view class="order-time">{{item.time}}</view>
+          </view>
+          <view class="order-reward">
+            <view class="reward-amount">{{item.reward}}时间币</view>
+          </view>
+        </view>
+        
+        <view class="order-description">
+          <view class="description-text">{{item.description}}</view>
+          <view class="order-tags">
+            <t-tag 
+              wx:for="{{item.tags}}" 
+              wx:for-item="tag"
+              wx:key="text"
+              theme="{{tag.type === 'blue' ? 'primary' : tag.type === 'green' ? 'success' : tag.type === 'yellow' ? 'warning' : 'danger'}}"
+              variant="light"
+              size="small"
+              class="order-tag"
+            >
+              {{tag.text}}
+            </t-tag>
+          </view>
+        </view>
+        
+        <view class="order-actions">
+          <t-button 
+            theme="default" 
+            variant="outline" 
+            size="large"
+            class="detail-btn" 
+            data-id="{{item.id}}" 
+            bind:tap="viewOrderDetail"
+          >
+            <t-icon name="view-list" size="24rpx" />
+            查看详情
+          </t-button>
+          <t-button 
+            theme="primary" 
+            size="large"
+            class="accept-btn" 
+            data-id="{{item.id}}" 
+            bind:tap="acceptOrder"
+          >
+            <t-icon name="check-circle" size="24rpx" />
+            立即接单
+          </t-button>
+        </view>
+      </view>
+    </view>
+
+    <!-- 空状态 -->
+    <t-empty 
+      wx:if="{{filteredOrders.length === 0}}"
+      icon="order"
+      description="暂无符合条件的订单"
+      class="empty-state"
+    >
+      <view slot="description">
+        <view class="empty-text">暂无符合条件的订单</view>
+        <view class="empty-subtitle">请调整筛选条件或稍后再试</view>
+      </view>
+    </t-empty>
+  </scroll-view>
+
+  <!-- 订单详情弹窗 -->
+  <view wx:if="{{showDetailModal}}" class="detail-modal" bindtap="closeDetailModal">
+    <view class="detail-content" catchtap="preventClose">
+      <view class="detail-header">
+        <view class="detail-title">{{selectedOrder.title}}</view>
+        <view class="detail-close" bindtap="closeDetailModal">×</view>
+      </view>
+      
+      <scroll-view class="detail-body" scroll-y="true">
+        <!-- 服务基本信息 -->
+        <view class="detail-section">
+          <view class="section-title">
+            <t-icon name="order" size="32rpx" />
+            服务信息
+          </view>
+          <view class="info-grid">
+            <view class="info-item">
+              <view class="info-label">服务类型</view>
+              <view class="info-value">{{selectedOrder.type}}</view>
+            </view>
+            <view class="info-item">
+              <view class="info-label">服务时间</view>
+              <view class="info-value">{{selectedOrder.time}}</view>
+            </view>
+            <view class="info-item">
+              <view class="info-label">预计时长</view>
+              <view class="info-value">{{selectedOrder.duration || '1-2小时'}}</view>
+            </view>
+            <view class="info-item">
+              <view class="info-label">服务报酬</view>
+              <view class="info-value reward">{{selectedOrder.reward}}时间币</view>
+            </view>
+          </view>
+        </view>
+
+        <!-- 服务对象信息 -->
+        <view class="detail-section">
+          <view class="section-title">
+            <t-icon name="user" size="32rpx" />
+            服务对象
+          </view>
+          <view class="elder-card">
+            <t-avatar 
+              size="large"
+              class="elder-avatar"
+            >
+              {{selectedOrder.elder ? selectedOrder.elder.charAt(0) : ''}}
+            </t-avatar>
+            <view class="elder-info">
+              <view class="elder-name">{{selectedOrder.elder}}</view>
+              <view class="elder-age">{{selectedOrder.age || '75岁'}}</view>
+              <view class="elder-health">身体状况：{{selectedOrder.health || '良好'}}</view>
+            </view>
+          </view>
+        </view>
+
+        <!-- 服务详情 -->
+        <view class="detail-section">
+          <view class="section-title">
+            <t-icon name="edit" size="32rpx" />
+            服务详情
+          </view>
+          <view class="description-full">{{selectedOrder.description}}</view>
+          <view wx:if="{{selectedOrder.requirements}}" class="requirements">
+            <view class="requirements-title">特殊要求：</view>
+            <view class="requirements-text">{{selectedOrder.requirements}}</view>
+          </view>
+        </view>
+
+        <!-- 位置信息 -->
+        <view class="detail-section">
+          <view class="section-title">
+            <t-icon name="location" size="32rpx" />
+            位置信息
+          </view>
+          <view class="location-info">
+            <view class="location-item">
+              <view class="location-label">距离</view>
+              <view class="location-value">{{selectedOrder.distance}}km</view>
+            </view>
+            <view class="location-item">
+              <view class="location-label">地址</view>
+              <view class="location-value">{{selectedOrder.address || '幸福小区3栋2单元501'}}</view>
+            </view>
+          </view>
+          <t-button 
+            theme="default" 
+            variant="outline" 
+            size="large"
+            class="map-btn" 
+            bind:tap="viewMap"
+          >
+            <t-icon name="location" size="24rpx" />
+            查看地图
+          </t-button>
+        </view>
+
+        <!-- 联系方式 -->
+        <view class="detail-section">
+          <view class="section-title">
+            <t-icon name="call" size="32rpx" />
+            联系方式
+          </view>
+          <view class="contact-info">
+            <view class="contact-item">
+              <view class="contact-label">联系人</view>
+              <view class="contact-value">{{selectedOrder.contact || selectedOrder.elder}}</view>
+            </view>
+            <view class="contact-item">
+              <view class="contact-label">联系电话</view>
+              <view class="contact-value">{{selectedOrder.phone || '138****8888'}}</view>
+            </view>
+          </view>
+          <t-button 
+            theme="default" 
+            variant="outline" 
+            size="large"
+            class="call-btn" 
+            bind:tap="makeCall"
+          >
+            <t-icon name="call" size="24rpx" />
+            立即拨打
+          </t-button>
+        </view>
+
+        <!-- 服务标签 -->
+        <view class="detail-section">
+          <view class="section-title">
+            <t-icon name="discount" size="32rpx" />
+            服务标签
+          </view>
+          <view class="tags-list">
+            <t-tag 
+              wx:for="{{selectedOrder.tags}}" 
+              wx:for-item="tag"
+              wx:key="text"
+              theme="{{tag.type === 'blue' ? 'primary' : tag.type === 'green' ? 'success' : tag.type === 'yellow' ? 'warning' : 'danger'}}"
+              variant="light"
+              size="medium"
+              class="detail-tag"
+            >
+              {{tag.text}}
+            </t-tag>
+          </view>
+        </view>
+      </scroll-view>
+      
+      <view class="detail-actions">
+        <t-button 
+          theme="default" 
+          variant="outline" 
+          size="large"
+          class="detail-cancel-btn" 
+          bind:tap="closeDetailModal"
+        >
+          取消
+        </t-button>
+        <t-button 
+          theme="primary" 
+          size="large"
+          class="detail-accept-btn" 
+          bind:tap="acceptOrderFromDetail"
+        >
+          <t-icon name="check-circle" size="24rpx" />
+          立即接单
+        </t-button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部导航 -->
+  <BottomNav isElderly="{{false}}" activeIndex="{{1}}" bind:nav-change="onNavChange" />
+</view>

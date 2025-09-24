@@ -1,0 +1,68 @@
+<!-- 时间币充值页面 -->
+<view class="page-container">
+  
+  <!-- 统一导航栏 -->
+  <TopNavBar 
+    title="时间币充值" 
+    isElderly="{{false}}"
+    showBack="{{true}}"
+    bind:back="onBackClick"
+    showAction="{{true}}"
+    actionText="退出"
+    bind:action="logout"
+  />
+  
+  <!-- 内容区域 -->
+  <scroll-view class="content" scroll-y="true">
+    <!-- 当前余额 -->
+    <view class="balance-section">
+      <view class="balance-card">
+        <view class="balance-number">{{accountInfo.balance}}</view>
+        <view class="balance-label">{{getUserDisplayName()}}的时间币</view>
+      </view>
+      <view class="balance-card">
+        <view class="balance-number">{{monthlyUsed}}</view>
+        <view class="balance-label">本月已用</view>
+      </view>
+    </view>
+
+    <!-- 充值卡片 -->
+    <view class="recharge-card">
+      <view class="recharge-title">💝 孝心充值</view>
+      <view class="recharge-subtitle">为{{getUserDisplayName()}}充值时间币，让爱心服务不间断</view>
+      
+      <view class="recharge-options">
+        <view 
+          wx:for="{{rechargeOptions}}" 
+          wx:key="index"
+          class="recharge-option {{selectedOptionIndex === index ? 'selected' : ''}}" 
+          data-index="{{index}}"
+          bindtap="selectRecharge"
+        >
+          <view class="option-amount">{{item.amount}}个</view>
+          <view class="option-label">时间币</view>
+          <view wx:if="{{item.recommended}}" class="option-badge">推荐</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 充值说明 -->
+    <view class="info-card">
+      <view class="info-title">💡 充值说明</view>
+      <view class="info-content">
+        <view class="info-item">• 1个时间币 = 1小时志愿服务</view>
+        <view class="info-item">• 时间币永不过期，可随时使用</view>
+        <view class="info-item">• 充值后立即到账，{{getUserDisplayName()}}会收到通知</view>
+        <view class="info-item">• 时间币可用于兑换服务和礼品</view>
+        <view class="info-item">• 通过完成志愿服务也可获得时间币</view>
+      </view>
+    </view>
+
+    <button class="recharge-btn" bindtap="processRecharge">
+      立即充值 {{getSelectedAmount()}}个时间币
+    </button>
+  </scroll-view>
+
+  <!-- 底部导航 -->
+  <BottomNav isElderly="{{false}}" activeIndex="{{3}}" bind:nav-change="onNavChange" />
+</view>

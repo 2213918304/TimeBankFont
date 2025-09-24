@@ -1,0 +1,234 @@
+/* 页面整体样式 */
+.register-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #f5f5f5;
+  padding-top: constant(safe-area-inset-top);
+  padding-top: env(safe-area-inset-top);
+}
+
+/* 内容容器 */
+.content-container {
+  padding: 32rpx 32rpx 160rpx;
+  max-width: 750rpx;
+  margin: 0 auto;
+}
+
+/* 步骤条容器 */
+.step-container {
+  background: white;
+  border-radius: 16rpx;
+  padding: 32rpx;
+  margin-bottom: 32rpx;
+  box-shadow: 0 2rpx 16rpx rgba(0, 0, 0, 0.08);
+}
+
+/* 步骤内容 */
+.step-content {
+  background: white;
+  border-radius: 16rpx;
+  padding: 40rpx 32rpx;
+  box-shadow: 0 2rpx 16rpx rgba(0, 0, 0, 0.08);
+}
+
+.step-title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #262626;
+  margin-bottom: 32rpx;
+  text-align: center;
+}
+
+/* 表单区域 */
+.form-section {
+  margin-bottom: 32rpx;
+}
+
+.section-label {
+  font-size: 28rpx;
+  color: #262626;
+  margin-bottom: 16rpx;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.required {
+  color: #e34d59;
+  margin-left: 4rpx;
+}
+
+/* 单选按钮布局 */
+.radio-row {
+  display: flex;
+  gap: 48rpx;
+}
+
+.radio-column {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+/* 复选框网格布局 */
+.checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20rpx;
+}
+
+/* 头像上传 */
+.avatar-upload {
+  width: 100%;
+}
+
+.upload-trigger {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 160rpx;
+  height: 160rpx;
+  border: 2rpx dashed #d9d9d9;
+  border-radius: 12rpx;
+  background: #fafafa;
+  transition: all 0.3s ease;
+}
+
+.upload-trigger:hover {
+  border-color: #0052d9;
+  background: #f2f3ff;
+}
+
+.upload-trigger text {
+  font-size: 24rpx;
+  color: #8b8b8b;
+  margin-top: 8rpx;
+}
+
+/* 身份选择卡片 */
+.identity-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+  margin-top: 40rpx;
+}
+
+.identity-card {
+  display: flex;
+  align-items: center;
+  padding: 32rpx 24rpx;
+  background: white;
+  border: 2rpx solid #e7e7e7;
+  border-radius: 16rpx;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.identity-card:hover {
+  transform: translateY(-2rpx);
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.1);
+}
+
+.identity-card.selected {
+  border-color: #0052d9;
+  background: linear-gradient(135deg, #f2f3ff 0%, #fafbff 100%);
+  box-shadow: 0 4rpx 16rpx rgba(0, 82, 217, 0.2);
+}
+
+.identity-card .card-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #262626;
+  margin: 0 0 8rpx 24rpx;
+}
+
+.identity-card .card-desc {
+  font-size: 26rpx;
+  color: #8b8b8b;
+  margin-left: 24rpx;
+  line-height: 1.4;
+}
+
+/* 底部操作区域 */
+.bottom-actions {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  padding: 24rpx 32rpx;
+  padding-bottom: calc(24rpx + constant(safe-area-inset-bottom));
+  padding-bottom: calc(24rpx + env(safe-area-inset-bottom));
+  box-shadow: 0 -4rpx 16rpx rgba(0, 0, 0, 0.1);
+  display: flex;
+  gap: 16rpx;
+}
+
+.bottom-actions .t-button {
+  flex: 1;
+}
+
+/* 响应式设计 */
+@media (max-width: 375px) {
+  .content-container {
+    padding: 24rpx 24rpx 160rpx;
+  }
+  
+  .step-content {
+    padding: 32rpx 24rpx;
+  }
+  
+  .checkbox-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* TDesign 组件自定义样式 */
+.t-input {
+  margin-bottom: 8rpx;
+}
+
+.t-radio, .t-checkbox {
+  margin-bottom: 8rpx;
+}
+
+/* 加载状态优化 */
+.t-button.t-button--loading {
+  opacity: 0.7;
+}
+
+/* 表单验证错误状态 */
+.form-section.error .t-input {
+  border-color: #e34d59;
+}
+
+.form-section.error .section-label {
+  color: #e34d59;
+}
+
+/* 无障碍访问优化 */
+.identity-card:focus {
+  outline: 2rpx solid #0052d9;
+  outline-offset: 2rpx;
+}
+
+.upload-trigger:focus {
+  outline: 2rpx solid #0052d9;
+  outline-offset: 2rpx;
+}
+
+/* 动画效果 */
+.step-content {
+  animation: slideInUp 0.3s ease-out;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(32rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

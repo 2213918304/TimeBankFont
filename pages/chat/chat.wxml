@@ -1,0 +1,98 @@
+<!-- 聊天页面：AI助手 -->
+<view class="page">
+  <!-- 统一导航栏 -->
+  <TopNavBar 
+    title="AI助手小罗"
+    isElderly="{{isElderly}}"
+    showBack="{{true}}"
+    bind:back="goBack"
+    showAction="{{true}}"
+    actionIcon="sound"
+    actionText=""
+    bind:action="toggleVoice"
+  />
+
+  <!-- 聊天内容区域 -->
+  <view class="chat-container">
+    <scroll-view 
+      class="chat-messages" 
+      scroll-y="true" 
+      scroll-top="{{scrollTop}}" 
+      scroll-with-animation="true"
+    >
+      <view 
+        wx:for="{{messages}}" 
+        wx:for-item="message" 
+        wx:key="index" 
+        class="message-item"
+      >
+        <view class="chat-message {{message.type === 'user' ? 'user' : 'ai'}}">
+          <t-avatar 
+            wx:if="{{message.type === 'ai'}}" 
+            size="large"
+            class="chat-avatar ai-avatar"
+            icon="robot"
+          />
+          <view class="chat-bubble {{message.type === 'user' ? 'user' : 'ai'}}">
+            {{message.content}}
+          </view>
+          <t-avatar 
+            wx:if="{{message.type === 'user'}}" 
+            size="large"
+            class="chat-avatar user-avatar"
+            icon="user"
+          />
+        </view>
+      </view>
+      
+      <view wx:if="{{isTyping}}" class="chat-message ai">
+        <t-avatar 
+          size="large"
+          class="chat-avatar ai-avatar"
+          icon="robot"
+        />
+        <view class="chat-bubble ai typing">
+          <view class="typing-dots">
+            <view class="dot"></view>
+            <view class="dot"></view>
+            <view class="dot"></view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+    
+    <view class="chat-input-area">
+      <view class="input-container">
+        <t-input 
+          class="chat-input" 
+          placeholder="输入消息..."
+          confirm-type="send"
+          bind:confirm="sendMessage" 
+          disabled="{{isTyping}}" 
+          value="{{inputText}}" 
+          bind:change="onInputChange"
+          maxlength="500"
+        />
+        <t-button 
+          class="voice-button {{isRecording ? 'recording' : ''}}"
+          theme="default"
+          variant="outline"
+          size="large"
+          bind:tap="toggleVoiceRecord"
+          icon="{{isRecording ? 'stop-circle' : 'sound'}}"
+        />
+        <t-button 
+          class="send-btn" 
+          theme="primary"
+          size="large"
+          bind:tap="sendMessage" 
+          disabled="{{!inputText.trim() || isTyping}}"
+          icon="arrow-right"
+        />
+      </view>
+    </view>
+  </view>
+  
+  <!-- 底部导航栏 -->
+  <BottomNav isElderly="{{isElderly}}" activeIndex="{{2}}" bind:nav-change="onNavChange" />
+</view>

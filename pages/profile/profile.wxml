@@ -1,0 +1,235 @@
+<!-- 个人中心页面 -->
+<view class="page-container">
+  
+  <!-- 统一导航栏 -->
+  <TopNavBar 
+    title="个人中心" 
+    isElderly="{{isElderly}}"
+    showBack="{{true}}"
+    bind:back="onBackClick"
+    showLogout="{{true}}"
+    bind:logout="logout"
+  />
+  
+  <!-- 内容区域 -->
+  <scroll-view class="content" scroll-y="true">
+    <!-- 个人信息卡片 -->
+    <view class="profile-card {{isElderly ? 'elderly' : 'family'}}">
+      <view class="profile-info">
+        <t-avatar 
+          size="large" 
+          class="avatar {{isElderly ? 'elderly' : 'family'}}"
+        >
+          {{getAvatarText()}}
+        </t-avatar>
+        <view class="user-info">
+          <view class="username">{{getUserDisplayName()}}</view>
+          <view class="user-tags">
+            <t-tag 
+              theme="{{isElderly ? 'warning' : 'primary'}}" 
+              variant="light" 
+              size="small"
+              class="user-tag"
+            >
+              {{getUserRoleDisplay()}}
+            </t-tag>
+            <t-tag 
+              theme="{{userInfo && userInfo.isVerified ? 'success' : 'default'}}" 
+              variant="light" 
+              size="small"
+              class="verify-tag"
+            >
+              {{userInfo ? (userInfo.isVerified ? '已认证' : '未认证') : '用户'}}
+            </t-tag>
+          </view>
+          <view class="user-meta">
+            <block wx:if="{{userInfo}}">
+              <t-icon name="mobile" size="24rpx" />
+              {{userInfo.phone}} • 
+              <t-icon name="money-circle" size="24rpx" />
+              {{userInfo.timeCoins || 0}}个时间币
+            </block>
+            <block wx:else>
+              加载中...
+            </block>
+          </view>
+        </view>
+      </view>
+      <t-button 
+        theme="default" 
+        variant="outline" 
+        size="large" 
+        class="edit-btn"
+        bind:tap="editProfile"
+      >
+        <t-icon name="edit" size="28rpx" />
+        编辑个人信息
+      </t-button>
+    </view>
+
+    <!-- 家属端志愿者统计 -->
+    <block wx:if="{{!isElderly}}">
+      <view class="stats-card">
+        <view class="card-title">
+          <t-icon name="chart-bar" size="32rpx" color="#0052D9" />
+          志愿服务统计
+        </view>
+        <view class="stats-grid">
+          <view class="stat-item">
+            <view class="stat-value">12</view>
+            <view class="stat-label">本月接单</view>
+          </view>
+          <view class="stat-item">
+            <view class="stat-value">85</view>
+            <view class="stat-label">累计获得时间币</view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 关联老人 -->
+      <view class="relation-card">
+        <view class="relation-header">
+          <view class="card-title">
+            <t-icon name="user-group" size="32rpx" color="#0052D9" />
+            关联老人
+          </view>
+          <t-button theme="primary" size="small" class="bind-btn" bind:tap="bindNewElder">
+            <t-icon name="add" size="24rpx" />
+            绑定
+          </t-button>
+        </view>
+        
+        <view class="elder-item">
+          <view class="elder-avatar">张</view>
+          <view class="elder-info">
+            <view class="elder-name">张奶奶</view>
+            <view class="elder-contact">138****5678 • 主要监护人</view>
+          </view>
+          <t-button theme="default" variant="outline" size="small" class="manage-btn" bind:tap="manageElder">
+            管理
+          </t-button>
+        </view>
+      </view>
+    </block>
+
+    <!-- 老人端关联家属 -->
+    <block wx:else>
+      <view class="relation-card elderly">
+        <view class="relation-header">
+          <view class="card-title">
+            <t-icon name="user-group" size="32rpx" color="#FF6B35" />
+            我的家属
+          </view>
+          <view class="relation-count">已绑定 1 人</view>
+        </view>
+        
+        <view class="family-item">
+          <view class="family-avatar">罗</view>
+          <view class="family-info">
+            <view class="family-name">罗泽</view>
+            <view class="family-desc">家属志愿者 • 主要监护人</view>
+          </view>
+          <t-button theme="primary" size="small" class="contact-btn" bind:tap="contactFamily">
+            <t-icon name="call" size="24rpx" />
+            联系
+          </t-button>
+        </view>
+
+        <view class="binding-code-section">
+          <t-button theme="default" variant="outline" size="large" class="binding-code-btn" bind:tap="showBindingCode">
+            <t-icon name="qrcode" size="28rpx" />
+            查看我的绑定码
+          </t-button>
+        </view>
+      </view>
+    </block>
+
+    <!-- 功能菜单 -->
+    <t-cell-group bordered="{{false}}" class="menu-card {{isElderly ? 'elderly' : 'family'}}">
+      <block wx:if="{{!isElderly}}">
+        <t-cell 
+          title="通知设置" 
+          left-icon="notification"
+          arrow
+          bind:click="showNotificationSettings"
+        />
+
+        <t-cell 
+          title="隐私设置" 
+          left-icon="lock-on"
+          arrow
+          bind:click="showPrivacySettings"
+        />
+
+        <t-cell 
+          title="帮助中心" 
+          left-icon="help-circle"
+          arrow
+          bind:click="showHelp"
+        />
+
+        <t-cell 
+          title="关于我们" 
+          left-icon="info-circle"
+          arrow
+          bind:click="showAbout"
+        />
+
+        <t-cell 
+          title="退出登录" 
+          left-icon="logout"
+          arrow
+          class="logout-cell"
+          bind:click="logout"
+        />
+      </block>
+
+      <block wx:else>
+        <t-cell 
+          title="健康档案" 
+          left-icon="heart"
+          arrow
+          bind:click="showHealthInfo"
+        />
+
+        <t-cell 
+          title="家庭联系人" 
+          left-icon="user-group"
+          arrow
+          bind:click="showFamilyContacts"
+        />
+
+        <t-cell 
+          title="绑定志愿者" 
+          left-icon="user-add"
+          arrow
+          bind:click="bindVolunteer"
+        />
+
+        <t-cell 
+          title="紧急联系方式" 
+          left-icon="error-circle"
+          arrow
+          bind:click="showEmergencyContacts"
+        />
+
+        <t-cell 
+          title="个人偏好设置" 
+          left-icon="setting"
+          arrow
+          bind:click="showSettings"
+        />
+
+        <t-cell 
+          title="帮助中心" 
+          left-icon="help-circle"
+          arrow
+          bind:click="showHelp"
+        />
+      </block>
+    </t-cell-group>
+  </scroll-view>
+
+  <!-- 底部导航 -->
+  <BottomNav isElderly="{{isElderly}}" activeIndex="{{4}}" bind:nav-change="onNavChange" />
+</view>

@@ -1,0 +1,149 @@
+<view class="page">
+  <!-- 统一导航栏 -->
+  <TopNavBar 
+    title="实时监控"
+    isElderly="{{false}}"
+    showBack="{{true}}"
+    showAction="{{true}}"
+    actionIcon="🔄"
+    bind:back="goBack"
+    bind:action="refreshData"
+  />
+  
+  <!-- 内容区域 -->
+  <scroll-view class="content" scroll-y="true" enhanced="true" show-scrollbar="false">
+    <!-- 健康状态 -->
+    <view class="health-status-card">
+      <view class="card-title">👩‍⚕️ 健康状态</view>
+      <view class="health-grid">
+        <view class="health-item">
+          <view class="health-value healthy">85</view>
+          <view class="health-label">健康评分</view>
+        </view>
+        <view class="health-item">
+          <view class="health-value normal">7.5h</view>
+          <view class="health-label">今日睡眠</view>
+        </view>
+        <view class="health-item">
+          <view class="health-value warning">3,240</view>
+          <view class="health-label">今日步数</view>
+        </view>
+        <view class="health-item">
+          <view class="health-value normal">36.5°C</view>
+          <view class="health-label">体温</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 位置信息 -->
+    <view class="location-card">
+      <view class="card-title">📍 位置信息</view>
+      <view class="location-info">
+        <view class="location-status">🏠 在家中</view>
+        <view class="location-address">辽宁省大连市辽宁师范大学西山校区三公寓216</view>
+        <view class="location-time">最后更新：2分钟前</view>
+      </view>
+      <button class="location-btn" bindtap="showLocation">
+        查看详细位置
+      </button>
+    </view>
+
+    <!-- 安全状态 -->
+    <view class="safety-card">
+      <view class="card-title">🛡️ 安全状态</view>
+      <view class="safety-grid">
+        <view class="safety-item safe">
+          <view class="safety-icon">🔒</view>
+          <view class="safety-label">门锁状态</view>
+          <view class="safety-value">已锁定</view>
+        </view>
+        <view class="safety-item normal">
+          <view class="safety-icon">🌡️</view>
+          <view class="safety-label">室内温度</view>
+          <view class="safety-value">22°C</view>
+        </view>
+        <view class="safety-item warning">
+          <view class="safety-icon">💡</view>
+          <view class="safety-label">照明状态</view>
+          <view class="safety-value">客厅开启</view>
+        </view>
+        <view class="safety-item safe">
+          <view class="safety-icon">💨</view>
+          <view class="safety-label">空气质量</view>
+          <view class="safety-value">良好</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 今日活动时间线 -->
+    <view class="activity-card">
+      <view class="card-title">📊 今日活动时间线</view>
+      
+      <view class="activity-timeline">
+        <view class="activity-item">
+          <view class="activity-icon sunrise">🌅</view>
+          <view class="activity-content">
+            <view class="activity-text">起床，开始新的一天</view>
+            <view class="activity-time">07:30</view>
+          </view>
+        </view>
+
+        <view class="activity-item">
+          <view class="activity-icon cooking">🍳</view>
+          <view class="activity-content">
+            <view class="activity-text">在厨房活动，准备早餐</view>
+            <view class="activity-time">08:15</view>
+          </view>
+        </view>
+
+        <view class="activity-item">
+          <view class="activity-icon exercise">🚶‍♀️</view>
+          <view class="activity-content">
+            <view class="activity-text">外出散步，运动30分钟</view>
+            <view class="activity-time">09:00</view>
+          </view>
+        </view>
+
+        <view class="activity-item">
+          <view class="activity-icon shopping">🛒</view>
+          <view class="activity-content">
+            <view class="activity-text">王阿姨帮忙买菜，服务进行中</view>
+            <view class="activity-time">14:30</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 紧急联系 -->
+    <view class="emergency-card">
+      <view class="card-title">🚨 紧急联系</view>
+      <view class="emergency-buttons">
+        <button class="emergency-btn call" bindtap="emergencyCall">
+          📞 紧急呼叫
+        </button>
+        <button class="emergency-btn sms" bindtap="sendEmergencySMS">
+          📱 发送短信
+        </button>
+      </view>
+      <view class="emergency-contacts">
+        <view class="contact-item" bindtap="callContact" data-phone="13800138000">
+          <view class="contact-info">
+            <view class="contact-name">罗泽 (儿子)</view>
+            <view class="contact-phone">138****8000</view>
+          </view>
+          <view class="contact-action">📞</view>
+        </view>
+        <view class="contact-item" bindtap="callContact" data-phone="13900139000">
+          <view class="contact-info">
+            <view class="contact-name">张医生 (家庭医生)</view>
+            <view class="contact-phone">139****9000</view>
+          </view>
+          <view class="contact-action">📞</view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 底部导航 -->
+  <BottomNav isElderly="{{false}}" activeIndex="{{2}}" bind:nav-change="onNavChange" />
+</view>

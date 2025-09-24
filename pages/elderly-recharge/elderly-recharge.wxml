@@ -1,0 +1,101 @@
+<!-- 老人端充值页面 -->
+<view class="elderly-page">
+  
+  <!-- 老人端导航栏 -->
+  <TopNavBar 
+    title="💰 我要充值" 
+    isElderly="{{true}}"
+    showBack="{{true}}"
+    bind:back="onBackClick"
+    showAction="{{true}}"
+    actionText="❓"
+    bind:action="showHelp"
+  />
+  
+  <!-- 内容区域 -->
+  <scroll-view class="elderly-content" scroll-y="true">
+    <!-- 当前余额卡片 -->
+    <view class="elderly-balance-card">
+      <view class="balance-icon">👛</view>
+      <view class="balance-info">
+        <text class="balance-title">我的时间币</text>
+        <text class="balance-number">{{accountInfo.balance}} 个</text>
+        <text class="balance-desc">可以购买社区服务</text>
+      </view>
+    </view>
+
+    <!-- 充值说明卡片 -->
+    <view class="info-card">
+      <view class="info-header">
+        <text class="info-icon">💡</text>
+        <text class="info-title">充值说明</text>
+      </view>
+      <view class="info-content">
+        <text class="info-text">• 使用微信支付，安全便捷</text>
+        <text class="info-text">• 充值后立即到账</text>
+        <text class="info-text">• 可用于购买各种社区服务</text>
+      </view>
+    </view>
+
+    <!-- 充值金额选择 -->
+    <view class="amount-section">
+      <text class="section-title">选择充值金额</text>
+      <view class="amount-grid">
+        <view 
+          wx:for="{{rechargeAmounts}}" 
+          wx:key="index"
+          class="amount-card {{selectedIndex === index ? 'selected' : ''}}" 
+          data-index="{{index}}"
+          bindtap="selectAmount"
+        >
+          <text class="amount-number">{{item.coins}}</text>
+          <text class="amount-unit">个时间币</text>
+          <text wx:if="{{item.popular}}" class="popular-badge">热门</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 支付方式 -->
+    <view class="payment-section">
+      <text class="section-title">支付方式</text>
+      <view class="payment-card" bindtap="processPayment">
+        <view class="payment-icon">💳</view>
+        <view class="payment-info">
+          <text class="payment-name">微信支付</text>
+          <text class="payment-desc">安全快捷，老人专用</text>
+        </view>
+        <view class="payment-arrow">→</view>
+      </view>
+    </view>
+
+    <!-- 充值按钮 -->
+    <view class="action-section">
+      <button class="recharge-btn" bindtap="confirmRecharge">
+        立即充值 {{getSelectedAmount()}} 个时间币
+      </button>
+      
+      <view class="help-section">
+        <button class="help-btn" bindtap="showPaymentGuide">
+          💡 支付教程
+        </button>
+        <button class="help-btn" bindtap="callService">
+          📞 联系客服
+        </button>
+      </view>
+    </view>
+
+    <!-- 温馨提示 -->
+    <view class="tip-card">
+      <view class="tip-header">
+        <text class="tip-icon">🌟</text>
+        <text class="tip-title">温馨提示</text>
+      </view>
+      <view class="tip-content">
+        <text class="tip-text">如果您在支付过程中遇到困难，可以：</text>
+        <text class="tip-text">1. 点击"支付教程"查看详细步骤</text>
+        <text class="tip-text">2. 拨打客服热线 400-888-8888</text>
+        <text class="tip-text">3. 请家人代为充值</text>
+      </view>
+    </view>
+  </scroll-view>
+</view>

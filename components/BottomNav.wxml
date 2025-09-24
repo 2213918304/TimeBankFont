@@ -1,0 +1,22 @@
+<!-- 简化版底部导航栏 -->
+<view class="bottom-nav {{isElderly ? 'elderly-nav' : 'volunteer-nav'}}">
+  <view class="nav-indicator"></view>
+  <view 
+    wx:for="{{navItems}}" 
+    wx:for-item="item" 
+    wx:key="index" 
+    class="nav-item {{activeIndex === index ? 'active' : ''}} {{isElderly ? 'elderly-item' : 'volunteer-item'}}" 
+    bindtap="onNavClick"
+    data-index="{{index}}"
+  >
+    <view class="nav-icon-wrapper">
+      <t-icon 
+        name="{{item.tIcon}}" 
+        size="{{isElderly ? '56rpx' : '48rpx'}}" 
+        color="{{activeIndex === index ? (isElderly ? '#FF6B35' : '#0052D9') : '#999'}}"
+      />
+    </view>
+    <text class="nav-text">{{item.text}}</text>
+    <view wx:if="{{activeIndex === index}}" class="nav-active-dot"></view>
+  </view>
+</view>

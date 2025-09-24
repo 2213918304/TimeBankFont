@@ -1,0 +1,229 @@
+/* 顶部导航栏 - 纯TDesign风格 */
+
+.top-navbar {
+  position: relative;
+  width: 100%;
+  height: calc(180rpx + env(safe-area-inset-top)) !important;
+  padding-top: calc(env(safe-area-inset-top) + 100rpx) !important;
+  padding-bottom: 20rpx;
+  padding-left: 24rpx;
+  padding-right: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  z-index: 100;
+  background: #ffffff;
+  border-bottom: 1rpx solid #e7e7e7;
+}
+
+/* 左侧区域 */
+.nav-left {
+  width: 80rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.nav-back-btn {
+  width: 64rpx;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #f3f3f3;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.nav-back-btn:hover {
+  background: #e7e7e7;
+}
+
+.nav-back-btn:active {
+  transform: scale(0.95);
+  background: #d9d9d9;
+}
+
+/* 中间标题区域 */
+.nav-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 24rpx;
+}
+
+.nav-title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rpx;
+  max-width: 100%;
+}
+
+.nav-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #1f2329;
+  line-height: 1.2;
+  text-align: center;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nav-subtitle {
+  font-size: 22rpx;
+  color: #8a8e99;
+  line-height: 1.2;
+  text-align: center;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 右侧区域 */
+.nav-right {
+  width: 80rpx;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* 操作按钮 */
+.nav-action-btn {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  padding: 12rpx 16rpx;
+  border-radius: 6rpx;
+  font-size: 24rpx;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: 1rpx solid transparent;
+  min-height: 56rpx;
+  white-space: nowrap;
+  background: #f3f3f3;
+  color: #5e6266;
+}
+
+.nav-action-btn:hover {
+  background: #e7e7e7;
+}
+
+.nav-action-btn:active {
+  transform: scale(0.95);
+  background: #d9d9d9;
+}
+
+/* 主要操作按钮 */
+.nav-action-btn.primary {
+  background: #0052d9;
+  color: white;
+}
+
+.nav-action-btn.primary:hover {
+  background: #003ba8;
+}
+
+.nav-action-btn.primary:active {
+  background: #002973;
+}
+
+/* 危险操作按钮 */
+.nav-action-btn.danger {
+  background: #fff1f0;
+  color: #d54941;
+  border-color: #ffccc7;
+}
+
+.nav-action-btn.danger:hover {
+  background: #ffe7e6;
+}
+
+.nav-action-btn.danger:active {
+  background: #ffd4d1;
+}
+
+.btn-text {
+  font-size: 24rpx;
+  line-height: 1;
+}
+
+/* 圆形图标按钮 */
+.nav-icon-btn {
+  width: 64rpx;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #f3f3f3;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.nav-icon-btn:hover {
+  background: #e7e7e7;
+}
+
+.nav-icon-btn:active {
+  transform: scale(0.95);
+  background: #d9d9d9;
+}
+
+/* TDesign图标样式 */
+.t-icon {
+  font-size: 32rpx !important;
+  color: #5e6266;
+}
+
+.nav-action-btn.primary .t-icon {
+  color: white !important;
+}
+
+.nav-action-btn.danger .t-icon {
+  color: #d54941 !important;
+}
+
+/* 响应式设计 */
+@media (max-width: 750rpx) {
+  .nav-title {
+    font-size: 30rpx;
+  }
+  
+  .nav-subtitle {
+    font-size: 20rpx;
+  }
+  
+  .btn-text {
+    font-size: 22rpx;
+  }
+  
+  .nav-action-btn {
+    font-size: 22rpx;
+    padding: 10rpx 14rpx;
+    min-height: 52rpx;
+  }
+}
+
+/* 安全区域适配 */
+.top-navbar {
+  padding-top: calc(env(safe-area-inset-top) + 16rpx);
+}
+
+/* 确保内容不会被遮挡 */
+.nav-title-container {
+  min-width: 0;
+  flex-shrink: 1;
+}
+
+.nav-left,
+.nav-right {
+  flex-shrink: 0;
+}

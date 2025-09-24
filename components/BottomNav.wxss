@@ -1,0 +1,186 @@
+/* 简化版底部导航栏样式 */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: calc(100rpx + env(safe-area-inset-bottom));
+  padding-bottom: env(safe-area-inset-bottom);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20rpx);
+  border-top: 1rpx solid #eee;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  z-index: 1000;
+  box-shadow: 0 -4rpx 16rpx rgba(0, 0, 0, 0.08);
+}
+
+/* 顶部指示器 */
+.nav-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4rpx;
+  background: linear-gradient(90deg, transparent, rgba(0, 82, 217, 0.3), transparent);
+}
+
+/* 志愿者端导航栏 */
+.volunteer-nav {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.volunteer-nav .nav-indicator {
+  background: linear-gradient(90deg, transparent, rgba(0, 82, 217, 0.4), transparent);
+}
+
+/* 老人端导航栏 */
+.elderly-nav {
+  background: rgba(255, 248, 245, 0.95);
+  height: calc(120rpx + env(safe-area-inset-bottom));
+}
+
+.elderly-nav .nav-indicator {
+  background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.4), transparent);
+}
+
+/* 导航项基础样式 */
+.nav-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16rpx 8rpx 12rpx;
+  position: relative;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  min-height: 88rpx;
+}
+
+/* 志愿者端导航项 */
+.volunteer-item {
+  padding: 16rpx 8rpx 12rpx;
+}
+
+.volunteer-item .nav-text {
+  font-size: 28rpx;
+  color: #666;
+  margin-top: 8rpx;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.volunteer-item.active .nav-text {
+  color: #0052D9;
+  font-weight: 600;
+  font-size: 30rpx;
+}
+
+/* 老人端导航项 */
+.elderly-item {
+  padding: 20rpx 8rpx 16rpx;
+  min-height: 104rpx;
+}
+
+.elderly-item .nav-text {
+  font-size: 30rpx;
+  color: #757575;
+  margin-top: 10rpx;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.elderly-item.active .nav-text {
+  color: #FF6B35;
+  font-weight: 600;
+  font-size: 32rpx;
+}
+
+/* 图标包装器 */
+.nav-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.nav-item.active .nav-icon-wrapper {
+  transform: scale(1.1);
+}
+
+.elderly-item.active .nav-icon-wrapper {
+  transform: scale(1.15);
+}
+
+/* 激活状态指示点 */
+.nav-active-dot {
+  position: absolute;
+  top: 8rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8rpx;
+  height: 8rpx;
+  border-radius: 50%;
+  background: #0052D9;
+  animation: dotFadeIn 0.3s ease;
+}
+
+.elderly-nav .nav-active-dot {
+  background: #FF6B35;
+  width: 10rpx;
+  height: 10rpx;
+  top: 12rpx;
+}
+
+/* 点击动画 */
+.nav-item:active {
+  transform: scale(0.95);
+}
+
+.nav-item:active .nav-icon-wrapper {
+  transform: scale(1.05);
+}
+
+/* 动画效果 */
+@keyframes dotFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+/* 响应式设计 */
+@media (max-width: 750rpx) {
+  .elderly-item .nav-text {
+    font-size: 24rpx;
+  }
+  
+  .elderly-item.active .nav-text {
+    font-size: 26rpx;
+  }
+}
+
+/* 无障碍优化 */
+.elderly-nav .nav-item {
+  min-height: 104rpx;
+  padding: 20rpx 12rpx 16rpx;
+}
+
+.elderly-nav .nav-icon-wrapper {
+  min-height: 56rpx;
+  min-width: 56rpx;
+}
+
+/* 确保文本不换行 */
+.nav-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}

@@ -1,0 +1,330 @@
+<!-- 主容器：根据 currentPageIndex 显示不同内容，保持底部导航不刷新 -->
+<view class="page-container">
+  
+  <!-- 首页内容 (currentPageIndex === 0) -->
+  <view wx:if="{{currentPageIndex === 0}}" class="page-content">
+    <!-- 角色切换器 -->
+    <view class="role-switch" bindtap="toggleRole">
+      <view class="switch-btn {{currentRole === 'family' ? 'active' : ''}}">
+        <text>志愿者端</text>
+      </view>
+      <view class="switch-btn {{currentRole === 'elderly' ? 'active' : ''}}">
+        <text>老人端</text>
+      </view>
+    </view>
+    
+    <!-- 家属端首页 -->
+    <view wx:if="{{currentRole === 'family'}}" class="family-ui">
+      <view class="navbar family">
+        <view class="nav-title-container">
+          <text class="nav-title">时间银行</text>
+          <text class="nav-subtitle">守护家人的美好时光</text>
+        </view>
+        <view class="nav-action family">设置</view>
+      </view>
+      
+      <scroll-view class="content" scroll-y="true">
+        <view class="family-header shine-effect">
+          <text class="family-welcome">👋 您好，{{userInfo ? (userInfo.realName || userInfo.username || '用户') : '用户'}}</text>
+          <text class="family-subtitle">实时关爱，智能守护</text>
+        </view>
+        
+        <view class="elder-status-card shine-effect">
+          <view class="elder-info">
+            <view class="elder-avatar">罗</view>
+            <view class="elder-details">
+              <text class="elder-name">罗建平</text>
+              <view class="elder-status">
+                <view class="status-indicator"></view>
+                <text class="status-text">在线 • 身体状况良好</text>
+              </view>
+              <text class="last-active">最后活跃：2分钟前</text>
+            </view>
+            <view class="call-btn" bindtap="callElder">
+              <text>📞 通话</text>
+            </view>
+          </view>
+        </view>
+        
+        <view class="stats-grid">
+          <view class="stat-card shine-effect">
+            <text class="stat-number">12</text>
+            <text class="stat-label">已完成服务</text>
+          </view>
+          <view class="stat-card shine-effect">
+            <text class="stat-number">18</text>
+            <text class="stat-label">时间币余额</text>
+          </view>
+          <view class="stat-card shine-effect">
+            <text class="stat-number">5.0</text>
+            <text class="stat-label">服务评分</text>
+          </view>
+          <view class="stat-card shine-effect">
+            <text class="stat-number">2</text>
+            <text class="stat-label">进行中服务</text>
+          </view>
+        </view>
+        
+        <view class="quick-actions">
+          <view class="quick-action shine-effect" bindtap="goToPublish">
+            <view class="quick-action-icon family-gradient1">➕</view>
+            <text class="quick-action-title">代为发布</text>
+          </view>
+          <view class="quick-action shine-effect" bindtap="goToRecharge">
+            <view class="quick-action-icon family-gradient2">💰</view>
+            <text class="quick-action-title">充值时间币</text>
+          </view>
+          <view class="quick-action shine-effect" bindtap="refreshData">
+            <view class="quick-action-icon family-gradient3">📊</view>
+            <text class="quick-action-title">实时监控</text>
+          </view>
+        </view>
+        
+        <!-- 实时活动 -->
+        <view class="monitor-section shine-effect">
+          <view class="monitor-title">
+            <text>📱 实时活动</text>
+            <text class="auto-refresh">🔄 自动刷新</text>
+          </view>
+          
+          <view class="activity-item">
+            <view class="activity-icon chat-icon">💬</view>
+            <view class="activity-content">
+              <text class="activity-text">{{userInfo ? (userInfo.realName || '用户') : '用户'}}正在与AI助手聊天，询问天气情况</text>
+              <text class="activity-time">2分钟前</text>
+            </view>
+          </view>
+
+          <view class="activity-item">
+            <view class="activity-icon success-icon">✅</view>
+            <view class="activity-content">
+              <text class="activity-text">买菜服务已完成，{{userInfo ? (userInfo.realName || userInfo.username || '志愿者') : '志愿者'}}获得好评</text>
+              <text class="activity-time">1小时前</text>
+            </view>
+          </view>
+
+          <view class="activity-item">
+            <view class="activity-icon money-icon">💰</view>
+            <view class="activity-content">
+              <text class="activity-text">您为{{userInfo ? (userInfo.realName || '用户') : '用户'}}充值了10个时间币</text>
+              <text class="activity-time">今天上午</text>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+    
+    <!-- 老人端首页 -->
+    <view wx:else class="elderly-ui">
+      <view class="navbar elderly">
+        <view class="nav-title-container">
+          <text class="nav-title">时间银行</text>
+          <text class="nav-subtitle">存下时间，兑换温暖</text>
+        </view>
+        <view class="nav-action elderly">设置</view>
+      </view>
+      
+      <scroll-view class="content" scroll-y="true">
+        <view class="elderly-header shine-effect">
+          <text class="elderly-welcome">👋 {{userInfo ? (userInfo.realName || userInfo.username || '用户') : '用户'}}，您好</text>
+          <text class="elderly-subtitle">今天天气真不错，适合出门走走</text>
+        </view>
+        
+        <view class="quick-actions elderly-actions">
+          <view class="quick-action shine-effect" bindtap="goToServices">
+            <view class="quick-action-icon">🛍️</view>
+            <text class="quick-action-title">找人帮忙</text>
+          </view>
+          <view class="quick-action shine-effect" bindtap="goToChat">
+            <view class="quick-action-icon">💬</view>
+            <text class="quick-action-title">AI助手</text>
+          </view>
+          <view class="quick-action shine-effect" bindtap="goToWallet">
+            <view class="quick-action-icon">💰</view>
+            <text class="quick-action-title">我的时间币</text>
+          </view>
+          <view class="quick-action shine-effect" bindtap="emergencyCall">
+            <view class="quick-action-icon">🚨</view>
+            <text class="quick-action-title">紧急求助</text>
+          </view>
+        </view>
+        
+        <!-- 最近服务 -->
+        <view class="recent-services">
+          <text class="section-title">最近的服务</text>
+          
+          <view class="service-card shine-effect">
+            <view class="service-header">
+              <text class="service-title">买菜代购</text>
+              <view class="service-status status-ongoing">进行中</view>
+            </view>
+            <text class="service-info">📍 今天下午 • 👤 {{userInfo ? (userInfo.realName || userInfo.username || '志愿者') : '志愿者'}}</text>
+            <text class="service-price">💰 2个时间币</text>
+          </view>
+
+          <view class="service-card shine-effect">
+            <view class="service-header">
+              <text class="service-title">陪同就医</text>
+              <view class="service-status status-completed">已完成</view>
+            </view>
+            <text class="service-info">📍 昨天上午 • 👤 {{userInfo ? (userInfo.realName || userInfo.username || '志愿者') : '志愿者'}}</text>
+            <text class="service-price">💰 4个时间币</text>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+  
+  <!-- 服务页面内容 (currentPageIndex === 1) -->
+  <view wx:if="{{currentPageIndex === 1}}" class="page-content">
+    <view class="navbar {{isElderly ? 'elderly' : 'family'}}">
+      <view class="nav-action" bindtap="goBack">←</view>
+      <view class="nav-title-container">
+        <view class="nav-title">{{isElderly ? '找人帮忙' : '服务管理'}}</view>
+      </view>
+    </view>
+    
+    <view class="content">
+      <!-- 家属端服务管理 -->
+      <block wx:if="{{!isElderly}}">
+        <view class="order-hall-card">
+          <view class="order-hall-header">
+            <view class="order-hall-info">
+              <view class="order-hall-title">接单大厅</view>
+              <view class="order-hall-subtitle">发现附近的服务需求</view>
+            </view>
+            <view class="order-hall-icon">📋</view>
+          </view>
+          <button class="order-hall-btn" bindtap="goToOrderHall">进入接单大厅</button>
+        </view>
+      </block>
+      
+      <!-- 老人端服务发布 -->
+      <block wx:else>
+        <view class="publish-service-card">
+          <view class="publish-title">📝 发布服务需求</view>
+          <view class="publish-subtitle">告诉我们您需要什么帮助</view>
+          <view class="publish-buttons">
+            <button class="publish-btn primary" bindtap="goToVoicePublish">🎤 语音发布</button>
+            <button class="publish-btn outline" bindtap="goToManualPublish">📝 手动填写</button>
+          </view>
+        </view>
+        
+        <view class="quick-actions">
+          <button class="quick-action" bindtap="quickPublish" data-service="买菜">
+            <view class="quick-action-icon">🛒</view>
+            <view class="quick-action-title">买菜代购</view>
+          </button>
+          <button class="quick-action" bindtap="quickPublish" data-service="清洁">
+            <view class="quick-action-icon">🧹</view>
+            <view class="quick-action-title">家政清洁</view>
+          </button>
+        </view>
+      </block>
+    </view>
+  </view>
+  
+  <!-- 监控/聊天页面内容 (currentPageIndex === 2) -->
+  <view wx:if="{{currentPageIndex === 2}}" class="page-content">
+    <view class="navbar {{isElderly ? 'elderly' : 'family'}}">
+      <view class="nav-action" bindtap="goBack">←</view>
+      <view class="nav-title-container">
+        <view class="nav-title">{{isElderly ? 'AI助手' : '实时监控'}}</view>
+      </view>
+    </view>
+    
+    <view class="content">
+      <!-- 家属端监控页面 -->
+      <block wx:if="{{!isElderly}}">
+        <view class="monitor-section">
+          <button class="monitor-btn" bindtap="refreshData">🔄 刷新数据</button>
+          <button class="monitor-btn" bindtap="showLocation">📍 查看位置</button>
+        </view>
+      </block>
+      
+      <!-- 老人端聊天页面 -->
+      <block wx:else>
+        <scroll-view class="chat-messages" scroll-y="true" scroll-top="{{scrollTop}}">
+          <view wx:for="{{messages}}" wx:key="index" class="message-item">
+            <view wx:if="{{item.type === 'ai'}}" class="message ai">
+              <text>{{item.content}}</text>
+            </view>
+            <view wx:else class="message user">
+              <text>{{item.content}}</text>
+            </view>
+          </view>
+          <view wx:if="{{isTyping}}" class="message ai typing">
+            <text>AI助手正在输入...</text>
+          </view>
+        </scroll-view>
+        
+        <view class="chat-input">
+          <input type="text" value="{{inputText}}" bindinput="onInputChange" placeholder="输入消息..." confirm-type="send" bindconfirm="sendMessage" />
+          <button class="voice-btn {{isRecording ? 'recording' : ''}}" bindtap="toggleVoice">
+            {{isRecording ? '🔴' : '🎤'}}
+          </button>
+          <button class="send-btn" bindtap="sendMessage">发送</button>
+        </view>
+      </block>
+    </view>
+  </view>
+  
+  <!-- 钱包页面内容 (currentPageIndex === 3) -->
+  <view wx:if="{{currentPageIndex === 3}}" class="page-content">
+    <view class="navbar {{isElderly ? 'elderly' : 'family'}}">
+      <view class="nav-action" bindtap="goBack">←</view>
+      <view class="nav-title-container">
+        <view class="nav-title">{{isElderly ? '我的时间币' : '时间币管理'}}</view>
+      </view>
+    </view>
+    
+    <view class="content">
+      <view class="balance-card {{isElderly ? 'elderly' : 'family'}}">
+        <view class="balance-content">
+          <view class="balance-number">18</view>
+          <view class="balance-label">{{isElderly ? '我的时间币余额' : '爷爷的时间币余额'}}</view>
+        </view>
+      </view>
+      
+      <view class="action-buttons">
+        <button class="action-btn primary" bindtap="goToWalletRecharge">💰 充值时间币</button>
+        <button class="action-btn outline" bindtap="showTransactionHistory">📊 交易记录</button>
+        <button wx:if="{{!isElderly}}" class="action-btn outline" bindtap="goToGifts">🎁 兑换礼品</button>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 我的页面内容 (currentPageIndex === 4) -->
+  <view wx:if="{{currentPageIndex === 4}}" class="page-content">
+    <view class="navbar {{isElderly ? 'elderly' : 'family'}}">
+      <view class="nav-action" bindtap="goBack">←</view>
+      <view class="nav-title-container">
+        <view class="nav-title">我的</view>
+      </view>
+    </view>
+    
+    <view class="content">
+      <view class="profile-header">
+        <view class="profile-avatar">{{isElderly ? '罗' : '罗'}}</view>
+        <view class="profile-info">
+          <text class="profile-name">{{isElderly ? '罗建平爷爷' : '罗泽'}}</text>
+          <text class="profile-role">{{isElderly ? '老人用户' : '家属志愿者'}}</text>
+        </view>
+      </view>
+      
+      <view class="profile-actions">
+        <button class="profile-btn" bindtap="editProfile">📝 编辑个人信息</button>
+        <button class="profile-btn" bindtap="showSettings">⚙️ 设置</button>
+        <button class="profile-btn logout" bindtap="logout">🚪 退出登录</button>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 底部导航栏 - 始终显示，样式保持不变 -->
+  <bottom-nav 
+    is-elderly="{{isElderly}}" 
+    active-index="{{currentPageIndex}}" 
+    bindnav-change="onNavChange">
+  </bottom-nav>
+  
+</view>

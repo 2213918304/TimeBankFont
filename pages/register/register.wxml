@@ -1,0 +1,232 @@
+<view class="register-page">
+  <!-- 顶部导航栏 -->
+  <t-navbar title="快速注册" left-arrow bind:go-back="goBack" />
+  
+  <!-- 主要内容区域 -->
+  <view class="content-container">
+    
+    <!-- 步骤条 -->
+    <view class="step-container">
+      <t-steps current="{{currentStep}}" direction="horizontal" layout="vertical">
+        <t-step-item title="基本信息" />
+        <t-step-item title="紧急联系人" />
+        <t-step-item title="健康状况" />
+      </t-steps>
+	</view>
+	
+    <!-- 步骤1: 基本信息 -->
+    <view wx:if="{{currentStep === 0}}" class="step-content">
+      <view class="step-title">基本信息</view>
+      
+      <!-- 所属地区 -->
+      <view class="form-section">
+        <view class="section-label">所属地区 <text class="required">*</text></view>
+        <t-cell title="{{selectedArea || '请选择所属地区'}}" arrow clickable bind:click="selectArea" />
+		</view>
+		
+      <!-- 姓名 -->
+      <view class="form-section">
+        <view class="section-label">姓名 <text class="required">*</text></view>
+        <t-input 
+          placeholder="请输入姓名" 
+          value="{{realName}}" 
+          bind:change="onRealNameChange"
+          maxlength="20"
+        />
+			</view>
+			
+      <!-- 密码 -->
+      <view class="form-section">
+        <view class="section-label">密码 <text class="required">*</text></view>
+        <t-input 
+					type="{{showPassword ? 'text' : 'password'}}" 
+          placeholder="请输入密码" 
+					value="{{password}}" 
+          bind:change="onPasswordChange"
+          suffix-icon="{{showPassword ? 'browse' : 'browse-off'}}"
+          bind:suffix-icon-tap="togglePassword"
+				/>
+			</view>
+			
+      <!-- 身份证号码 -->
+      <view class="form-section">
+        <view class="section-label">身份证号码 <text class="required">*</text></view>
+        <t-input 
+          placeholder="请输入身份证号码" 
+          value="{{idCard}}" 
+          bind:change="onIdCardChange"
+          maxlength="18"
+				/>
+			</view>
+			
+      <!-- 性别 -->
+      <view class="form-section">
+        <view class="section-label">性别 <text class="required">*</text></view>
+        <t-radio-group value="{{gender}}" bind:change="onGenderChange">
+          <view class="radio-row">
+            <t-radio label="男" value="male" />
+            <t-radio label="女" value="female" />
+          </view>
+        </t-radio-group>
+					</view>
+
+      <!-- 头像上传 -->
+      <view class="form-section">
+        <view class="section-label">头像 <text class="required">*</text></view>
+        <view class="avatar-upload">
+          <t-upload 
+            files="{{avatarFiles}}" 
+            bind:success="onAvatarUpload"
+            bind:remove="onAvatarRemove"
+            max="1"
+            size-limit="{{5 * 1024 * 1024}}"
+          >
+            <view class="upload-trigger">
+              <t-icon name="add" size="48rpx" />
+              <text>上传头像</text>
+					</view>
+          </t-upload>
+					</view>
+				</view>
+			</view>
+			
+    <!-- 步骤2: 志愿者类型选择 -->
+    <view wx:if="{{currentStep === 1}}" class="step-content">
+      <view class="step-title">志愿者类型选择</view>
+      
+      <!-- 志愿者技能 -->
+      <view class="form-section">
+        <view class="section-label">志愿者技能 <text class="required">*</text></view>
+        <t-checkbox-group value="{{volunteerSkills}}" bind:change="onSkillsChange">
+          <view class="checkbox-grid">
+            <t-checkbox label="生活照料" value="daily_care" />
+            <t-checkbox label="医疗陪护" value="medical_care" />
+            <t-checkbox label="中医保健" value="tcm_health" />
+            <t-checkbox label="心理疏导" value="psychological" />
+            <t-checkbox label="法律咨询" value="legal" />
+            <t-checkbox label="家政服务" value="housekeeping" />
+          </view>
+        </t-checkbox-group>
+      </view>
+
+      <!-- 资质附件 -->
+      <view class="form-section">
+        <view class="section-label">资质附件</view>
+        <t-upload 
+          files="{{qualificationFiles}}" 
+          bind:success="onQualificationUpload"
+          bind:remove="onQualificationRemove"
+          max="5"
+          size-limit="{{10 * 1024 * 1024}}"
+        >
+          <view class="upload-trigger">
+            <t-icon name="add" size="48rpx" />
+            <text>上传资质证明</text>
+          </view>
+        </t-upload>
+      </view>
+
+      <!-- 志愿者类型 -->
+      <view class="form-section">
+        <view class="section-label">志愿者类型 <text class="required">*</text></view>
+        <t-radio-group value="{{volunteerType}}" bind:change="onVolunteerTypeChange">
+          <view class="radio-column">
+            <t-radio label="学生" value="student" />
+            <t-radio label="50-75周岁的健康活力人群" value="senior_active" />
+            <t-radio label="其他符合条件的社会人员" value="social_member" />
+          </view>
+        </t-radio-group>
+      </view>
+
+      <!-- 从业状况 -->
+      <view class="form-section">
+        <view class="section-label">从业状况</view>
+        <t-cell title="{{profession || '请选择从业状况'}}" arrow clickable bind:click="selectProfession" />
+      </view>
+
+      <!-- 服务范围 -->
+      <view class="form-section">
+        <view class="section-label">服务范围</view>
+        <t-radio-group value="{{serviceRange}}" bind:change="onServiceRangeChange">
+          <view class="radio-row">
+            <t-radio label="本街道内" value="street" />
+            <t-radio label="本区内" value="district" />
+          </view>
+        </t-radio-group>
+				</view>
+			</view>
+			
+    <!-- 步骤3: 身份选择 -->
+    <view wx:if="{{currentStep === 2}}" class="step-content">
+      <view class="step-title">请选择您的身份？</view>
+      
+      <!-- 身份选择卡片 -->
+      <view class="identity-cards">
+        <view 
+          class="identity-card {{selectedRole === 'elderly' ? 'selected' : ''}}"
+          bind:tap="selectIdentity"
+          data-role="elderly"
+        >
+          <t-icon name="user" size="64rpx" color="#FF6B35" />
+          <view class="card-title">服务对象</view>
+          <view class="card-desc">服务对象注册及下单服务</view>
+        </view>
+
+        <view 
+          class="identity-card {{selectedRole === 'volunteer' ? 'selected' : ''}}"
+          bind:tap="selectIdentity"
+          data-role="volunteer"
+        >
+          <t-icon name="heart" size="64rpx" color="#0052D9" />
+          <view class="card-title">个人志愿者</view>
+          <view class="card-desc">志愿者注册及接单服务</view>
+        </view>
+
+        <view 
+          class="identity-card {{selectedRole === 'organization' ? 'selected' : ''}}"
+          bind:tap="selectIdentity"
+          data-role="organization"
+        >
+          <t-icon name="usergroup" size="64rpx" color="#00A870" />
+          <view class="card-title">志愿者团体</view>
+          <view class="card-desc">志愿者团体发布活动</view>
+			</view>
+		</view>
+	</view>
+	
+    <!-- 底部按钮区域 -->
+    <view class="bottom-actions">
+      <t-button 
+        wx:if="{{currentStep < 2}}"
+        theme="light" 
+        block 
+        bind:click="saveCurrentStep"
+      >
+        保存
+      </t-button>
+      
+      <t-button 
+        theme="primary" 
+        block 
+        bind:click="{{currentStep < 2 ? 'nextStep' : 'submitRegistration'}}"
+        disabled="{{!canProceed}}"
+        loading="{{isLoading}}"
+      >
+        {{currentStep < 2 ? '保存并下一步' : '提交'}}
+      </t-button>
+	</view>
+  </view>
+
+  <!-- Toast提示 -->
+  <t-toast id="t-toast" />
+  
+  <!-- 弹窗组件 -->
+  <t-dialog 
+    visible="{{showDialog}}" 
+    title="{{dialogTitle}}" 
+    content="{{dialogContent}}"
+    bind:confirm="onDialogConfirm"
+    bind:cancel="onDialogCancel"
+  />
+  
+</view>

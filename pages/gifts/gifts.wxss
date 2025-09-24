@@ -1,0 +1,249 @@
+/* 礼品兑换页面样式 */
+
+.page-container {
+  width: 100%;
+  max-width: 100vw;
+  height: 100vh;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* 内容区域 */
+.content {
+  flex: 1;
+  width: 100%;
+  max-width: 100vw;
+  padding: 40rpx 40rpx 160rpx 40rpx;
+  box-sizing: border-box;
+}
+
+/* 老人端限制提示 */
+.restriction-notice {
+  background: white;
+  border-radius: 32rpx;
+  padding: 80rpx 60rpx;
+  margin: 80rpx 0;
+  text-align: center;
+  border: 2rpx solid #f0f0f0;
+  box-shadow: 
+    0 16rpx 48rpx rgba(0, 0, 0, 0.05),
+    0 8rpx 24rpx rgba(0, 0, 0, 0.03);
+  box-sizing: border-box;
+}
+
+.notice-icon {
+  font-size: 120rpx;
+  margin-bottom: 32rpx;
+}
+
+.notice-title {
+  font-size: 48rpx;
+  font-weight: 700;
+  color: #1d1d1f;
+  margin-bottom: 24rpx;
+}
+
+.notice-content {
+  font-size: 32rpx;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 48rpx;
+}
+
+.notice-contact {
+  margin-top: 32rpx;
+}
+
+.contact-btn {
+  background: linear-gradient(135deg, #FF8A65 0%, #FF7043 50%, #FF5722 100%);
+  color: white;
+  border: none;
+  border-radius: 48rpx;
+  padding: 24rpx 48rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 
+    0 16rpx 32rpx rgba(255, 138, 101, 0.3),
+    0 8rpx 16rpx rgba(255, 112, 67, 0.2);
+}
+
+.contact-btn:active {
+  transform: translateY(-4rpx);
+  box-shadow: 
+    0 24rpx 48rpx rgba(255, 138, 101, 0.4),
+    0 12rpx 24rpx rgba(255, 112, 67, 0.3);
+}
+
+/* 余额卡片 */
+.balance-card {
+  border-radius: 48rpx;
+  padding: 64rpx 56rpx;
+  margin-bottom: 48rpx;
+  text-align: center;
+  color: white;
+  box-sizing: border-box;
+}
+
+.balance-card.family {
+  background: linear-gradient(135deg, #165DFF 0%, #722ED1 50%, #EB2F96 100%);
+  box-shadow: 
+    0 48rpx 128rpx rgba(22, 93, 255, 0.3),
+    0 24rpx 64rpx rgba(114, 46, 209, 0.2),
+    0 8rpx 32rpx rgba(0, 0, 0, 0.1);
+}
+
+.balance-card.elderly {
+  background: linear-gradient(135deg, #FF8A65 0%, #FF7043 50%, #FF5722 100%);
+  box-shadow: 
+    0 48rpx 128rpx rgba(255, 138, 101, 0.3),
+    0 24rpx 64rpx rgba(255, 112, 67, 0.2),
+    0 8rpx 32rpx rgba(0, 0, 0, 0.1);
+}
+
+.balance-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.balance-number {
+  font-size: 72rpx;
+  font-weight: 800;
+  margin-bottom: 16rpx;
+  text-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.2);
+}
+
+.balance-label {
+  font-size: 32rpx;
+  opacity: 0.9;
+}
+
+/* 分类筛选 */
+.filter-tabs {
+  display: flex;
+  gap: 24rpx;
+  margin-bottom: 40rpx;
+  padding: 0 32rpx;
+  overflow-x: auto;
+}
+
+.filter-tab {
+  padding: 16rpx 32rpx;
+  border-radius: 24rpx;
+  font-size: 28rpx;
+  background: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  border: 2rpx solid;
+}
+
+.filter-tab.family {
+  border-color: #165DFF;
+  color: #165DFF;
+}
+
+.filter-tab.family.active {
+  background: #165DFF;
+  color: white;
+}
+
+.filter-tab.elderly {
+  border-color: #FF8A65;
+  color: #FF8A65;
+}
+
+.filter-tab.elderly.active {
+  background: #FF8A65;
+  color: white;
+}
+
+/* 礼品列表 */
+.gifts-list {
+  padding: 0 32rpx;
+}
+
+.gift-card {
+  background: white;
+  border-radius: 32rpx;
+  padding: 40rpx;
+  margin-bottom: 32rpx;
+  border: 4rpx solid #fed7aa;
+  display: flex;
+  align-items: center;
+  gap: 32rpx;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.gift-card:active {
+  transform: translateY(-2rpx);
+  box-shadow: 0 8rpx 32rpx rgba(255, 138, 101, 0.2);
+}
+
+.gift-icon {
+  width: 120rpx;
+  height: 120rpx;
+  background: #fff7ed;
+  border-radius: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 64rpx;
+  flex-shrink: 0;
+}
+
+.gift-info {
+  flex: 1;
+}
+
+.gift-name {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 8rpx;
+}
+
+.gift-description {
+  font-size: 28rpx;
+  color: #6b7280;
+  margin-bottom: 16rpx;
+  line-height: 1.5;
+}
+
+.gift-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.gift-price {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #f97316;
+}
+
+.exchange-btn {
+  background: #f97316;
+  color: white;
+  border: none;
+  border-radius: 16rpx;
+  padding: 16rpx 32rpx;
+  font-size: 28rpx;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.exchange-btn.disabled {
+  background: #ccc !important;
+  cursor: not-allowed;
+  color: #666 !important;
+}
+
+.exchange-btn:active:not(.disabled) {
+  transform: scale(0.95);
+}

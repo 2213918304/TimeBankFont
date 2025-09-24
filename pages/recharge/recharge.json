@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "时间币充值",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "TopNavBar": "../../components/TopNavBar/TopNavBar",
+    "BottomNav": "../../components/BottomNav"
+  }
+}
