@@ -1,59 +1,73 @@
-/* 老人端个人中心样式 */
+/* 个人中心页面 - TDesign风格 */
 .elderly-profile {
-  background: linear-gradient(135deg, #FFF8E1 0%, #FFECB3 50%, #FFE0B2 100%);
-  min-height: 100vh;
+  width: 100vw;
+  height: 100vh;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .content {
-  height: calc(100vh - 160rpx - 80rpx);
-  padding: 20rpx;
-  box-sizing: border-box;
+  flex: 1;
+  padding: 32rpx;
+  overflow-y: auto;
 }
 
-/* 个人信息卡片 */
+/* 个人信息卡片 - TDesign风格 */
 .profile-card.elderly {
-  background: linear-gradient(135deg, #FF8A65 0%, #FF7043 50%, #FF5722 100%);
+  background: white;
   border-radius: 24rpx;
   padding: 40rpx;
-  margin-bottom: 30rpx;
-  color: white;
-  box-shadow: 0 8rpx 32rpx rgba(255, 87, 34, 0.3);
+  margin-bottom: 32rpx;
+  box-shadow: 0 8rpx 32rpx rgba(0,0,0,0.1), 0 4rpx 16rpx rgba(0,0,0,0.05);
+  border: 1rpx solid rgba(255,255,255,0.2);
+  transition: all 0.3s ease;
+}
+
+.profile-card.elderly:hover {
+  transform: translateY(-4rpx);
+  box-shadow: 0 12rpx 40rpx rgba(0,0,0,0.15), 0 6rpx 20rpx rgba(0,0,0,0.08);
 }
 
 .profile-header {
   display: flex;
-  align-items: flex-start;
-  margin-bottom: 30rpx;
+  align-items: center;
+  margin-bottom: 32rpx;
+  padding-bottom: 24rpx;
+  border-bottom: 2rpx solid #f0f0f0;
 }
 
 .avatar-section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-right: 30rpx;
+  margin-right: 32rpx;
 }
 
 .avatar.elderly {
   width: 120rpx;
   height: 120rpx;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 48rpx;
   font-weight: 700;
   color: white;
-  border: 4rpx solid rgba(255, 255, 255, 0.3);
   margin-bottom: 16rpx;
+  box-shadow: 0 4rpx 20rpx rgba(102, 126, 234, 0.3);
 }
 
 .health-status {
   display: flex;
   align-items: center;
-  background: rgba(255, 255, 255, 0.2);
+  background: #f0f9ff;
   padding: 8rpx 16rpx;
   border-radius: 20rpx;
+  color: #0369a1;
+  border: 1rpx solid #bae6fd;
 }
 
 .health-indicator {
@@ -69,7 +83,7 @@
 
 .health-text {
   font-size: 24rpx;
-  color: white;
+  color: green;
 }
 
 .user-info {
@@ -80,7 +94,7 @@
   font-size: 40rpx;
   font-weight: 700;
   margin-bottom: 16rpx;
-  color: white;
+  color: #333;
 }
 
 .user-tags {
@@ -91,12 +105,12 @@
 }
 
 .user-tag.elderly {
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
+  background: #f0f9ff;
+  color: #0369a1;
   padding: 8rpx 16rpx;
   border-radius: 16rpx;
   font-size: 24rpx;
-  border: 2rpx solid rgba(255, 255, 255, 0.3);
+  border: 1rpx solid #bae6fd;
 }
 
 .verification-status.verified {
@@ -112,27 +126,27 @@
 
 .user-contact {
   font-size: 28rpx;
-  opacity: 0.9;
-  color: white;
+  color: #666;
 }
 
-/* 时间币余额 */
+/* 时间币余额 - TDesign风格 */
 .balance-section {
-  margin-top: 20rpx;
+  margin-top: 24rpx;
 }
 
 .balance-card {
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 20rpx;
+  background: #f8fafc;
+  border-radius: 16rpx;
   padding: 24rpx;
   display: flex;
   align-items: center;
-  border: 2rpx solid rgba(255, 255, 255, 0.2);
+  border: 1rpx solid #e2e8f0;
 }
 
 .balance-icon {
   font-size: 48rpx;
   margin-right: 20rpx;
+  color: #667eea;
 }
 
 .balance-info {
@@ -141,60 +155,73 @@
 
 .balance-label {
   font-size: 26rpx;
-  opacity: 0.8;
+  color: #666;
   margin-bottom: 8rpx;
-  color: white;
 }
 
 .balance-value {
   font-size: 36rpx;
   font-weight: 700;
-  color: white;
+  color: #333;
 }
 
 .recharge-btn {
-  background: rgba(255, 255, 255, 0.9);
-  color: #FF5722;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
   border: none;
-  border-radius: 24rpx;
-  padding: 16rpx 32rpx;
-  font-size: 28rpx;
+  border-radius: 20rpx;
+  padding: 12rpx 24rpx;
+  font-size: 26rpx;
   font-weight: 600;
+  box-shadow: 0 4rpx 12rpx rgba(102, 126, 234, 0.3);
 }
 
 .recharge-btn:active {
   transform: scale(0.95);
-  background: rgba(255, 255, 255, 0.8);
 }
 
-/* 关联卡片 */
+/* 关联卡片 - TDesign风格 */
 .relation-card.elderly {
   background: white;
-  border-radius: 24rpx;
-  margin-bottom: 30rpx;
+  border-radius: 20rpx;
+  margin-bottom: 24rpx;
   overflow: hidden;
-  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.08), 0 2rpx 10rpx rgba(0,0,0,0.04);
+  border: 1rpx solid rgba(255,255,255,0.2);
+  transition: all 0.3s ease;
+}
+
+.relation-card.elderly:hover {
+  transform: translateY(-4rpx);
+  box-shadow: 0 8rpx 32rpx rgba(0,0,0,0.12), 0 4rpx 16rpx rgba(0,0,0,0.06);
 }
 
 .card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 30rpx 30rpx 20rpx;
-  border-bottom: 2rpx solid #f5f5f5;
+  padding: 32rpx 32rpx 24rpx;
+  border-bottom: 2rpx solid #f0f0f0;
 }
 
 .card-title {
   display: flex;
   align-items: center;
-  font-size: 32rpx;
+  font-size: 28rpx;
   font-weight: 600;
-  color: #2c3e50;
+  color: #333;
 }
 
 .title-icon {
   font-size: 36rpx;
   margin-right: 12rpx;
+}
+
+/* 卡片操作按钮区域 */
+.card-actions {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
 }
 
 .relation-count {
@@ -206,25 +233,33 @@
 }
 
 .bind-btn {
-  background: linear-gradient(135deg, #FF8A65, #FF7043);
+  background: #FF7043;
   color: white;
   border: none;
-  border-radius: 20rpx;
+  border-radius: 12rpx;
   padding: 12rpx 24rpx;
   font-size: 26rpx;
   font-weight: 600;
 }
 
-/* 家属列表 */
+/* 家属列表 - TDesign风格 */
 .family-list, .volunteer-list {
-  padding: 0 30rpx;
+  padding: 0 32rpx;
 }
 
 .family-item, .volunteer-item {
   display: flex;
   align-items: center;
   padding: 24rpx 0;
-  border-bottom: 2rpx solid #f5f5f5;
+  border-bottom: 2rpx solid #f0f0f0;
+  transition: all 0.3s ease;
+}
+
+.family-item:hover, .volunteer-item:hover {
+  background: #f8fafc;
+  padding-left: 8rpx;
+  margin: 0 -8rpx;
+  border-radius: 8rpx;
 }
 
 .family-item:last-child, .volunteer-item:last-child {
@@ -232,17 +267,18 @@
 }
 
 .family-avatar, .volunteer-avatar {
-  width: 80rpx;
-  height: 80rpx;
+  width: 64rpx;
+  height: 64rpx;
   border-radius: 50%;
-  background: linear-gradient(135deg, #FF8A65, #FF7043);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 32rpx;
+  font-size: 28rpx;
   font-weight: 700;
   color: white;
-  margin-right: 24rpx;
+  margin-right: 16rpx;
+  box-shadow: 0 4rpx 12rpx rgba(102, 126, 234, 0.3);
 }
 
 .family-info, .volunteer-info {
@@ -262,35 +298,38 @@
 }
 
 .contact-btn {
-  background: #e3f2fd;
-  color: #1976d2;
-  border: none;
+  background: #f0f9ff;
+  color: #0369a1;
+  border: 1rpx solid #bae6fd;
   border-radius: 20rpx;
-  padding: 12rpx 24rpx;
-  font-size: 26rpx;
+  padding: 8rpx 16rpx;
+  font-size: 24rpx;
   font-weight: 600;
+  transition: all 0.2s ease;
 }
 
 .contact-btn:active {
-  background: #bbdefb;
+  background: #bae6fd;
+  transform: scale(0.95);
 }
 
-/* 空状态 */
+/* 空状态 - TDesign风格 */
 .empty-family, .empty-volunteer {
-  padding: 60rpx 30rpx;
+  padding: 40rpx 32rpx;
   text-align: center;
 }
 
 .empty-icon {
-  font-size: 80rpx;
-  margin-bottom: 20rpx;
-  opacity: 0.5;
+  font-size: 64rpx;
+  margin-bottom: 16rpx;
+  opacity: 0.6;
 }
 
 .empty-text {
-  font-size: 32rpx;
-  color: #95a5a6;
-  margin-bottom: 12rpx;
+  font-size: 28rpx;
+  color: #667eea;
+  margin-bottom: 8rpx;
+  font-weight: 500;
 }
 
 .empty-desc {
@@ -335,17 +374,24 @@
   line-height: 1.5;
 }
 
-/* 健康档案卡片 */
+/* 健康档案卡片 - TDesign风格 */
 .health-card.elderly {
   background: white;
-  border-radius: 24rpx;
-  margin-bottom: 30rpx;
+  border-radius: 20rpx;
+  margin-bottom: 24rpx;
   overflow: hidden;
-  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.08);
+  border: 1rpx solid rgba(255,255,255,0.2);
+  transition: all 0.3s ease;
+}
+
+.health-card.elderly:hover {
+  transform: translateY(-4rpx);
+  box-shadow: 0 8rpx 32rpx rgba(0,0,0,0.12);
 }
 
 .health-summary {
-  padding: 0 30rpx 30rpx;
+  padding: 0 32rpx 32rpx;
 }
 
 .health-item {
@@ -353,7 +399,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 20rpx 0;
-  border-bottom: 2rpx solid #f5f5f5;
+  border-bottom: 2rpx solid #f0f0f0;
 }
 
 .health-item:last-child {
@@ -362,13 +408,13 @@
 
 .health-label {
   font-size: 28rpx;
-  color: #7f8c8d;
+  color: #000000;
   font-weight: 500;
 }
 
 .health-value {
   font-size: 28rpx;
-  color: #2c3e50;
+  color: #666666;
   font-weight: 600;
 }
 
@@ -381,22 +427,29 @@
   font-size: 24rpx;
 }
 
-/* 功能菜单 */
+/* 功能菜单 - TDesign风格 */
 .menu-card.elderly {
   background: white;
-  border-radius: 24rpx;
-  margin-bottom: 30rpx;
+  border-radius: 20rpx;
+  margin-bottom: 24rpx;
   overflow: hidden;
-  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.08);
+  border: 1rpx solid rgba(255,255,255,0.2);
+  transition: all 0.3s ease;
+}
+
+.menu-card.elderly:hover {
+  transform: translateY(-4rpx);
+  box-shadow: 0 8rpx 32rpx rgba(0,0,0,0.12);
 }
 
 .menu-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 32rpx 30rpx;
-  border-bottom: 2rpx solid #f5f5f5;
-  transition: background-color 0.2s ease;
+  padding: 32rpx;
+  border-bottom: 2rpx solid #f0f0f0;
+  transition: all 0.3s ease;
 }
 
 .menu-item:last-child {
@@ -404,7 +457,8 @@
 }
 
 .menu-item:active {
-  background-color: #f8f9fa;
+  background-color: #f8fafc;
+  transform: scale(0.98);
 }
 
 .menu-left {

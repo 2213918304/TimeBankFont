@@ -87,6 +87,21 @@
           </view>
         </view>
       </view>
+
+      <!-- 测试账号快速导入 -->
+      <view class="test-accounts">
+        <view class="divider">
+          <text>测试账号</text>
+        </view>
+        <view class="test-buttons">
+          <t-button theme="light" size="small" bind:tap="showTestAccounts">
+            快速导入测试账号
+          </t-button>
+          <t-button theme="light" size="small" bind:tap="clearTestData">
+            清除测试数据
+          </t-button>
+        </view>
+      </view>
     </view>
   </view>
 

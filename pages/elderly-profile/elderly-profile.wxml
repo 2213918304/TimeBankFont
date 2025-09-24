@@ -84,7 +84,7 @@
     <view class="relation-card elderly">
       <view class="card-header">
         <view class="card-title">
-          <view class="title-icon">👨‍👩‍👧‍👦</view>
+          <t-icon name="user-group" size="32rpx" color="#667eea" />
           <text>我的家属</text>
         </view>
         <view class="relation-count">{{familyMembers.length}}人</view>
@@ -98,19 +98,20 @@
             <view class="family-relation">{{item.relation}} • {{item.phone}}</view>
           </view>
           <button class="contact-btn" bindtap="contactFamily" data-id="{{item.id}}">
-            📞 联系
+            <t-icon name="call" size="20rpx" />
+            联系
           </button>
         </view>
       </view>
       
       <view wx:else class="empty-family">
-        <view class="empty-icon">👥</view>
+        <t-icon name="user-group" size="64rpx" color="#ccc" />
         <view class="empty-text">暂无关联家属</view>
       </view>
 
       <view class="binding-section">
         <button class="binding-code-btn" bindtap="showBindingCode">
-          <view class="btn-icon">🔗</view>
+          <t-icon name="link" size="20rpx" />
           <text>查看我的绑定码</text>
         </button>
         <view class="binding-tip">家属可通过绑定码关联您的账户</view>
@@ -121,10 +122,12 @@
     <view class="relation-card elderly">
       <view class="card-header">
         <view class="card-title">
-          <view class="title-icon">🤝</view>
+          <t-icon name="user" size="32rpx" color="#667eea" />
           <text>我的志愿者</text>
         </view>
-        <button class="bind-btn" bindtap="bindVolunteer">+ 绑定</button>
+        <view class="card-actions">
+          <button class="bind-btn" bindtap="bindVolunteer">+ 绑定</button>
+        </view>
       </view>
       
       <view wx:if="{{volunteers.length > 0}}" class="volunteer-list">
@@ -135,13 +138,14 @@
             <view class="volunteer-desc">{{item.specialty}} • 服务{{item.serviceCount}}次</view>
           </view>
           <button class="contact-btn" bindtap="contactVolunteer" data-id="{{item.id}}">
-            💬 联系
+            <t-icon name="chat" size="20rpx" />
+            联系
           </button>
         </view>
       </view>
       
       <view wx:else class="empty-volunteer">
-        <view class="empty-icon">🤝</view>
+        <t-icon name="user" size="64rpx" color="#ccc" />
         <view class="empty-text">暂无绑定志愿者</view>
         <view class="empty-desc">绑定专属志愿者，获得更好的服务体验</view>
       </view>
@@ -151,10 +155,12 @@
     <view class="health-card elderly">
       <view class="card-header">
         <view class="card-title">
-          <view class="title-icon">❤️</view>
+          <t-icon name="heart" size="32rpx" color="#667eea" />
           <text>健康档案</text>
         </view>
-        <button class="edit-btn" bindtap="editHealthInfo">编辑</button>
+        <view class="card-actions">
+          <button class="edit-btn" bindtap="editHealthInfo">编辑</button>
+        </view>
       </view>
       
       <view class="health-summary">

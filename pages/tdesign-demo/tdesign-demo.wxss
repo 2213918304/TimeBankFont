@@ -1,72 +1,210 @@
-.container {
-  padding: 32rpx;
-  background-color: #f5f5f5;
-  min-height: 100vh;
-}
-
-.demo-section {
-  background: white;
-  border-radius: 16rpx;
+/* 页面容器 */
+.page {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
 }
 
-.section-title {
-  font-size: 36rpx;
-  font-weight: bold;
-  color: #333;
-  padding: 32rpx;
+/* 导航栏 */
+.navbar {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
+  padding: 20rpx 32rpx;
+  box-shadow: 0 4rpx 20rpx rgba(102, 126, 234, 0.3);
+}
+
+.nav-title {
+  font-size: 36rpx;
+  font-weight: 700;
   text-align: center;
 }
 
-.demo-block {
+.nav-subtitle {
+  font-size: 24rpx;
+  opacity: 0.9;
+  text-align: center;
+  margin-top: 8rpx;
+}
+
+/* 内容区域 */
+.content {
+  flex: 1;
   padding: 32rpx;
-  border-bottom: 1rpx solid #f0f0f0;
+  overflow-y: auto;
 }
 
-.demo-block:last-child {
-  border-bottom: none;
+/* 欢迎卡片 */
+.welcome-card {
+  background: white;
+  border-radius: 24rpx;
+  padding: 40rpx;
+  margin-bottom: 32rpx;
+  box-shadow: 0 8rpx 32rpx rgba(0,0,0,0.1);
+  border: 1rpx solid rgba(255,255,255,0.2);
 }
 
-.block-title {
+.welcome-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 32rpx;
+}
+
+.welcome-text {
+  margin-left: 24rpx;
+  flex: 1;
+}
+
+.welcome-title {
   font-size: 32rpx;
+  font-weight: 700;
+  color: #333;
+  display: block;
+  margin-bottom: 8rpx;
+}
+
+.welcome-desc {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.5;
+}
+
+.welcome-actions {
+  display: flex;
+  gap: 16rpx;
+  justify-content: flex-end;
+}
+
+/* 演示区域 */
+.demo-section {
+  margin-bottom: 40rpx;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24rpx;
+  padding: 0 8rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #333;
+  margin-left: 16rpx;
+}
+
+/* 演示卡片 */
+.demo-card {
+  background: white;
+  border-radius: 20rpx;
+  padding: 32rpx;
+  margin-bottom: 24rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.08);
+  border: 1rpx solid rgba(255,255,255,0.2);
+  transition: all 0.3s ease;
+}
+
+.demo-card:hover {
+  transform: translateY(-4rpx);
+  box-shadow: 0 8rpx 32rpx rgba(0,0,0,0.12);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24rpx;
+  padding-bottom: 16rpx;
+  border-bottom: 2rpx solid #f0f0f0;
+}
+
+.card-title {
+  font-size: 28rpx;
   font-weight: 600;
   color: #333;
-  margin-bottom: 24rpx;
-  display: block;
 }
 
+/* 按钮组 */
 .button-group {
   display: flex;
   flex-direction: column;
   gap: 16rpx;
 }
 
+/* 输入框组 */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+/* 标签组 */
 .tag-group {
   display: flex;
   gap: 16rpx;
   flex-wrap: wrap;
 }
 
+/* 头像组 */
 .avatar-group {
   display: flex;
   gap: 24rpx;
   align-items: center;
+  flex-wrap: wrap;
 }
 
+/* 图标组 */
 .icon-group {
-  display: flex;
-  gap: 24rpx;
-  align-items: center;
-}
-
-.loading-group {
   display: flex;
   gap: 32rpx;
   align-items: center;
+  flex-wrap: wrap;
 }
 
+.icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8rpx;
+}
+
+.icon-label {
+  font-size: 24rpx;
+  color: #666;
+}
+
+/* 进度条组 */
+.progress-group {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+/* 加载组 */
+.loading-group {
+  display: flex;
+  gap: 40rpx;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.loading-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.loading-label {
+  font-size: 24rpx;
+  color: #666;
+}
+
+/* 开关组 */
 .switch-group {
   display: flex;
   flex-direction: column;
@@ -78,10 +216,57 @@
   justify-content: space-between;
   align-items: center;
   padding: 16rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
 }
 
-.switch-item text {
+.switch-item:last-child {
+  border-bottom: none;
+}
+
+.switch-label {
   font-size: 28rpx;
   color: #333;
+  font-weight: 500;
+}
+
+/* 评分组 */
+.rate-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.rate-text {
+  font-size: 26rpx;
+  color: #666;
+}
+
+/* 底部间距 */
+.bottom-spacing {
+  height: 100rpx;
+}
+
+/* 响应式设计 */
+@media (max-width: 750rpx) {
+  .content {
+    padding: 24rpx;
+  }
+  
+  .welcome-card {
+    padding: 32rpx;
+  }
+  
+  .demo-card {
+    padding: 24rpx;
+  }
+  
+  .icon-group {
+    gap: 24rpx;
+  }
+  
+  .loading-group {
+    gap: 32rpx;
+  }
 }
 

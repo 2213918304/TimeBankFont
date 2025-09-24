@@ -67,7 +67,21 @@
     "t-drawer": "tdesign-miniprogram/drawer/drawer",
     "t-action-sheet": "tdesign-miniprogram/action-sheet/action-sheet",
     "t-message": "tdesign-miniprogram/message/message",
-    "t-pull-down-refresh": "tdesign-miniprogram/pull-down-refresh/pull-down-refresh"
+    "t-pull-down-refresh": "tdesign-miniprogram/pull-down-refresh/pull-down-refresh",
+    "t-badge": "tdesign-miniprogram/badge/badge",
+    "t-calendar": "tdesign-miniprogram/calendar/calendar",
+    "t-collapse": "tdesign-miniprogram/collapse/collapse",
+    "t-collapse-panel": "tdesign-miniprogram/collapse-panel/collapse-panel",
+    "t-count-down": "tdesign-miniprogram/count-down/count-down",
+    "t-empty": "tdesign-miniprogram/empty/empty",
+    "t-footer": "tdesign-miniprogram/footer/footer",
+    "t-image-viewer": "tdesign-miniprogram/image-viewer/image-viewer",
+    "t-notice-bar": "tdesign-miniprogram/notice-bar/notice-bar",
+    "t-progress": "tdesign-miniprogram/progress/progress",
+    "t-skeleton": "tdesign-miniprogram/skeleton/skeleton",
+    "t-tabs": "tdesign-miniprogram/tabs/tabs",
+    "t-tab-panel": "tdesign-miniprogram/tab-panel/tab-panel",
+    "t-textarea": "tdesign-miniprogram/textarea/textarea"
   },
   "networkTimeout": {
     "request": 30000

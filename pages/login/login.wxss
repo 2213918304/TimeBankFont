@@ -205,6 +205,23 @@
   margin-top: 12rpx;
 }
 
+/* 测试账号区域 */
+.test-accounts {
+  margin-top: 32rpx;
+}
+
+.test-buttons {
+  display: flex;
+  gap: 16rpx;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.test-buttons .t-button {
+  flex: 1;
+  min-width: 200rpx;
+}
+
 /* 底部区域 */
 .bottom-section {
   padding: 32rpx 40rpx;

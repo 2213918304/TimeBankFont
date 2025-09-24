@@ -1,108 +1,247 @@
-<view class="container">
-  <view class="demo-section">
-    <view class="section-title">TDesign 组件演示</view>
-    
-    <!-- 按钮组件 -->
-    <view class="demo-block">
-      <text class="block-title">按钮 Button</text>
-      <view class="button-group">
-        <t-button theme="primary" size="large">主要按钮</t-button>
-        <t-button theme="light" size="medium">次要按钮</t-button>
-        <t-button theme="ghost" size="small">幽灵按钮</t-button>
-        <t-button theme="danger" disabled>禁用按钮</t-button>
-      </view>
-    </view>
-
-    <!-- 输入框组件 -->
-    <view class="demo-block">
-      <text class="block-title">输入框 Input</text>
-      <t-input placeholder="请输入您的姓名" label="姓名" />
-      <t-input placeholder="请输入手机号" label="手机号" type="number" maxlength="11" />
-      <t-input placeholder="请输入密码" label="密码" type="password" />
-    </view>
-
-    <!-- 标签组件 -->
-    <view class="demo-block">
-      <text class="block-title">标签 Tag</text>
-      <view class="tag-group">
-        <t-tag theme="primary">主要标签</t-tag>
-        <t-tag theme="success">成功标签</t-tag>
-        <t-tag theme="warning">警告标签</t-tag>
-        <t-tag theme="danger">危险标签</t-tag>
-      </view>
-    </view>
-
-    <!-- 头像组件 -->
-    <view class="demo-block">
-      <text class="block-title">头像 Avatar</text>
-      <view class="avatar-group">
-        <t-avatar size="large">大</t-avatar>
-        <t-avatar size="medium">中</t-avatar>
-        <t-avatar size="small">小</t-avatar>
-      </view>
-    </view>
-
-    <!-- 图标组件 -->
-    <view class="demo-block">
-      <text class="block-title">图标 Icon</text>
-      <view class="icon-group">
-        <t-icon name="user" size="48rpx" />
-        <t-icon name="heart" size="48rpx" color="#ff6b6b" />
-        <t-icon name="location" size="48rpx" color="#4dabf7" />
-        <t-icon name="home" size="48rpx" color="#51cf66" />
-      </view>
-    </view>
-
-    <!-- 单元格组件 -->
-    <view class="demo-block">
-      <text class="block-title">单元格 Cell</text>
-      <t-cell-group>
-        <t-cell title="单元格标题" note="单元格描述信息" arrow />
-        <t-cell title="设置" leftIcon="setting" arrow />
-        <t-cell title="消息通知" rightIcon="notification" />
-      </t-cell-group>
-    </view>
-
-    <!-- 加载组件 -->
-    <view class="demo-block">
-      <text class="block-title">加载 Loading</text>
-      <view class="loading-group">
-        <t-loading theme="circular" size="40rpx" />
-        <t-loading theme="spinner" size="40rpx" />
-        <t-loading theme="dots" size="40rpx" />
-      </view>
-    </view>
-
-    <!-- 开关组件 -->
-    <view class="demo-block">
-      <text class="block-title">开关 Switch</text>
-      <view class="switch-group">
-        <view class="switch-item">
-          <text>消息推送</text>
-          <t-switch defaultValue="{{true}}" />
-        </view>
-        <view class="switch-item">
-          <text>自动更新</text>
-          <t-switch defaultValue="{{false}}" />
-        </view>
-      </view>
-    </view>
-
-    <!-- 评分组件 -->
-    <view class="demo-block">
-      <text class="block-title">评分 Rate</text>
-      <t-rate defaultValue="{{4}}" />
-    </view>
-
-    <!-- 步骤条组件 -->
-    <view class="demo-block">
-      <text class="block-title">步骤条 Steps</text>
-      <t-steps current="{{1}}" direction="horizontal">
-        <t-step-item title="步骤一" content="完成注册" />
-        <t-step-item title="步骤二" content="验证身份" />
-        <t-step-item title="步骤三" content="开始使用" />
-      </t-steps>
+<view class="page">
+  <!-- 顶部导航栏 -->
+  <view class="navbar">
+    <view class="nav-title-container">
+      <text class="nav-title">TDesign 组件库</text>
+      <text class="nav-subtitle">时间银行 UI 组件演示</text>
     </view>
   </view>
+
+  <!-- 内容区域 -->
+  <view class="content">
+    <!-- 欢迎卡片 -->
+    <view class="welcome-card">
+      <view class="welcome-header">
+        <t-avatar size="large" image="https://tdesign.gtimg.com/site/avatar.jpg" />
+        <view class="welcome-text">
+          <text class="welcome-title">欢迎使用 TDesign</text>
+          <text class="welcome-desc">腾讯企业级设计语言，为时间银行提供美观的UI组件</text>
+        </view>
+      </view>
+      <view class="welcome-actions">
+        <t-button theme="primary" size="small" bind:tap="showToast">开始体验</t-button>
+        <t-button theme="light" size="small" bind:tap="showDialog">了解更多</t-button>
+      </view>
+    </view>
+
+    <!-- 基础组件 -->
+    <view class="demo-section">
+      <view class="section-header">
+        <t-icon name="layers" size="32rpx" color="#165DFF" />
+        <text class="section-title">基础组件</text>
+      </view>
+      
+      <!-- 按钮组件 -->
+      <view class="demo-card">
+        <view class="card-header">
+          <text class="card-title">按钮 Button</text>
+          <t-tag theme="primary" size="small">基础</t-tag>
+        </view>
+        <view class="button-group">
+          <t-button theme="primary" size="large" bind:tap="onButtonTap">主要按钮</t-button>
+          <t-button theme="light" size="medium" bind:tap="onButtonTap">次要按钮</t-button>
+          <t-button theme="ghost" size="small" bind:tap="onButtonTap">幽灵按钮</t-button>
+          <t-button theme="danger" disabled>禁用按钮</t-button>
+        </view>
+      </view>
+
+      <!-- 输入框组件 -->
+      <view class="demo-card">
+        <view class="card-header">
+          <text class="card-title">输入框 Input</text>
+          <t-tag theme="success" size="small">表单</t-tag>
+        </view>
+        <view class="input-group">
+          <t-input placeholder="请输入您的姓名" label="姓名" bind:change="onInputChange" />
+          <t-input placeholder="请输入手机号" label="手机号" type="number" maxlength="11" bind:change="onInputChange" />
+          <t-input placeholder="请输入密码" label="密码" type="password" bind:change="onInputChange" />
+        </view>
+      </view>
+
+      <!-- 标签组件 -->
+      <view class="demo-card">
+        <view class="card-header">
+          <text class="card-title">标签 Tag</text>
+          <t-tag theme="warning" size="small">展示</t-tag>
+        </view>
+        <view class="tag-group">
+          <t-tag theme="primary">主要标签</t-tag>
+          <t-tag theme="success">成功标签</t-tag>
+          <t-tag theme="warning">警告标签</t-tag>
+          <t-tag theme="danger">危险标签</t-tag>
+          <t-tag theme="light">浅色标签</t-tag>
+          <t-tag theme="dark">深色标签</t-tag>
+        </view>
+      </view>
+    </view>
+
+    <!-- 数据展示组件 -->
+    <view class="demo-section">
+      <view class="section-header">
+        <t-icon name="chart" size="32rpx" color="#00A870" />
+        <text class="section-title">数据展示</text>
+      </view>
+
+      <!-- 头像组件 -->
+      <view class="demo-card">
+        <view class="card-header">
+          <text class="card-title">头像 Avatar</text>
+          <t-tag theme="info" size="small">展示</t-tag>
+        </view>
+        <view class="avatar-group">
+          <t-avatar size="large" image="https://tdesign.gtimg.com/site/avatar.jpg" />
+          <t-avatar size="medium">中</t-avatar>
+          <t-avatar size="small">小</t-avatar>
+          <t-avatar size="large" shape="round">圆</t-avatar>
+        </view>
+      </view>
+
+      <!-- 图标组件 -->
+      <view class="demo-card">
+        <view class="card-header">
+          <text class="card-title">图标 Icon</text>
+          <t-tag theme="success" size="small">展示</t-tag>
+        </view>
+        <view class="icon-group">
+          <view class="icon-item">
+            <t-icon name="user" size="48rpx" color="#165DFF" />
+            <text class="icon-label">用户</text>
+          </view>
+          <view class="icon-item">
+            <t-icon name="heart" size="48rpx" color="#ff6b6b" />
+            <text class="icon-label">喜欢</text>
+          </view>
+          <view class="icon-item">
+            <t-icon name="location" size="48rpx" color="#4dabf7" />
+            <text class="icon-label">位置</text>
+          </view>
+          <view class="icon-item">
+            <t-icon name="home" size="48rpx" color="#51cf66" />
+            <text class="icon-label">首页</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 进度条组件 -->
+      <view class="demo-card">
+        <view class="card-header">
+          <text class="card-title">进度条 Progress</text>
+          <t-tag theme="warning" size="small">展示</t-tag>
+        </view>
+        <view class="progress-group">
+          <t-progress percentage="{{30}}" theme="line" />
+          <t-progress percentage="{{60}}" theme="plump" />
+          <t-progress percentage="{{90}}" theme="circle" />
+        </view>
+      </view>
+    </view>
+
+    <!-- 反馈组件 -->
+    <view class="demo-section">
+      <view class="section-header">
+        <t-icon name="notification" size="32rpx" color="#ED7B2F" />
+        <text class="section-title">反馈组件</text>
+      </view>
+
+      <!-- 加载组件 -->
+      <view class="demo-card">
+        <view class="card-header">
+          <text class="card-title">加载 Loading</text>
+          <t-tag theme="primary" size="small">反馈</t-tag>
+        </view>
+        <view class="loading-group">
+          <view class="loading-item">
+            <t-loading theme="circular" size="40rpx" />
+            <text class="loading-label">圆形</text>
+          </view>
+          <view class="loading-item">
+            <t-loading theme="spinner" size="40rpx" />
+            <text class="loading-label">旋转</text>
+          </view>
+          <view class="loading-item">
+            <t-loading theme="dots" size="40rpx" />
+            <text class="loading-label">点状</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 开关组件 -->
+      <view class="demo-card">
+        <view class="card-header">
+          <text class="card-title">开关 Switch</text>
+          <t-tag theme="success" size="small">交互</t-tag>
+        </view>
+        <view class="switch-group">
+          <view class="switch-item">
+            <text class="switch-label">消息推送</text>
+            <t-switch defaultValue="{{true}}" bind:change="onSwitchChange" />
+          </view>
+          <view class="switch-item">
+            <text class="switch-label">自动更新</text>
+            <t-switch defaultValue="{{false}}" bind:change="onSwitchChange" />
+          </view>
+          <view class="switch-item">
+            <text class="switch-label">夜间模式</text>
+            <t-switch defaultValue="{{false}}" bind:change="onSwitchChange" />
+          </view>
+        </view>
+      </view>
+
+      <!-- 评分组件 -->
+      <view class="demo-card">
+        <view class="card-header">
+          <text class="card-title">评分 Rate</text>
+          <t-tag theme="warning" size="small">交互</t-tag>
+        </view>
+        <view class="rate-group">
+          <t-rate defaultValue="{{4}}" bind:change="onRateChange" />
+          <text class="rate-text">当前评分：{{currentRate}} 星</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 导航组件 -->
+    <view class="demo-section">
+      <view class="section-header">
+        <t-icon name="menu" size="32rpx" color="#722ED1" />
+        <text class="section-title">导航组件</text>
+      </view>
+
+      <!-- 步骤条组件 -->
+      <view class="demo-card">
+        <view class="card-header">
+          <text class="card-title">步骤条 Steps</text>
+          <t-tag theme="info" size="small">导航</t-tag>
+        </view>
+        <t-steps current="{{1}}" direction="horizontal">
+          <t-step-item title="步骤一" content="完成注册" />
+          <t-step-item title="步骤二" content="验证身份" />
+          <t-step-item title="步骤三" content="开始使用" />
+        </t-steps>
+      </view>
+
+      <!-- 单元格组件 -->
+      <view class="demo-card">
+        <view class="card-header">
+          <text class="card-title">单元格 Cell</text>
+          <t-tag theme="success" size="small">导航</t-tag>
+        </view>
+        <t-cell-group>
+          <t-cell title="个人设置" note="管理您的个人信息" leftIcon="user" arrow bind:click="onCellClick" />
+          <t-cell title="消息通知" note="推送设置" rightIcon="notification" bind:click="onCellClick" />
+          <t-cell title="关于我们" note="了解更多信息" leftIcon="info-circle" arrow bind:click="onCellClick" />
+        </t-cell-group>
+      </view>
+    </view>
+
+    <!-- 底部间距 -->
+    <view class="bottom-spacing"></view>
+  </view>
+
+  <!-- Toast 提示 -->
+  <t-toast id="t-toast" />
+  
+  <!-- Dialog 对话框 -->
+  <t-dialog id="t-dialog" />
 </view>
 

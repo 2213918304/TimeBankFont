@@ -1,9 +1,9 @@
-/* 聊天页面 - 纯TDesign风格 */
+/* 聊天页面 - 老人端简约橙色风格 */
 
 .page {
   width: 100%;
   height: 100vh;
-  background: #f8f8f8;
+  background: #FFF8E1;
   display: flex;
   flex-direction: column;
 }
@@ -13,7 +13,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  background: #f8f8f8;
+  background: #FFF8E1;
   position: relative;
   height: calc(100vh - calc(120rpx + env(safe-area-inset-top)) - 120rpx);
 }
@@ -23,21 +23,23 @@
   flex: 1;
   padding: 24rpx 16rpx 200rpx 16rpx;
   overflow-y: auto;
-  background: #f8f8f8;
+  background: #FFF8E1;
 }
 
 /* 消息项 */
 .message-item {
-  margin-bottom: 32rpx;
+  margin-bottom: 24rpx;
+  padding: 0 8rpx;
 }
 
 /* 聊天消息容器 */
 .chat-message {
   display: flex;
   align-items: flex-start;
-  gap: 12rpx;
+  gap: 16rpx;
   max-width: 100%;
-  padding: 0 8rpx;
+  padding: 0;
+  margin-bottom: 8rpx;
 }
 
 .chat-message.user {
@@ -49,12 +51,14 @@
   width: 64rpx !important;
   height: 64rpx !important;
   flex-shrink: 0;
-  margin-top: 4rpx;
+  margin-top: 8rpx;
+  z-index: 10;
+  position: relative;
 }
 
 /* 聊天气泡 */
 .chat-bubble {
-  max-width: 480rpx;
+  max-width: 420rpx;
   padding: 16rpx 20rpx;
   border-radius: 12rpx;
   font-size: 28rpx;
@@ -62,30 +66,35 @@
   word-wrap: break-word;
   box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.06);
   position: relative;
-  margin: 0 4rpx;
+  margin: 0;
+  flex: 1;
 }
 
 /* AI消息气泡 */
 .chat-bubble.ai {
+  margin-left: 25px;
   background: #ffffff;
   color: #1f2329;
-  border: 1rpx solid #e7e7e7;
+  border: 1rpx solid #FFE0B2;
   border-radius: 12rpx 12rpx 12rpx 4rpx;
+  box-shadow: 0 2rpx 8rpx rgba(255, 138, 101, 0.1);
 }
 
 /* 用户消息气泡 */
 .chat-bubble.user {
-  background: #0052d9;
+  background: #FF8A65;
   color: white;
   border-radius: 12rpx 12rpx 4rpx 12rpx;
   border: none;
+  box-shadow: 0 2rpx 8rpx rgba(255, 138, 101, 0.2);
 }
 
 /* 输入中气泡 */
 .chat-bubble.typing {
   background: #ffffff;
-  border: 1rpx solid #e7e7e7;
+  border: 1rpx solid #FFE0B2;
   padding: 28rpx;
+  box-shadow: 0 2rpx 8rpx rgba(255, 138, 101, 0.1);
 }
 
 /* 输入中动画点 */
@@ -100,7 +109,7 @@
   width: 12rpx;
   height: 12rpx;
   border-radius: 50%;
-  background: #bbbfc4;
+  background: #FF8A65;
   animation: typing 1.4s infinite ease-in-out;
 }
 
@@ -116,9 +125,9 @@
   right: 0;
   z-index: 999;
   background: #ffffff;
-  border-top: 1rpx solid #e7e7e7;
+  border-top: 1rpx solid #FFE0B2;
   padding: 16rpx;
-  box-shadow: 0 -2rpx 8rpx rgba(0, 0, 0, 0.08);
+  box-shadow: 0 -2rpx 8rpx rgba(255, 138, 101, 0.1);
 }
 
 /* 输入容器 */
@@ -138,7 +147,7 @@
 .chat-input .t-input .t-input__wrap,
 .chat-input .t-input .t-input__inner {
   border-radius: 32rpx !important;
-  border: 2rpx solid #0052d9 !important;
+  border: 2rpx solid #FF8A65 !important;
   background: #ffffff !important;
   height: 72rpx !important;
   box-sizing: border-box !important;
@@ -173,9 +182,9 @@
 }
 
 .chat-input .t-input:focus-within {
-  border-color: #0052d9 !important;
+  border-color: #FF8A65 !important;
   background: #ffffff !important;
-  box-shadow: 0 0 0 2rpx rgba(0, 82, 217, 0.2) !important;
+  box-shadow: 0 0 0 2rpx rgba(255, 138, 101, 0.2) !important;
 }
 
 /* 确保输入框内文字显示清晰 */
@@ -206,27 +215,27 @@
 }
 
 .voice-button {
-  background: #f8f8f8 !important;
-  color: #5e6266 !important;
-  border: 1rpx solid #e7e7e7 !important;
+  background: #FFE0B2 !important;
+  color: #FF8A65 !important;
+  border: 1rpx solid #FFCC80 !important;
 }
 
 .voice-button:active {
-  background: #e7e7e7 !important;
+  background: #FFCC80 !important;
 }
 
 .send-btn {
-  background: #0052d9 !important;
+  background: #FF8A65 !important;
   color: white !important;
   border: none !important;
 }
 
 .send-btn:active {
-  background: #003ba8 !important;
+  background: #FF7043 !important;
 }
 
 .send-btn:disabled {
-  background: #bbbfc4 !important;
+  background: #FFCC80 !important;
   color: white !important;
 }
 
@@ -257,8 +266,17 @@
 /* 响应式设计 */
 @media (max-width: 750rpx) {
   .chat-bubble {
-    max-width: 480rpx;
+    max-width: 380rpx;
     font-size: 26rpx;
+  }
+  
+  .chat-avatar {
+    width: 56rpx !important;
+    height: 56rpx !important;
+  }
+  
+  .chat-message {
+    gap: 12rpx;
   }
   
   .voice-button,

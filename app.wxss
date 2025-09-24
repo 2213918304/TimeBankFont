@@ -210,6 +210,136 @@ view, text, image, button {
 .justify-center { justify-content: center; }
 .justify-between { justify-content: space-between; }
 
+/* TDesign 主题样式 */
+/* 自定义主题色彩 */
+:root {
+  --td-brand-color: #165DFF;
+  --td-brand-color-light: #4080FF;
+  --td-brand-color-focus: #0E42D2;
+  --td-success-color: #00A870;
+  --td-warning-color: #ED7B2F;
+  --td-error-color: #D54941;
+  --td-info-color: #0594FA;
+}
+
+/* TDesign 组件样式覆盖 */
+.t-button--primary {
+  background: linear-gradient(135deg, var(--td-brand-color) 0%, #722ED1 100%);
+  border: none;
+  box-shadow: 0 4rpx 12rpx rgba(22, 93, 255, 0.3);
+}
+
+.t-button--primary:active {
+  background: linear-gradient(135deg, var(--td-brand-color-focus) 0%, #5A1A9B 100%);
+  transform: translateY(2rpx);
+}
+
+.t-input {
+  border-radius: 12rpx;
+  border: 2rpx solid #e5e5e5;
+  transition: all 0.3s ease;
+}
+
+.t-input:focus {
+  border-color: var(--td-brand-color);
+  box-shadow: 0 0 0 4rpx rgba(22, 93, 255, 0.1);
+}
+
+.t-cell {
+  border-radius: 12rpx;
+  margin-bottom: 8rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.04);
+}
+
+.t-tag {
+  border-radius: 20rpx;
+  font-weight: 500;
+}
+
+.t-avatar {
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.1);
+}
+
+.t-card {
+  border-radius: 16rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+.t-dialog {
+  border-radius: 16rpx;
+  overflow: hidden;
+}
+
+.t-toast {
+  border-radius: 12rpx;
+  backdrop-filter: blur(10rpx);
+}
+
+/* 时间银行主题色彩 */
+.elderly-theme {
+  --td-brand-color: #FF8A65;
+  --td-brand-color-light: #FFAB91;
+  --td-brand-color-focus: #FF7043;
+  --elderly-primary: #FF8A65;
+  --elderly-secondary: #FF7043;
+  --elderly-accent: #FF5722;
+  --elderly-light: #FFE0B2;
+  --elderly-lighter: #FFF3E0;
+  --elderly-background: #FFF8E1;
+  --elderly-text: #E65100;
+  --elderly-text-light: #FF6F00;
+}
+
+.family-theme {
+  --td-brand-color: #165DFF;
+  --td-brand-color-light: #4080FF;
+  --td-brand-color-focus: #0E42D2;
+}
+
+/* 老人端全局样式 - 简约版 */
+.elderly-page {
+  --elderly-primary: #FF8A65;
+  --elderly-secondary: #FF7043;
+  --elderly-accent: #FF5722;
+  --elderly-light: #FFE0B2;
+  --elderly-lighter: #FFF3E0;
+  --elderly-background: #FFF8E1;
+  --elderly-text: #E65100;
+  --elderly-text-light: #FF6F00;
+}
+
+/* 老人端简约卡片样式 */
+.elderly-card {
+  background: white;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin-bottom: 20rpx;
+  border: 1rpx solid #FFE0B2;
+  box-shadow: 0 2rpx 8rpx rgba(255, 138, 101, 0.1);
+}
+
+.elderly-button {
+  background: #FF8A65;
+  color: white;
+  border: none;
+  border-radius: 12rpx;
+  padding: 16rpx 24rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+  box-shadow: 0 2rpx 8rpx rgba(255, 138, 101, 0.2);
+}
+
+.elderly-button-secondary {
+  background: #FFE0B2;
+  color: #FF8A65;
+  border: 1rpx solid #FFCC80;
+  border-radius: 12rpx;
+  padding: 16rpx 24rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+}
+
 /* 响应式 */
 @media (max-width: 750rpx) {
   .container {
