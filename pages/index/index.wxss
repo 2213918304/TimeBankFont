@@ -224,6 +224,7 @@
 }
 
 .elderly-welcome {
+  margin-left: 100rpx;
   font-size: 52rpx;
   font-weight: 700;
   display: block;
@@ -232,6 +233,7 @@
 }
 
 .elderly-subtitle {
+  margin-left: 50rpx;
   font-size: 36rpx;
   opacity: 0.9;
   display: block;

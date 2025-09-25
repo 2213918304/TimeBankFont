@@ -257,7 +257,7 @@
 }
 
 .stat-card {
-  background: linear-gradient(135deg, #ffffff 0%, #f8faff 50%, #f0f8ff 100%);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border-radius: 24rpx;
   padding: 40rpx 32rpx;
   text-align: center;
@@ -270,7 +270,7 @@
 }
 
 .stat-card.elderly {
-  background: linear-gradient(135deg, #ffffff 0%, #fff8f5 50%, #fff5f0 100%);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2c7 100%);
   border: 2rpx solid rgba(255, 138, 101, 0.1);
   box-shadow: 
     0 8rpx 32rpx rgba(255, 138, 101, 0.08),
@@ -286,7 +286,7 @@
 .stat-number {
   font-size: 64rpx;
   font-weight: 800;
-  background: linear-gradient(135deg, #165DFF 0%, #722ED1 100%);
+  background: linear-gradient(135deg, #ffffff 100%, #722ED1 0%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -297,7 +297,7 @@
 
 .stat-card.elderly .stat-number {
   font-size: 72rpx;
-  background: linear-gradient(135deg, #FF8A65 0%, #FF5722 100%);
+  background: white;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
