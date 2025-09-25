@@ -1,9 +1,9 @@
-/* 监控页面样式 - 现代化美化版本 */
+/* 监控页面 - 低饱和蓝色系简约风格 */
 
 .page {
   width: 100%;
   height: 100vh;
-  background: linear-gradient(180deg, #f8faff 0%, #f0f8ff 50%, #e6f3ff 100%);
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -12,7 +12,7 @@
 /* 内容区域 */
 .content {
   flex: 1;
-  padding: 40rpx 40rpx 90rpx 40rpx;
+  padding: 20rpx;
   box-sizing: border-box;
 }
 
@@ -22,17 +22,13 @@
 .safety-card,
 .activity-card,
 .emergency-card {
-  background: linear-gradient(145deg, #ffffff 0%, #fafbff 50%, #f5f8ff 100%);
-  border-radius: 32rpx;
-  padding: 40rpx;
-  margin-bottom: 32rpx;
-  border: 2rpx solid transparent;
-  background-clip: padding-box;
-  box-shadow: 
-    0 20rpx 60rpx rgba(22, 93, 255, 0.08),
-    0 8rpx 32rpx rgba(114, 46, 209, 0.06),
-    0 4rpx 16rpx rgba(0, 0, 0, 0.04),
-    inset 0 2rpx 0 rgba(255, 255, 255, 0.9);
+  background: white;
+  border-radius: 16rpx;
+  padding: 20rpx;
+  margin-bottom: 16rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.06);
+  border: 1rpx solid #f0f4f8;
+  transition: all 0.2s ease;
   position: relative;
   overflow: hidden;
   box-sizing: border-box;
@@ -64,241 +60,196 @@
 
 /* 卡片标题 */
 .card-title {
-  font-size: 36rpx;
-  font-weight: 700;
-  color: #1f2937;
-  margin-bottom: 32rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #1565c0;
+  margin-bottom: 20rpx;
   display: flex;
   align-items: center;
-  gap: 16rpx;
+  gap: 8rpx;
   position: relative;
-}
-
-.card-title::after {
-  content: '';
-  flex: 1;
-  height: 2rpx;
-  background: linear-gradient(90deg, rgba(22, 93, 255, 0.2), transparent);
-  margin-left: 16rpx;
 }
 
 /* 健康状态卡片 */
 .health-status-card {
-  background: linear-gradient(145deg, #ffffff 0%, #f0fdf4 30%, #ecfdf5 70%, #ffffff 100%);
-  border: 3rpx solid rgba(34, 197, 94, 0.1);
+  background: white;
+  border: 1rpx solid #f0f4f8;
 }
 
 .health-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 24rpx;
+  gap: 16rpx;
 }
 
 .health-item {
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 24rpx;
-  padding: 32rpx;
+  background: #f8fafc;
+  border-radius: 12rpx;
+  padding: 20rpx;
   text-align: center;
-  border: 2rpx solid rgba(34, 197, 94, 0.1);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
-}
-
-.health-item::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(34, 197, 94, 0.05), rgba(16, 185, 129, 0.03));
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  border: 1rpx solid #e2e8f0;
+  transition: all 0.2s ease;
 }
 
 .health-item:active {
-  transform: translateY(-4rpx) scale(1.02);
-  box-shadow: 
-    0 16rpx 32rpx rgba(34, 197, 94, 0.15),
-    0 8rpx 16rpx rgba(0, 0, 0, 0.08);
-}
-
-.health-item:active::before {
-  opacity: 1;
+  transform: translateY(-2rpx);
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
 }
 
 .health-value {
-  font-size: 48rpx;
-  font-weight: 800;
-  margin-bottom: 12rpx;
-  position: relative;
-  z-index: 1;
+  font-size: 36rpx;
+  font-weight: 700;
+  margin-bottom: 8rpx;
+  color: #1565c0;
 }
 
 .health-value.healthy {
-  color: #22c55e;
-  text-shadow: 0 4rpx 8rpx rgba(34, 197, 94, 0.2);
+  color: #1565c0;
 }
 
 .health-value.normal {
-  color: #3b82f6;
-  text-shadow: 0 4rpx 8rpx rgba(59, 130, 246, 0.2);
+  color: #5d7c9a;
 }
 
 .health-value.warning {
-  color: #f59e0b;
-  text-shadow: 0 4rpx 8rpx rgba(245, 158, 11, 0.2);
+  color: #8b9dc3;
 }
 
 .health-label {
-  font-size: 24rpx;
-  color: #6b7280;
+  font-size: 22rpx;
+  color: #8b9dc3;
   font-weight: 500;
-  position: relative;
-  z-index: 1;
 }
 
 /* 位置信息卡片 */
 .location-card {
-  background: linear-gradient(145deg, #ffffff 0%, #eff6ff 30%, #dbeafe 70%, #ffffff 100%);
-  border: 3rpx solid rgba(59, 130, 246, 0.1);
+  background: white;
+  border: 1rpx solid #f0f4f8;
 }
 
 .location-info {
-  margin-bottom: 32rpx;
+  margin-bottom: 20rpx;
 }
 
 .location-status {
-  font-size: 32rpx;
+  font-size: 26rpx;
   font-weight: 600;
-  color: #1f2937;
-  margin-bottom: 16rpx;
+  color: #1565c0;
+  margin-bottom: 12rpx;
   display: flex;
   align-items: center;
-  gap: 12rpx;
+  gap: 8rpx;
 }
 
 .location-address {
-  font-size: 28rpx;
-  color: #4b5563;
+  font-size: 24rpx;
+  color: #5d7c9a;
   line-height: 1.5;
-  margin-bottom: 12rpx;
-  padding: 16rpx;
-  background: rgba(59, 130, 246, 0.05);
-  border-radius: 16rpx;
-  border-left: 4rpx solid #3b82f6;
+  margin-bottom: 8rpx;
 }
 
 .location-time {
-  font-size: 24rpx;
-  color: #9ca3af;
-  font-style: italic;
+  font-size: 22rpx;
+  color: #8b9dc3;
 }
 
 .location-btn {
   width: 100%;
-  padding: 24rpx;
-  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-  color: white;
-  border: none;
-  border-radius: 20rpx;
-  font-size: 28rpx;
+  padding: 16rpx;
+  background: #f8fafc;
+  color: #1565c0;
+  border: 1rpx solid #b3e5fc;
+  border-radius: 12rpx;
+  font-size: 24rpx;
   font-weight: 600;
-  box-shadow: 
-    0 12rpx 24rpx rgba(59, 130, 246, 0.3),
-    0 6rpx 12rpx rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 .location-btn:active {
-  transform: translateY(-2rpx);
-  box-shadow: 
-    0 16rpx 32rpx rgba(59, 130, 246, 0.4),
-    0 8rpx 16rpx rgba(0, 0, 0, 0.15);
+  transform: translateY(-1rpx);
+  background: #e0f2fe;
 }
 
 /* 安全状态卡片 */
 .safety-card {
-  background: linear-gradient(145deg, #ffffff 0%, #fefce8 30%, #fef3c7 70%, #ffffff 100%);
-  border: 3rpx solid rgba(245, 158, 11, 0.1);
+  background: white;
+  border: 1rpx solid #f0f4f8;
 }
 
 .safety-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 24rpx;
+  gap: 16rpx;
 }
 
 .safety-item {
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 24rpx;
-  padding: 32rpx 24rpx;
+  background: #f8fafc;
+  border-radius: 12rpx;
+  padding: 20rpx;
   text-align: center;
-  border: 2rpx solid transparent;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
+  border: 1rpx solid #e2e8f0;
+  transition: all 0.2s ease;
 }
 
 .safety-item.safe {
-  border-color: rgba(34, 197, 94, 0.2);
-  background: linear-gradient(135deg, rgba(34, 197, 94, 0.05), rgba(255, 255, 255, 0.9));
+  border-color: #b3e5fc;
+  background: #f8fafc;
 }
 
 .safety-item.normal {
-  border-color: rgba(59, 130, 246, 0.2);
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(255, 255, 255, 0.9));
+  border-color: #e2e8f0;
+  background: #f8fafc;
 }
 
 .safety-item.warning {
-  border-color: rgba(245, 158, 11, 0.2);
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.05), rgba(255, 255, 255, 0.9));
+  border-color: #e2e8f0;
+  background: #f8fafc;
 }
 
 .safety-item:active {
-  transform: translateY(-4rpx) scale(1.02);
+  transform: translateY(-2rpx);
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
 }
 
 .safety-icon {
-  font-size: 48rpx;
-  margin-bottom: 16rpx;
+  font-size: 36rpx;
+  margin-bottom: 12rpx;
   display: block;
-  filter: drop-shadow(0 4rpx 8rpx rgba(0, 0, 0, 0.1));
 }
 
 .safety-label {
-  font-size: 24rpx;
-  color: #6b7280;
-  margin-bottom: 12rpx;
+  font-size: 22rpx;
+  color: #5d7c9a;
+  margin-bottom: 8rpx;
   font-weight: 500;
 }
 
 .safety-value {
-  font-size: 28rpx;
-  font-weight: 700;
+  font-size: 24rpx;
+  font-weight: 600;
+  color: #1565c0;
 }
 
 .safety-item.safe .safety-value {
-  color: #22c55e;
+  color: #1565c0;
 }
 
 .safety-item.normal .safety-value {
-  color: #3b82f6;
+  color: #5d7c9a;
 }
 
 .safety-item.warning .safety-value {
-  color: #f59e0b;
+  color: #8b9dc3;
 }
 
 .safety-item.danger .safety-value {
-  color: #ef4444;
+  color: #8b9dc3;
 }
 
 /* 活动时间线卡片 */
 .activity-card {
-  background: linear-gradient(145deg, #ffffff 0%, #f3e8ff 30%, #e9d5ff 70%, #ffffff 100%);
-  border: 3rpx solid rgba(147, 51, 234, 0.1);
+  background: white;
+  border: 1rpx solid #f0f4f8;
 }
 
 .activity-timeline {
@@ -308,19 +259,19 @@
 .activity-timeline::before {
   content: '';
   position: absolute;
-  left: 40rpx;
-  top: 80rpx;
-  bottom: 80rpx;
-  width: 4rpx;
-  background: linear-gradient(180deg, #9333ea, #7c3aed, #6d28d9);
-  border-radius: 2rpx;
+  left: 30rpx;
+  top: 60rpx;
+  bottom: 60rpx;
+  width: 2rpx;
+  background: #e2e8f0;
+  border-radius: 1rpx;
 }
 
 .activity-item {
   display: flex;
   align-items: flex-start;
-  gap: 32rpx;
-  margin-bottom: 40rpx;
+  gap: 20rpx;
+  margin-bottom: 24rpx;
   position: relative;
 }
 
@@ -329,93 +280,98 @@
 }
 
 .activity-icon {
-  width: 80rpx;
-  height: 80rpx;
+  width: 60rpx;
+  height: 60rpx;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 32rpx;
-  color: white;
-  font-weight: 600;
+  font-size: 28rpx;
+  background: #f8fafc;
+  border: 2rpx solid #e2e8f0;
   position: relative;
   z-index: 2;
-  box-shadow: 0 8rpx 16rpx rgba(0, 0, 0, 0.15);
 }
 
 .activity-icon.sunrise {
-  background: linear-gradient(135deg, #f59e0b, #d97706);
+  background: #f8fafc;
+  border-color: #b3e5fc;
 }
 
 .activity-icon.cooking {
-  background: linear-gradient(135deg, #ef4444, #dc2626);
+  background: #f8fafc;
+  border-color: #b3e5fc;
 }
 
 .activity-icon.exercise {
-  background: linear-gradient(135deg, #22c55e, #16a34a);
+  background: #f8fafc;
+  border-color: #b3e5fc;
 }
 
 .activity-icon.shopping {
-  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  background: #f8fafc;
+  border-color: #b3e5fc;
 }
 
 .activity-content {
   flex: 1;
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 20rpx;
-  padding: 24rpx;
-  border: 2rpx solid rgba(147, 51, 234, 0.1);
+  background: #f8fafc;
+  border-radius: 12rpx;
+  padding: 16rpx;
+  border: 1rpx solid #e2e8f0;
 }
 
 .activity-text {
-  font-size: 28rpx;
-  color: #1f2937;
-  margin-bottom: 8rpx;
+  font-size: 24rpx;
+  color: #1565c0;
+  margin-bottom: 6rpx;
   font-weight: 500;
   line-height: 1.4;
 }
 
 .activity-time {
-  font-size: 24rpx;
-  color: #9333ea;
-  font-weight: 600;
+  font-size: 22rpx;
+  color: #8b9dc3;
+  font-weight: 500;
 }
 
 /* 紧急联系卡片 */
 .emergency-card {
-  background: linear-gradient(145deg, #ffffff 0%, #fef2f2 30%, #fee2e2 70%, #ffffff 100%);
-  border: 3rpx solid rgba(239, 68, 68, 0.1);
+  background: white;
+  border: 1rpx solid #f0f4f8;
 }
 
 .emergency-buttons {
   display: flex;
-  gap: 24rpx;
-  margin-bottom: 32rpx;
+  gap: 16rpx;
+  margin-bottom: 20rpx;
 }
 
 .emergency-btn {
   flex: 1;
-  padding: 24rpx;
-  border: none;
-  border-radius: 20rpx;
-  font-size: 28rpx;
+  padding: 16rpx;
+  border: 1rpx solid #b3e5fc;
+  border-radius: 12rpx;
+  font-size: 24rpx;
   font-weight: 600;
-  color: white;
-  transition: all 0.3s ease;
-  box-shadow: 0 8rpx 16rpx rgba(0, 0, 0, 0.1);
+  color: #1565c0;
+  background: #f8fafc;
+  transition: all 0.2s ease;
 }
 
 .emergency-btn.call {
-  background: linear-gradient(135deg, #ef4444, #dc2626);
+  background: #f8fafc;
+  color: #1565c0;
 }
 
 .emergency-btn.sms {
-  background: linear-gradient(135deg, #f59e0b, #d97706);
+  background: #f8fafc;
+  color: #1565c0;
 }
 
 .emergency-btn:active {
-  transform: translateY(-2rpx);
-  box-shadow: 0 12rpx 24rpx rgba(0, 0, 0, 0.15);
+  transform: translateY(-1rpx);
+  background: #e0f2fe;
 }
 
 .emergency-contacts {

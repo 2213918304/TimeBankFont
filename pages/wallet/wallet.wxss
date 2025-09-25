@@ -1,8 +1,9 @@
+/* 时间币页面 - 低饱和蓝色系简约风格 */
 .page {
   width: 100vw;
   height: 100vh;
   max-width: 100vw;
-  background: #ffffff;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
@@ -86,48 +87,62 @@
 
 /* 余额卡片 */
 .balance-card {
-  border-radius: 48rpx;
-  padding: 64rpx 56rpx;
-  margin-bottom: 48rpx;
+  border-radius: 24rpx;
+  padding: 40rpx 32rpx;
+  margin-bottom: 24rpx;
   text-align: center;
+  background: white;
+  box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.12), 0 4rpx 16rpx rgba(0, 0, 0, 0.08);
+  border: 1rpx solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.balance-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  pointer-events: none;
 }
 
 .balance-card.family {
-  background: linear-gradient(135deg, #165DFF 0%, #722ED1 50%, #EB2F96 100%);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
-  box-shadow: 
-    0 48rpx 128rpx rgba(22, 93, 255, 0.3),
-    0 24rpx 64rpx rgba(114, 46, 209, 0.2),
-    0 8rpx 32rpx rgba(0, 0, 0, 0.1),
-    inset 0 4rpx 0 rgba(255, 255, 255, 0.2);
+  box-shadow: 0 12rpx 40rpx rgba(102, 126, 234, 0.25), 0 6rpx 20rpx rgba(118, 75, 162, 0.15);
 }
 
 .balance-card.elderly {
-  background: linear-gradient(135deg, #FF8A65 0%, #FF7043 50%, #FF5722 100%);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
-  box-shadow: 
-    0 48rpx 128rpx rgba(255, 138, 101, 0.3),
-    0 24rpx 64rpx rgba(255, 112, 67, 0.2),
-    0 8rpx 32rpx rgba(0, 0, 0, 0.1),
-    inset 0 4rpx 0 rgba(255, 255, 255, 0.2);
+  box-shadow: 0 12rpx 40rpx rgba(102, 126, 234, 0.25), 0 6rpx 20rpx rgba(118, 75, 162, 0.15);
 }
 
 .balance-number {
-  font-size: 96rpx;
+  font-size: 72rpx;
   font-weight: 800;
   margin-bottom: 16rpx;
-  text-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.2);
+  color: white;
+  text-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.2);
+  letter-spacing: -2rpx;
+  line-height: 1;
 }
 
 .balance-label {
-  font-size: 36rpx;
-  opacity: 0.9;
-  margin-bottom: 16rpx;
+  font-size: 32rpx;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 8rpx;
+  font-weight: 600;
+  text-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.15);
 }
 
 .balance-subtitle {
-  font-size: 28rpx;
-  opacity: 0.7;
+  font-size: 26rpx;
+  color: rgba(255, 255, 255, 0.8);
+  text-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.15);
 }
 
 /* 操作按钮 */
@@ -198,24 +213,26 @@
 }
 
 .action-btn {
-  padding: 32rpx;
+  padding: 24rpx;
   border-radius: 16rpx;
-  font-size: 28rpx;
-  font-weight: 500;
+  font-size: 26rpx;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease;
-  border: none;
+  background: white;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.08);
+  border: 1rpx solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
 }
 
 .action-btn.primary {
-  background: #165DFF;
-  color: white;
+  background: linear-gradient(135deg, #e0f2fe 0%, #b3e5fc 100%);
+  color: #1565c0;
 }
 
 .action-btn.outline {
-  background: transparent;
-  border: 2rpx solid #165DFF;
-  color: #165DFF;
+  background: #f8fafc;
+  border: 1rpx solid #b3e5fc;
+  color: #1565c0;
 }
 
 .action-btn.full {
@@ -513,9 +530,9 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-top: 30rpx;
-  padding-top: 30rpx;
-  border-top: 2rpx solid rgba(255, 255, 255, 0.2);
+  margin-top: 32rpx;
+  padding-top: 32rpx;
+  border-top: 2rpx solid rgba(255, 255, 255, 0.25);
 }
 
 .stat-item {
@@ -524,33 +541,36 @@
 }
 
 .stat-value {
-  font-size: 32rpx;
+  font-size: 36rpx;
   font-weight: 700;
-  color: inherit;
+  color: white;
   margin-bottom: 8rpx;
+  text-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.15);
 }
 
 .stat-label {
   font-size: 24rpx;
-  opacity: 0.8;
-  color: inherit;
+  color: rgba(255, 255, 255, 0.8);
+  text-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.15);
 }
 
 .stat-divider {
   width: 2rpx;
   height: 60rpx;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.3);
 }
 
 /* 冻结金额提示 */
 .frozen-amount {
-  margin-top: 16rpx;
-  padding: 8rpx 16rpx;
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 12rpx;
+  margin-top: 20rpx;
+  padding: 12rpx 20rpx;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16rpx;
   font-size: 24rpx;
   text-align: center;
-  border: 2rpx solid rgba(255, 255, 255, 0.2);
+  border: 2rpx solid rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.15);
 }
 
 /* 空状态 */

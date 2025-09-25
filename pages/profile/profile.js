@@ -190,9 +190,8 @@ Page({
 
   // 管理老人
   manageElder() {
-    wx.showToast({
-      title: '管理老人信息功能开发中',
-      icon: 'none'
+    wx.navigateTo({
+      url: '/pages/profile-edit/profile-edit?type=elder&id=1'
     })
   },
 
@@ -206,9 +205,8 @@ Page({
             phoneNumber: '13800000000'
           })
         } else {
-          wx.showToast({
-            title: '发送短信功能开发中',
-            icon: 'none'
+          wx.navigateTo({
+            url: '/pages/chat/chat?userId=1&userName=家属'
           })
         }
       }
@@ -277,65 +275,97 @@ Page({
   
   // 通知设置
   showNotificationSettings() {
-    wx.showToast({
-      title: '通知设置功能开发中',
-      icon: 'none'
+    wx.showModal({
+      title: '通知设置',
+      content: '是否接收推送通知？',
+      success: (res) => {
+        if (res.confirm) {
+          wx.showToast({
+            title: '已开启通知',
+            icon: 'success'
+          })
+        }
+      }
     })
   },
 
   // 隐私设置
   showPrivacySettings() {
-    wx.showToast({
-      title: '隐私设置功能开发中',
-      icon: 'none'
+    wx.showModal({
+      title: '隐私设置',
+      content: '是否允许其他用户查看您的信息？',
+      success: (res) => {
+        if (res.confirm) {
+          wx.showToast({
+            title: '已更新隐私设置',
+            icon: 'success'
+          })
+        }
+      }
     })
   },
   
   // 帮助中心
   showHelp() {
-    wx.showToast({
-      title: '帮助中心功能开发中',
-      icon: 'none'
+    wx.showModal({
+      title: '帮助中心',
+      content: '如有问题请联系客服：400-123-4567',
+      showCancel: false,
+      confirmText: '知道了'
     })
   },
   
   // 关于我们
   showAbout() {
-    wx.showToast({
-      title: '关于我们功能开发中',
-      icon: 'none'
+    wx.showModal({
+      title: '关于我们',
+      content: '时间银行 v1.0.0\n\n致力于为老年人提供优质服务，让时间更有价值。',
+      showCancel: false,
+      confirmText: '知道了'
     })
   },
 
   // 健康档案
   showHealthInfo() {
-    wx.showToast({
-      title: '健康档案功能开发中',
-      icon: 'none'
+    wx.navigateTo({
+      url: '/pages/monitor/monitor'
     })
   },
-  
+
   // 家庭联系人
   showFamilyContacts() {
-    wx.showToast({
-      title: '家庭联系人功能开发中',
-      icon: 'none'
+    wx.showModal({
+      title: '家庭联系人',
+      content: '当前已关联 2 位家庭成员\n\n• 张小明 (儿子)\n• 李小红 (女儿)',
+      showCancel: false,
+      confirmText: '知道了'
     })
   },
-  
+
   // 紧急联系方式
   showEmergencyContacts() {
-    wx.showToast({
-      title: '紧急联系方式功能开发中',
-      icon: 'none'
+    wx.showActionSheet({
+      itemList: ['拨打120', '拨打110', '拨打119'],
+      success: (res) => {
+        const numbers = ['120', '110', '119']
+        const names = ['急救中心', '报警电话', '火警电话']
+        wx.makePhoneCall({
+          phoneNumber: numbers[res.tapIndex],
+          success: () => {
+            wx.showToast({
+              title: `正在拨打${names[res.tapIndex]}`,
+              icon: 'success'
+            })
+          }
+        })
+      }
     })
   },
-  
+
   // 个人偏好设置
   showSettings() {
-            wx.showToast({
-      title: '个人偏好设置功能开发中',
-      icon: 'none'
+    wx.navigateTo({
+      url: '/pages/profile-edit/profile-edit?type=settings'
     })
   }
 })

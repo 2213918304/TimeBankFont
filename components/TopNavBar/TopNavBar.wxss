@@ -4,7 +4,7 @@
   position: relative;
   width: 100%;
   height: calc(180rpx + env(safe-area-inset-top)) !important;
-  padding-top: calc(env(safe-area-inset-top) + 100rpx) !important;
+  padding-top: calc(env(safe-area-inset-top) + 35rpx) !important;
   padding-bottom: 20rpx;
   padding-left: 24rpx;
   padding-right: 24rpx;

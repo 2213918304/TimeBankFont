@@ -55,20 +55,20 @@
           充值时间币
         </t-button>
         <t-button 
-          theme="default" 
+          theme="primary" 
           variant="outline" 
           size="large" 
-          class="action-btn outline equal-width"
+          class="action-btn primary equal-width"
           bind:tap="goToGifts"
         >
           <t-icon name="gift" size="24rpx" />
           兑换礼品
         </t-button>
         <t-button 
-          theme="default" 
+          theme="primary" 
           variant="outline" 
           size="large" 
-          class="action-btn outline equal-width"
+          class="action-btn primary equal-width"
           bind:tap="showTransactionHistory"
         >
           <t-icon name="chart-bar" size="24rpx" />

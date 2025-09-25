@@ -32,17 +32,19 @@
 
 .profile-header {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: 32rpx;
   padding-bottom: 24rpx;
   border-bottom: 2rpx solid #f0f0f0;
+  gap: 24rpx;
 }
 
 .avatar-section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-right: 32rpx;
+  flex-shrink: 0;
+  min-width: 120rpx;
 }
 
 .avatar.elderly {
@@ -88,13 +90,18 @@
 
 .user-info {
   flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
 }
 
 .username {
   font-size: 40rpx;
   font-weight: 700;
-  margin-bottom: 16rpx;
+  margin-bottom: 0;
   color: #333;
+  line-height: 1.2;
 }
 
 .user-tags {
