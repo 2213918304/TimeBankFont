@@ -51,28 +51,26 @@
           class="action-btn primary equal-width"
           bind:tap="goToRecharge"
         >
-          <t-icon name="money-circle" size="24rpx" />
-          充值时间币
+          <t-icon name="money-circle" size="25rpx" />
+            <view class="text-ziti">充值时间币</view>
         </t-button>
         <t-button 
           theme="primary" 
-          variant="outline" 
           size="large" 
           class="action-btn primary equal-width"
           bind:tap="goToGifts"
         >
           <t-icon name="gift" size="24rpx" />
-          兑换礼品
+          <view class="text-ziti">兑换礼品</view>
         </t-button>
         <t-button 
           theme="primary" 
-          variant="outline" 
           size="large" 
           class="action-btn primary equal-width"
           bind:tap="showTransactionHistory"
         >
           <t-icon name="chart-bar" size="24rpx" />
-          交易记录
+          <view class="text-ziti">交易记录</view>
         </t-button>
       </view>
     </block>

@@ -100,19 +100,19 @@
   font-size: 36rpx;
   font-weight: 700;
   margin-bottom: 8rpx;
-  color: #1565c0;
+  color: #0052D9;
 }
 
 .health-value.healthy {
-  color: #1565c0;
+  color: #0052D9;
 }
 
 .health-value.normal {
-  color: #5d7c9a;
+  color: #0052D9;
 }
 
 .health-value.warning {
-  color: #8b9dc3;
+  color: #0052D9;
 }
 
 .health-label {

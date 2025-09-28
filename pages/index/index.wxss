@@ -636,8 +636,7 @@
 .elderly-avatar {
   width: 100rpx;
   height: 100rpx;
-  background: rgba(255, 255, 255, 0.2);
-  border: 3rpx solid rgba(255, 255, 255, 0.3);
+  margin-top: -10px;
 }
 
 .elderly-info {
@@ -841,7 +840,6 @@
 }
 
 .user-avatar {
-  background: linear-gradient(135deg, #0052D9, #4dabf7);
   flex-shrink: 0;
   width: 80rpx;
   height: 80rpx;
@@ -853,6 +851,7 @@
   flex-direction: column;
   gap: 8rpx;
   min-width: 0;
+  margin-left: 50rpx;
 }
 
 .welcome-text {

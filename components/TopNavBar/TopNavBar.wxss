@@ -3,7 +3,7 @@
 .top-navbar {
   position: relative;
   width: 100%;
-  height: calc(180rpx + env(safe-area-inset-top)) !important;
+  height: calc(80rpx + env(safe-area-inset-top)) !important;
   padding-top: calc(env(safe-area-inset-top) + 35rpx) !important;
   padding-bottom: 20rpx;
   padding-left: 24rpx;
@@ -64,7 +64,7 @@
 }
 
 .nav-title {
-  font-size: 32rpx;
+  font-size: 36rpx;
   font-weight: 600;
   color: #1f2329;
   line-height: 1.2;
@@ -73,6 +73,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  padding: 2rpx;
 }
 
 .nav-subtitle {

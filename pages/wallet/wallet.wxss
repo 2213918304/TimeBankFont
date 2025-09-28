@@ -110,13 +110,13 @@
 }
 
 .balance-card.family {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #667eea 0%, #0052D9 50%,#0052D9 100%);
   color: white;
   box-shadow: 0 12rpx 40rpx rgba(102, 126, 234, 0.25), 0 6rpx 20rpx rgba(118, 75, 162, 0.15);
 }
 
 .balance-card.elderly {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #FF8A65 0%, #FF7043 100%);
   color: white;
   box-shadow: 0 12rpx 40rpx rgba(102, 126, 234, 0.25), 0 6rpx 20rpx rgba(118, 75, 162, 0.15);
 }
@@ -160,14 +160,14 @@
 /* 三个按钮同一行布局 */
 .action-buttons.three-buttons {
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 16rpx;
+  gap: 10rpx;
   margin-bottom: 32rpx;
 }
 
 .action-btn.equal-width {
   min-height: 100rpx;
   font-size: 22rpx;
-  padding: 16rpx 8rpx;
+  padding: 16rpx 36rpx;
   box-sizing: border-box;
 }
 
@@ -223,18 +223,10 @@
   border: 1rpx solid rgba(255, 255, 255, 0.2);
   transition: all 0.3s ease;
 }
-
-.action-btn.primary {
-  background: linear-gradient(135deg, #e0f2fe 0%, #b3e5fc 100%);
-  color: #1565c0;
+/* 志愿者端三个按钮字体 */
+.text-ziti {
+  font-size: medium;
 }
-
-.action-btn.outline {
-  background: #f8fafc;
-  border: 1rpx solid #b3e5fc;
-  color: #1565c0;
-}
-
 .action-btn.full {
   width: 100%;
 }
@@ -257,7 +249,7 @@
 }
 
 .stat-card {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #f8faff 50%, #f0f8ff 100%);
   border-radius: 24rpx;
   padding: 40rpx 32rpx;
   text-align: center;
@@ -270,7 +262,7 @@
 }
 
 .stat-card.elderly {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2c7 100%);
+  background: linear-gradient(135deg, #FF8A65 0%, #FF7043 100%);
   border: 2rpx solid rgba(255, 138, 101, 0.1);
   box-shadow: 
     0 8rpx 32rpx rgba(255, 138, 101, 0.08),
@@ -286,7 +278,7 @@
 .stat-number {
   font-size: 64rpx;
   font-weight: 800;
-  background: linear-gradient(135deg, #ffffff 100%, #722ED1 0%);
+  background: #0052d9;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -550,7 +542,7 @@
 
 .stat-label {
   font-size: 24rpx;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(0, 0, 0, 0.8);
   text-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.15);
 }
 
